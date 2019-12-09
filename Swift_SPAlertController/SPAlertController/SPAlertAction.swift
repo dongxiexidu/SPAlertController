@@ -30,7 +30,7 @@ class SPAlertAction: NSObject {
     public var handler: ((SPAlertAction) ->Void)?
     //当在addAction之后设置action属性时,会回调这个block,设置相应控件的字体、颜色等
     /// 如果没有这个block，那使用时，只有在addAction之前设置action的属性才有效
-    private var propertyChangedClosure: ((SPAlertAction, Bool) ->Void)?
+    internal var propertyChangedClosure: ((SPAlertAction, Bool) ->Void)?
     
    
     

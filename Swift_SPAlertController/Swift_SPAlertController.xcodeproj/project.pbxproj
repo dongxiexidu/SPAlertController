@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62575F1239DD791001262A1 /* SPAlertController+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62575F0239DD791001262A1 /* SPAlertController+Public.swift */; };
 		D6315177238E4FD30043D403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6315176238E4FD30043D403 /* AppDelegate.swift */; };
 		D631517B238E4FD30043D403 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631517A238E4FD30043D403 /* ViewController.swift */; };
 		D631517E238E4FD30043D403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D631517C238E4FD30043D403 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D62575F0239DD791001262A1 /* SPAlertController+Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPAlertController+Public.swift"; sourceTree = "<group>"; };
 		D6315173238E4FD30043D403 /* Swift_SPAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_SPAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6315176238E4FD30043D403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D631517A238E4FD30043D403 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				D6486FD2239A1C8B00F3AFB7 /* SPAlertAction.swift */,
 				D67AE237239A254C00BC0A38 /* SPAlertControllerDelegate.swift */,
 				D67AE23B239A25E400BC0A38 /* SPAlertController.swift */,
+				D62575F0239DD791001262A1 /* SPAlertController+Public.swift */,
 				D631F91E239BA0BD000BA923 /* SPAlertController+transitionDelegate.swift */,
 				D67AE243239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift */,
 				D67AE245239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift */,
@@ -190,6 +193,7 @@
 				D631517B238E4FD30043D403 /* ViewController.swift in Sources */,
 				D67AE238239A254C00BC0A38 /* SPAlertControllerDelegate.swift in Sources */,
 				D67AE240239A26E000BC0A38 /* SPOverlayView.swift in Sources */,
+				D62575F1239DD791001262A1 /* SPAlertController+Public.swift in Sources */,
 				D631518E238E509D0043D403 /* SPConstant.swift in Sources */,
 				D6486FD3239A1C8B00F3AFB7 /* SPAlertAction.swift in Sources */,
 				D6315177238E4FD30043D403 /* AppDelegate.swift in Sources */,

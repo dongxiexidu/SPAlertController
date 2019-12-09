@@ -25,6 +25,5 @@ class SPInterfaceActionItemSeparatorView: UIView {
         
         self.backgroundColor = self.frame.size.height > SP_LINE_WIDTH ? UIColor.gray.withAlphaComponent(0.15) : SP_LINE_COLOR
     }
-    
-    
+
 }

@@ -112,7 +112,7 @@ extension SPInterfaceActionSequenceView {
         self.updateLineConstraints()
     }
     
-    private func customSpacingAfterActionIndex(index: Int) -> CGFloat {
+    internal func customSpacingAfterActionIndex(_ index: Int) -> CGFloat {
         
         guard let actionView = stackView.arrangedSubviews[index] as? SPAlertControllerActionView else { return 0.0 }
         if #available(iOS 11.0, *) {
@@ -122,7 +122,7 @@ extension SPInterfaceActionSequenceView {
         }
     }
     
-    private func addAction(action: SPAlertAction) {
+    internal func addAction(action: SPAlertAction) {
         self.actions.append(action)
         
         let currentActionView = SPAlertControllerActionView.init()
@@ -137,7 +137,7 @@ extension SPInterfaceActionSequenceView {
         self.setNeedsUpdateConstraints()
     }
     
-    private func addCancelAction(action: SPAlertAction) {
+    internal func addCancelAction(action: SPAlertAction) {
         var condition = false
         if cancelAction != nil {
             condition = true

@@ -13,14 +13,14 @@ class SPAlertController: UIViewController {
     private var _customAlertView: UIView?
     private var _customHeaderView: UIView?
     private var _customActionSequenceView: UIView?
-    private var _componentView: UIView?
+    internal var _componentView: UIView?
     
-    private var customViewSize: CGSize = .zero
+    internal var customViewSize: CGSize = .zero
     private var headerActionLineConstraints: [NSLayoutConstraint]?
     private var componentViewConstraints: [NSLayoutConstraint]?
     private var componentActionLineConstraints: [NSLayoutConstraint]?
     private var dimmingKnockoutBackdropView: UIView?
-    private var alertControllerViewConstraints: [NSLayoutConstraint]?
+    internal var alertControllerViewConstraints: [NSLayoutConstraint]?
     private var headerViewConstraints: [NSLayoutConstraint]?
     private var actionSequenceViewConstraints: [NSLayoutConstraint]?
     
@@ -45,15 +45,17 @@ class SPAlertController: UIViewController {
     
     
     /// 主标题
-    public var mainTitle: String = "" {
+    public var mainTitle: String? {
         didSet (newValue){
+            guard let title = newValue else { return }
+            
             if self.isViewLoaded == false {
                 return
             }
             // 如果条件为真，说明外界在对title赋值之前就已经使用了self.view，
             // 先走了viewDidLoad方法，如果先走的viewDidLoad，
             // 需要在title的setter方法中重新设置数据,以下setter方法中的条件同理
-            headerView.titleLabel.text = newValue
+            headerView.titleLabel.text = title
             
             // 文字发生变化后再更新布局，这里更新布局也不是那么重要，
             // 因为headerView中的布局方法只有当SPAlertController被present后才会走一次，
@@ -69,12 +71,13 @@ class SPAlertController: UIViewController {
         }
     }
     /// 副标题
-    public var message: String = "" {
+    public var message: String? {
         didSet (newValue){
+            guard let message = newValue else { return }
             if self.isViewLoaded == false {
                 return
             }
-            headerView.messageLabel.text = newValue
+            headerView.messageLabel.text = message
             if presentationController?.presentingViewController != nil {
                 headerView.setNeedsUpdateConstraints()
             }
@@ -141,11 +144,14 @@ class SPAlertController: UIViewController {
     * alert样式下:当actions的个数大于2，或者某个action的title显示不全时为UILayoutConstraintAxisVertical(垂直排列)，否则默认为UILayoutConstraintAxisHorizontal(水平排列)，此样式下设置该属性可以修改所有action的排列方式
     * 不论哪种样式，只要外界设置了该属性，永远以外界设置的优先
     */
+    public var _actionAxis: NSLayoutConstraint.Axis = .horizontal
+    //本框架任何一处都不允许调用actionAxis的setter方法，如果调用了则无法判断是外界调用还是内部调用
     public var actionAxis: NSLayoutConstraint.Axis? {
         didSet (newValue){
-            guard let _ = newValue else { return }
+            guard let actonA = newValue else { return }
             // 调用该setter方法则认为是强制布局，该setter方法只有外界能调，
             // 这样才能判断外界有没有调用actionAxis的setter方法，从而是否按照外界的指定布局方式进行布局
+            _actionAxis = actonA
             isForceLayout = true
             updateActionAxis()
         }
@@ -268,8 +274,8 @@ class SPAlertController: UIViewController {
     // readonly
     public var actions: [SPAlertAction] = [SPAlertAction]()
     // 除去取消样式action的其余action数组
-    private var otherActions = [SPAlertAction]()
-    private var textFields = [UITextField]()
+    internal var otherActions = [SPAlertAction]()
+    internal var textFields = [UITextField]()
     /// 是否强制排列，外界设置了actionAxis属性认为是强制
     var isForceLayout: Bool = true
     /// 是否强制偏移，外界设置了offsetForAlert属性认为是强制
@@ -400,7 +406,7 @@ class SPAlertController: UIViewController {
             self?.setupPreferredMaxLayoutWidthForLabel(header.messageLabel)
         }
         if self.customHeaderView == nil {
-            if mainTitle.count > 0 || attributedTitle != nil || message.count > 0 || attributedMessage != nil || textFields.count > 0 || image != nil{
+            if (mainTitle != nil && mainTitle!.count > 0) || attributedTitle != nil || (message != nil && message!.count > 0) || attributedMessage != nil || textFields.count > 0 || image != nil{
                 self.alertView.addSubview(header)
             }
         }
@@ -422,52 +428,9 @@ class SPAlertController: UIViewController {
     
     
     
-    private convenience init(title: String,
-                     message: String,
-                     customAlertView: UIView,
-                     customHeaderView: UIView,
-                     customActionSequenceView: UIView,
-                     componentView: UIView,
-                     preferredStyle: SPAlertControllerStyle,
-                     animationType: SPAlertAnimationType) {
-        
-        self.init()
-        self.mainTitle = title
-        self.message = message
-        self.preferredStyle = preferredStyle
-        // 如果是默认动画，preferredStyle为alert时动画默认为alpha，
-        // preferredStyle为actionShee时动画默认为fromBottom
-        if animationType == .default {
-            if preferredStyle == .alert {
-                self.animationType = .shrink
-            } else {
-                self.animationType = .fromBottom
-            }
-        }
-        self.animationType = animationType
-        
-        if preferredStyle == .alert {
-            self.minDistanceToEdges = (min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-275)/2
-            self.actionAxis = .horizontal
-        } else {
-            self.minDistanceToEdges = 70
-            self.actionAxis = .vertical
-            self.cornerRadius = 13
-        }
-        self._customAlertView = customAlertView
-        self._customHeaderView = customHeaderView
-        self._customActionSequenceView = customActionSequenceView
-        // componentView参数是为了支持老版本的自定义footerView
-        self._componentView = componentView
-        
-        // 视图控制器定义它呈现视图控制器的过渡风格（默认为NO）
-        self.providesPresentationContextTransitionStyle = true;
-        self.definesPresentationContext = true;
-        self.modalPresentationStyle = .custom;
-        self.transitioningDelegate = self;
-    }
+
     
-    //MARK: system methods
+    //MARK: - system methods
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -527,129 +490,72 @@ class SPAlertController: UIViewController {
     }
     
     
-    /* 添加文本输入框
-    * 一旦添加后就会回调一次(仅回调一次,因此可以在这个block块里面自由定制textFiled,
-    * 如设置textField的属性,设置代理,添加addTarget,监听通知等)
-    */
-    public func addTextFieldWithConfigurationHandler(handler: (UITextField)->Void) {
-        
+    
+    // 这个方法是实现点击回车切换到下一个textField，
+    // 如果没有下一个，会自动退出键盘
+    // 不能在代理方法里实现，因为如果设置了代理，
+    // 外界就不能成为textFiled的代理了，通知也监听不到回车
+    @objc func textFieldDidEndOnExit(textField: UITextField){
+        var index: Int = 0
+        for (i, item) in self.textFields.enumerated() {
+            if item == textField {
+                index = i
+                break
+            }
+        }
+        if textFields.count > index+1 {
+            let nextTextField = textFields[index+1]
+            textField.resignFirstResponder()
+            nextTextField.becomeFirstResponder()
+        }
     }
     
-    public func addAction(action: SPAlertAction) {
-        self.actions.append(action)
-        // alert样式不论是否为取消样式的按钮，都直接按顺序添加
-        if self.preferredStyle == .alert {
-            if action.style != .cancel {
-                self.otherActions.append(action)
-            }
-           // self.actionSequenceView.
-        } else {
-            
-        }
-    }
-
-    public func layoutAlertControllerView() {
-        if alertControllerView.superview == nil {
-            return
-        }
-        
-        if let arr = alertControllerViewConstraints {
-            NSLayoutConstraint.deactivate(arr)
-            alertControllerViewConstraints = nil
-        }
-        if preferredStyle == .alert {
-            layoutAlertControllerViewForAlertStyle()
-        } else {
-            layoutAlertControllerViewForActionSheetStyle()
-        }
-    }
     
     func layoutAlertControllerViewForAlertStyle() {
+        var alertControllerViewConstraints = [NSLayoutConstraint]()
+        let topValue = minDistanceToEdges
+        let bottomValue = minDistanceToEdges
+        let maxWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minDistanceToEdges*2
+        let maxHeight = SP_SCREEN_HEIGHT-topValue-bottomValue
         
+        if self.customAlertView == nil {
+            // 当屏幕旋转的时候，为了保持alert样式下的宽高不变，因此取MIN(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)
+            alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: maxWidth))
+            
+        } else {
+            alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: maxWidth))
+            // 如果宽度没有值，则会假定customAlertView水平方向能由子控件撑起
+            if customViewSize.width > 0 {
+                // 限制最大宽度，且能保证内部约束不报警告
+                let customWidth = min(customViewSize.width, maxWidth)
+                alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customWidth))
+            }
+             // 如果高度没有值，则会假定customAlertView垂直方向能由子控件撑起
+            if customViewSize.height > 0 {
+                let customHeight = min(customViewSize.height, maxHeight)
+                alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customHeight))
+            }
+        }
+        let topConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: alertControllerView.superview, attribute: .top, multiplier: 1.0, constant: topValue)
+        topConstraint.priority = UILayoutPriority.init(999.0)
+        //这里优先级为999.0是为了小于垂直中心的优先级，如果含有文本输入框，键盘弹出后，特别是旋转到横屏后，对话框的空间比较小，这个时候优先偏移垂直中心，顶部优先级按理说应该会被忽略，但是由于子控件含有scrollView，所以该优先级仍然会被激活，子控件显示不全scrollView可以滑动。如果外界自定义了整个对话框，且自定义的view上含有文本输入框，子控件不含有scrollView，顶部间距会被忽略
+        alertControllerViewConstraints.append(topConstraint)
+        let bottomConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: alertControllerView.superview, attribute: .bottom, multiplier: 1.0, constant: -bottomValue)
+        bottomConstraint.priority = UILayoutPriority.init(999.0)// 优先级跟顶部同理
     }
+    
     func layoutAlertControllerViewForActionSheetStyle() {
-        
+        switch animationType {
+        case .fromTop:
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.top, notEqualAttribute: .bottom, lessOrGreaterRelation: .lessThanOrEqual)
+        case .fromBottom:
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
+        case .fromLeft, .fromRight:
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "V", equalAttribute: NSLayoutConstraint.Attribute.left, notEqualAttribute: .right, lessOrGreaterRelation: .lessThanOrEqual)
+        default:
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
+        }
     }
-    
-    /// 设置alert样式下的偏移量,动画为NO则跟属性offsetForAlert等效
-    public func setOffsetForAlert(_ offsetForAlert: CGPoint, animated: Bool) {
-        self.offsetForAlert = offsetForAlert
-        self.isForceOffset = true
-        self.makeViewOffsetWithAnimated(animated)
-    }
-    ///设置action与下一个action之间的间距, action仅限于非取消样式，必须在'-addAction:'之后设置，iOS11或iOS11以上才能使用
-    @available(iOS 11.0, *)
-    public func setCustomSpacing(spacing: CGFloat, aferAction action: SPAlertAction) {
-        
-    }
-    @available(iOS 11.0, *)
-    public func customSpacing(aferAction action: SPAlertAction) -> CGFloat {
-        
-        return 0
-    }
-    
-    // 设置蒙层的外观样式,可通过alpha调整透明度
-    public func setBackgroundViewAppearanceStyle(_ style: SPBackgroundViewAppearanceStyle, alpha: CGFloat) {
-        
-    }
-    // 插入一个组件view，位置处于头部和action部分之间，要求头部和action部分同时存在
-    public func insertComponentView(_ componentView: UIView) {
-        self._componentView = componentView
-    }
-}
-
-//MARK: - custom
-extension SPAlertController {
-    
-    
-    /// 创建控制器(自定义整个对话框)
-    /// - Parameters:
-    ///   - customAlertView: 整个对话框的自定义view
-    ///   - preferredStyle: 对话框样式
-    ///   - animationType: 动画类型
-    class func alertControllerWithCustomAlertView(customAlertView: UIView,
-                                                  preferredStyle: SPAlertControllerStyle,
-                                                  animationType: SPAlertAnimationType) -> SPAlertController{
-        
-        return SPAlertController()
-    }
-    
-    
-    /// 创建控制器(自定义整个对话框)
-    /// - Parameters:
-    ///   - customHeaderView: 头部自定义view
-    ///   - preferredStyle: 对话框样式
-    ///   - animationType: 动画类型
-    class func alertControllerWithCustomHeaderView(customHeaderView: UIView,
-                                                  preferredStyle: SPAlertControllerStyle,
-                                                  animationType: SPAlertAnimationType) -> SPAlertController{
-        
-        return SPAlertController()
-    }
-    
-    
-    /// 创建控制器(自定义对话框的action部分)
-    /// - Parameters:
-    ///   - customActionSequenceView: action部分的自定义view
-    ///   - title: 大标题
-    ///   - message: 副标题
-    ///   - preferredStyle: 对话框样式
-    ///   - animationType: 动画类型
-    class func alertControllerWithCustomActionSequenceView(customActionSequenceView: UIView,
-                                                           title: String,
-                                                           message: String,
-                                                           preferredStyle: SPAlertControllerStyle,
-                                                           animationType: SPAlertAnimationType) -> SPAlertController{
-        
-        return SPAlertController()
-    }
-    
-    //更新自定义view的size，比如屏幕旋转，自定义view的大小发生了改变，可通过该方法更新size
-    func updateCustomViewSize(size: CGSize) {
-        
-    }
-    
-    
 }
 
 //MARK: - private method
@@ -665,7 +571,60 @@ extension SPAlertController {
         }
     }
     
-    private func layoutChildViews() {
+    internal convenience init(title: String?,
+                     message: String?,
+                     customAlertView: UIView?,
+                     customHeaderView: UIView?,
+                     customActionSequenceView: UIView?,
+                     componentView: UIView?,
+                     preferredStyle: SPAlertControllerStyle,
+                     animationType: SPAlertAnimationType) {
+        
+        self.init()
+        self.mainTitle = title
+        self.message = message
+        self.preferredStyle = preferredStyle
+        // 如果是默认动画，preferredStyle为alert时动画默认为alpha，
+        // preferredStyle为actionShee时动画默认为fromBottom
+        if animationType == .default {
+            if preferredStyle == .alert {
+                self.animationType = .shrink
+            } else {
+                self.animationType = .fromBottom
+            }
+        }
+        self.animationType = animationType
+        
+        if preferredStyle == .alert {
+            self.minDistanceToEdges = (min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-275)/2
+            self.actionAxis = .horizontal
+        } else {
+            self.minDistanceToEdges = 70
+            self.actionAxis = .vertical
+            self.cornerRadius = 13
+        }
+        self._customAlertView = customAlertView
+        self._customHeaderView = customHeaderView
+        self._customActionSequenceView = customActionSequenceView
+        // componentView参数是为了支持老版本的自定义footerView
+        self._componentView = componentView
+        
+        // 视图控制器定义它呈现视图控制器的过渡风格（默认为NO）
+        self.providesPresentationContextTransitionStyle = true;
+        self.definesPresentationContext = true;
+        self.modalPresentationStyle = .custom;
+        self.transitioningDelegate = self;
+    }
+    
+    func layoutAlertControllerViewForAnimationTypeWithHV(hv: String,
+                                                         equalAttribute: NSLayoutConstraint.Attribute,
+                                                         notEqualAttribute: NSLayoutConstraint.Attribute,
+                                                         lessOrGreaterRelation relation: NSLayoutConstraint.Relation){
+        
+    }
+    
+    
+    internal func layoutChildViews() {
         // 对头部布局
         layoutHeaderView()
         // 对头部和action部分之间的分割线布局
@@ -701,13 +660,10 @@ extension SPAlertController {
         
     }
     
-    private func updateActionAxis() {
-        actionSequenceView.axis = actionAxis
-        guard let actionAxis = actionAxis else {
-            print("actionAxis == nil !!!!!!!!!!!!!!")
-            return
-        }
-        if actionAxis == .vertical {// 布局方式为子控件自适应内容高度
+    internal func updateActionAxis() {
+        actionSequenceView.axis = _actionAxis
+        
+        if _actionAxis == .vertical {// 布局方式为子控件自适应内容高度
             actionSequenceView.stackViewDistribution = .fillProportionally
         } else {// 布局方式为子控件等宽
             actionSequenceView.stackViewDistribution = .fillEqually
@@ -721,25 +677,9 @@ extension SPAlertController {
             return SP_SCREEN_WIDTH
         }
     }
-    // 这个方法是实现点击回车切换到下一个textField，如果没有下一个，会自动退出键盘. 不能在代理方法里实现，因为如果设置了代理，外界就不能成为textFiled的代理了，通知也监听不到回车
-    private func textFieldDidEndOnExit(textField: UITextField) {
-        var index = 0
-        for (i,item) in textFields.enumerated() {
-            if item == textField {
-                index = i
-                break
-            }
-        }
-        
-        if textFields.count > index+1 {
-            let nextTextField = self.textFields[index+1]
-            textField.resignFirstResponder()
-            nextTextField.becomeFirstResponder()
-        }
-    }
     
     // 文字显示不全处理
-    private func handleIncompleteTextDisplay() {
+    internal func handleIncompleteTextDisplay() {
         // alert样式下水平排列时如果文字显示不全则垂直排列
         if self.isForceLayout {
             return
@@ -779,7 +719,7 @@ extension SPAlertController {
         
     }
     
-    //MARK: - 键盘通知
+    //MARK: 键盘通知
     @objc func keyboardFrameWillChange(noti: Notification) {
         if !isForceOffset {
             //键盘高度
@@ -793,7 +733,7 @@ extension SPAlertController {
         }
     }
     
-    private func makeViewOffsetWithAnimated(_ animated: Bool) {
+    internal func makeViewOffsetWithAnimated(_ animated: Bool) {
         if !self.isBeingPresented && !self.isBeingDismissed {
             layoutAlertControllerView()
             if animated {
@@ -835,7 +775,7 @@ extension SPAlertController {
         if let attrTitle = attributedTitle, attrTitle.length > 0 {
             headerView.titleLabel.attributedText = attrTitle
             setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
-        } else if mainTitle.count > 0 {
+        } else if mainTitle != nil && mainTitle!.count > 0 {
             headerView.titleLabel.text = mainTitle
             headerView.titleLabel.font = titleFont
             headerView.titleLabel.textColor = titleColor
@@ -848,7 +788,7 @@ extension SPAlertController {
         if let attrTitle = attributedMessage, attrTitle.length > 0  {
             headerView.messageLabel.attributedText = attrTitle
             setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
-        } else if message.count > 0 {
+        } else if (message != nil && message!.count > 0) {
             headerView.messageLabel.text = message
             headerView.messageLabel.font = messageFont
             headerView.messageLabel.textColor = messageColor
@@ -859,7 +799,4 @@ extension SPAlertController {
         }
         
     }
-    
-    
-    
 }

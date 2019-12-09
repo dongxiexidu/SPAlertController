@@ -8,8 +8,8 @@
 
 import Foundation
 
-
-protocol SPAlertControllerDelegate: NSObject {
+//: NSObject 
+protocol SPAlertControllerDelegate{
     
 }
 

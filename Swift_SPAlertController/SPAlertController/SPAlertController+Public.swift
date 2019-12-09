@@ -269,8 +269,6 @@ extension SPAlertController{
         headerView.addTextField(textField: textField)
         handler?(textField)
     }
-
-    
 }
 
 

@@ -237,36 +237,40 @@ class SPAlertController: UIViewController {
     }
     
     /// 是否需要对话框拥有毛玻璃,默认为YES
-    public var needDialogBlur: Bool = false {
+    public var needDialogBlur: Bool = true {
         
         didSet (newValue){
-            if newValue == true {
-                containerView.backgroundColor = .clear
-                if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
-                    dimmingKnockoutBackdropView = dimmingdropView
-                    // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
-                    let selector = NSSelectorFromString("initWithStyle:")
-                    dimmingdropView.perform(selector, with: UIBlurEffect.Style.light)
-                    dimmingdropView.frame = containerView.bounds
-                    dimmingdropView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                    self.containerView.insertSubview(dimmingdropView, at: 0)
-                } else {
-                    // 这个else是防止假如_UIDimmingKnockoutBackdropView这个类不存在了的时候，做一个备案
-                    let blur = UIBlurEffect.init(style: UIBlurEffect.Style.extraLight)
-                    dimmingKnockoutBackdropView = UIVisualEffectView.init(effect: blur)
-                    dimmingKnockoutBackdropView!.frame = containerView.bounds
-                    dimmingKnockoutBackdropView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                    self.containerView.insertSubview(dimmingKnockoutBackdropView!, at: 0)
-                }
-                
+            updateDialogBlur(needDialogBlur: newValue)
+        }
+    }
+    
+    private func updateDialogBlur(needDialogBlur: Bool) {
+        if needDialogBlur == true {
+            containerView.backgroundColor = .clear
+            if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
+                dimmingKnockoutBackdropView = dimmingdropView
+                // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
+                let selector = NSSelectorFromString("initWithStyle:")
+                dimmingdropView.perform(selector, with: UIBlurEffect.Style.light)
+                dimmingdropView.frame = containerView.bounds
+                dimmingdropView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.containerView.insertSubview(dimmingdropView, at: 0)
             } else {
-                dimmingKnockoutBackdropView?.removeFromSuperview()
-                dimmingKnockoutBackdropView = nil
-                if customAlertView != nil {
-                    containerView.backgroundColor = .clear
-                } else {
-                    containerView.backgroundColor = .white
-                }
+                // 这个else是防止假如_UIDimmingKnockoutBackdropView这个类不存在了的时候，做一个备案
+                let blur = UIBlurEffect.init(style: UIBlurEffect.Style.extraLight)
+                dimmingKnockoutBackdropView = UIVisualEffectView.init(effect: blur)
+                dimmingKnockoutBackdropView!.frame = containerView.bounds
+                dimmingKnockoutBackdropView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.containerView.insertSubview(dimmingKnockoutBackdropView!, at: 0)
+            }
+            
+        } else {
+            dimmingKnockoutBackdropView?.removeFromSuperview()
+            dimmingKnockoutBackdropView = nil
+            if customAlertView != nil {
+                containerView.backgroundColor = .clear
+            } else {
+                containerView.backgroundColor = .white
             }
         }
     }
@@ -437,7 +441,7 @@ class SPAlertController: UIViewController {
     }
     
     override func loadView() {
-        //super.loadView()
+        // super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
     }
@@ -445,11 +449,9 @@ class SPAlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         configureHeaderView()
-
+        updateDialogBlur(needDialogBlur: self.needDialogBlur)
        // self.automaticallyAdjustsScrollViewInsets = false
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -621,6 +623,40 @@ extension SPAlertController {
                                                          notEqualAttribute: NSLayoutConstraint.Attribute,
                                                          lessOrGreaterRelation relation: NSLayoutConstraint.Relation){
         
+        var alertControllerViewConstraints = [NSLayoutConstraint]()
+        if self.customAlertView == nil {
+            alertControllerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "\(hv):|-0-[alertControllerView]-0-|", options: [], metrics: nil, views: ["alertControllerView": alertControllerView]))
+        } else {
+            let centerXorY = (hv == "H") ? NSLayoutConstraint.Attribute.centerX : NSLayoutConstraint.Attribute.centerY
+            alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: centerXorY, relatedBy: .equal, toItem: alertControllerView.superview, attribute: centerXorY, multiplier: 1.0, constant: 0))
+            if customViewSize.width > 0 {
+                // 如果宽度没有值，则会假定customAlertViewh水平方向能由子控件撑起
+                var alertControllerViewWidth: CGFloat = 0
+                if hv == "H" {
+                    alertControllerViewWidth = min(customViewSize.width, SP_SCREEN_WIDTH)
+                } else {
+                    alertControllerViewWidth = min(customViewSize.width, SP_SCREEN_WIDTH-minDistanceToEdges)
+                }
+                alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: alertControllerViewWidth))
+            }
+            if (customViewSize.height > 0) {
+                // 如果高度没有值，则会假定customAlertViewh垂直方向能由子控件撑起
+                var alertControllerViewHeight: CGFloat = 0
+                if hv == "H" {
+                    alertControllerViewHeight = min(customViewSize.height, SP_SCREEN_HEIGHT-minDistanceToEdges)
+                } else {
+                    alertControllerViewHeight = min(customViewSize.height, SP_SCREEN_HEIGHT)
+                }
+                alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: alertControllerViewHeight))
+            }
+        }
+        
+        alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: equalAttribute, relatedBy: .equal, toItem: alertControllerView.superview, attribute: equalAttribute, multiplier: 1.0, constant: 0))
+        let someSideConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: notEqualAttribute, relatedBy: relation, toItem: alertControllerView.superview, attribute: notEqualAttribute, multiplier: 1.0, constant: 0)
+        someSideConstraint.priority = UILayoutPriority.init(999.0)
+        alertControllerViewConstraints.append(someSideConstraint)
+        NSLayoutConstraint.activate(alertControllerViewConstraints)
+        self.alertControllerViewConstraints = alertControllerViewConstraints
     }
     
     
@@ -639,25 +675,144 @@ extension SPAlertController {
     
     // 对头部布局
     private func layoutHeaderView() {
+        let headerView = customHeaderView != nil ? customHeaderView! : self.headerView
+        if headerView.superview == nil {
+            return
+        }
+        if let constraints = self.headerViewConstraints {
+            NSLayoutConstraint.deactivate(constraints)
+            self.headerViewConstraints = nil
+        }
+        var headerViewConstraints = [NSLayoutConstraint]()
+        if customHeaderView == nil {
+            headerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[headerView]-0-|", options: [], metrics: nil, views: ["headerView": headerView]))
+        } else {
+            if customViewSize.width > 0 {
+                let maxWidth = getMaxWidth()
+                let headerViewWidth = min(maxWidth, customViewSize.width)
+                headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: headerViewWidth))
+            }
+            if customViewSize.height > 0 {
+                let customHeightConstraint = NSLayoutConstraint.init(item: headerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.height)
+                customHeightConstraint.priority = .defaultHigh
+                headerViewConstraints.append(customHeightConstraint)
+            }
+            headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
+        }
+        headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         
+        if headerActionLine.superview == nil {
+            headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
+        }
+        NSLayoutConstraint.activate(headerViewConstraints)
+        self.headerViewConstraints = headerViewConstraints
     }
+    
     // 对头部和action部分之间的分割线布局
     private func layoutHeaderActionLine() {
+        if headerActionLine.superview == nil {
+            return
+        }
+        let headerV = customHeaderView != nil ? customHeaderView! : headerView
+        let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
+        if let constraints = self.headerViewConstraints {
+            NSLayoutConstraint.deactivate(constraints)
+            self.headerViewConstraints = nil
+        }
         
+        var headerActionLineConstraints = [NSLayoutConstraint]()
+        headerActionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[headerActionLine]-0-|", options: [], metrics: nil, views: ["headerActionLine": headerActionLine]))
+        headerActionLineConstraints.append(NSLayoutConstraint.init(item: headerActionLine, attribute: .top, relatedBy: .equal, toItem: headerV, attribute: .bottom, multiplier: 1.0, constant: 0))
+        if self.componentView?.superview == nil {
+            headerActionLineConstraints.append(NSLayoutConstraint.init(item: headerActionLine, attribute: .bottom, relatedBy: .equal, toItem: actionSequenceV, attribute: .top, multiplier: 1.0, constant: 0))
+        }
+        headerActionLineConstraints.append(NSLayoutConstraint.init(item: headerActionLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: SP_LINE_WIDTH))
+        NSLayoutConstraint.activate(headerActionLineConstraints)
+        self.headerActionLineConstraints = headerActionLineConstraints
     }
     
     // 对组件view布局
     private func layoutComponentView() {
+        guard let componentView = componentView else { return }
+        if componentView.superview == nil {
+            return
+        }
+        if let constraints = self.componentViewConstraints {
+            NSLayoutConstraint.deactivate(constraints)
+            self.componentViewConstraints = nil
+        }
+        var componentViewConstraints = [NSLayoutConstraint]()
+        componentViewConstraints.append(NSLayoutConstraint.init(item: componentView, attribute: .top, relatedBy: .equal, toItem: headerActionLine, attribute: .bottom, multiplier: 1.0, constant: 0))
+        componentViewConstraints.append(NSLayoutConstraint.init(item: componentView, attribute: .bottom, relatedBy: .equal, toItem: componentActionLine, attribute: .top, multiplier: 1.0, constant: 0))
+        componentViewConstraints.append(NSLayoutConstraint.init(item: componentView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         
+        if customViewSize.height > 0 {
+            let heightConstraint = NSLayoutConstraint.init(item: componentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.height)
+            heightConstraint.priority = .defaultHigh
+            componentViewConstraints.append(heightConstraint)
+        }
+        if customViewSize.width > 0 {
+            let maxWidth = getMaxWidth()
+            let componentViewWidth = min(maxWidth, customViewSize.width)
+            componentViewConstraints.append(NSLayoutConstraint.init(item: componentView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: componentViewWidth))
+        }
+        NSLayoutConstraint.activate(componentViewConstraints)
+        self.componentViewConstraints = componentViewConstraints
     }
     
     // 对组件view与action部分之间的分割线布局
     private func layoutComponentActionLine() {
+        if componentActionLine.superview == nil {
+            return
+        }
+        if let constraints = self.componentActionLineConstraints {
+            NSLayoutConstraint.deactivate(constraints)
+            self.componentActionLineConstraints = nil
+        }
+        var componentActionLineConstraints = [NSLayoutConstraint]()
+        componentActionLineConstraints.append(NSLayoutConstraint.init(item: componentActionLine, attribute: .bottom, relatedBy: .equal, toItem: actionSequenceView, attribute: .top, multiplier: 1.0, constant: 0))
         
+        componentActionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[componentActionLine]-0-|", options: [], metrics: nil, views: ["componentActionLine": componentActionLine]))
+        componentActionLineConstraints.append(NSLayoutConstraint.init(item: componentActionLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: SP_LINE_WIDTH))
+        NSLayoutConstraint.activate(componentActionLineConstraints)
+        self.componentActionLineConstraints = componentActionLineConstraints
     }
     // 对action部分布局
     private func layoutActionSequenceView() {
-        
+        let actionSequenceView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
+        if actionSequenceView.superview == nil {
+            return
+        }
+        if let constraints = self.actionSequenceViewConstraints {
+            NSLayoutConstraint.deactivate(constraints)
+            self.actionSequenceViewConstraints = nil
+        }
+        var actionSequenceViewConstraints = [NSLayoutConstraint]()
+        if customActionSequenceView == nil {
+            actionSequenceViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[actionSequenceView]-0-|", options: [], metrics: nil, views: ["actionSequenceView": actionSequenceView]))
+        } else {
+            if customViewSize.width > 0 {
+                let maxWidth = getMaxWidth()
+                if customViewSize.width > maxWidth {
+                    customViewSize.width = maxWidth
+                }
+                actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.width))
+            }
+            
+            if customViewSize.height > 0 {
+                let customHeightConstraint = NSLayoutConstraint.init(item: actionSequenceView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.height)
+                customHeightConstraint.priority = .defaultHigh
+                actionSequenceViewConstraints.append(customHeightConstraint)
+            }
+            actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
+        }
+        // FIXME: 需要可选??
+        if headerActionLine == nil {
+            actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
+        }
+        actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
+        NSLayoutConstraint.activate(actionSequenceViewConstraints)
+        self.actionSequenceViewConstraints = actionSequenceViewConstraints
     }
     
     internal func updateActionAxis() {
@@ -670,7 +825,7 @@ extension SPAlertController {
         }
     }
     
-    private func maxWidth() -> CGFloat {
+    private func getMaxWidth() -> CGFloat {
         if preferredStyle == .alert {
             return min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minDistanceToEdges*2
         } else {

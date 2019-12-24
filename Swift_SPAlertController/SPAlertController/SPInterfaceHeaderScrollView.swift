@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/12/6.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -18,6 +18,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = .white
         self.showsHorizontalScrollIndicator = false
         if #available(iOS 11.0, *) {
             self.contentInsetAdjustmentBehavior = .never
@@ -101,10 +102,10 @@ extension SPInterfaceHeaderScrollView {
     override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
         
-        let safeTop = self.safeAreaInsets.top < 20 ? 20 : self.safeAreaInsets.top+10
-        let safeLeft = self.safeAreaInsets.left < 15 ? 15 : self.safeAreaInsets.left
-        let safeBottom = self.safeAreaInsets.bottom < 20 ? 20 : self.safeAreaInsets.bottom+6
-        let safeRight = self.safeAreaInsets.right < 15 ? 15 : self.safeAreaInsets.right
+        let safeTop = safeAreaInsets.top < 20 ? 20 : safeAreaInsets.top+10
+        let safeLeft = safeAreaInsets.left < 15 ? 15 : safeAreaInsets.left
+        let safeBottom = safeAreaInsets.bottom < 20 ? 20 : safeAreaInsets.bottom+6
+        let safeRight = safeAreaInsets.right < 15 ? 15 : safeAreaInsets.right
         
         contentEdgeInsets = .init(top: safeTop, left: safeLeft, bottom: safeBottom, right: safeRight)
         // 这个block，主要是更新Label的最大预估宽度
@@ -124,10 +125,10 @@ extension SPInterfaceHeaderScrollView {
         // 对contentView布局
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[contentView]-0-|", options: [], metrics: nil, views: ["contentView": contentView]))
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[contentView]-0-|", options: [], metrics: nil, views: ["contentView": contentView]))
-        let widthConstraint = NSLayoutConstraint.init(item: contentView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1.0, constant: 0)
+        let widthConstraint = NSLayoutConstraint.init(item: contentView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0, constant: 0)
         widthConstraint.isActive = true
         
-        let equalHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1.0, constant: 0)
+        let equalHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1.0, constant: 0)
         // 优先级不能最高， 最顶层的父view有高度限制，
         // 如果子控件撑起后的高度大于限制高度，则scrollView滑动查看全部内容
         equalHeightConstraint.priority = UILayoutPriority(rawValue: 998.0)
@@ -139,7 +140,7 @@ extension SPInterfaceHeaderScrollView {
         let bottomMargin = contentEdgeInsets.bottom
         
         // 对iconView布局
-        if let image = imageView.image{
+        if let image = imageView.image {
             var imageViewConstraints = [NSLayoutConstraint]()
             let width = min(image.size.width, imageLimitSize.width)
             let height = min(image.size.height, imageLimitSize.height)
@@ -178,21 +179,21 @@ extension SPInterfaceHeaderScrollView {
             // 第一个子控件顶部间距
             if index == 0 {
                 if nil == imageView.image {
-                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: topMargin))
+                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1.0, constant: topMargin))
                 }
             }
             
             // 最后一个子控件底部间距
             if index == labels.count - 1 {
                 if textFieldsArray.count > 0 {
-                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: textFieldView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: -bottomMargin))
+                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: .bottom, relatedBy: .equal, toItem: textFieldView, attribute: .top, multiplier: 1.0, constant: -bottomMargin))
                 } else {
-                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: -bottomMargin))
+                    titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: -bottomMargin))
                 }
             }
             // 子控件之间的垂直间距
             if index > 0 {
-                titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: labels[index-1], attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 7.5))
+                titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: .top, relatedBy: .equal, toItem: labels[index-1], attribute: .bottom, multiplier: 1.0, constant: 7.5))
             }
             NSLayoutConstraint.activate(titleLabelConstraints)
             
@@ -213,7 +214,7 @@ extension SPInterfaceHeaderScrollView {
             // 如果子控件是UILabel，那么子label必须设置preferredMaxLayoutWidth
             // 否则当label多行文本时计算不准确
             let constantH = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            let contentViewHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1.0, constant: constantH)
+            let contentViewHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constantH)
             contentViewHeightConstraint.isActive = true
             
         }

@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/12/6.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +25,9 @@ class SPAlertAnimation: NSObject {
 }
 
 extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        
         return 0.25
     }
     
@@ -38,7 +40,7 @@ extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
     }
     
     private func presentAnimationTransition(transitionContext: UIViewControllerContextTransitioning){
-        let alertController = transitionContext.viewController(forKey: .to)
+        let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
         guard let alert = alertController as? SPAlertController else { return }
         
         switch alert.animationType {

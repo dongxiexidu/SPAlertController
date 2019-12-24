@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/11/27.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit

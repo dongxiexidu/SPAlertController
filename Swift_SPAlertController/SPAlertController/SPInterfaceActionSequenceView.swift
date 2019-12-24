@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/12/6.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -48,6 +48,7 @@ class SPInterfaceActionSequenceView: UIView {
     //MARK: - lazy var
     lazy var contentView: UIView = {
         let contentV = UIView()
+        contentV.backgroundColor = .white
         contentV.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(contentV)
         return contentV
@@ -55,6 +56,7 @@ class SPInterfaceActionSequenceView: UIView {
     
     lazy var scrollView: UIScrollView = {
         let scrollV = UIScrollView()
+        scrollV.backgroundColor = .white
         scrollV.showsHorizontalScrollIndicator = false
         scrollV.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {

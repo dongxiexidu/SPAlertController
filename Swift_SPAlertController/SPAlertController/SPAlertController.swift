@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/12/6.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -441,7 +441,7 @@ class SPAlertController: UIViewController {
     }
     
     override func loadView() {
-        // super.loadView()
+         super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
     }
@@ -451,7 +451,7 @@ class SPAlertController: UIViewController {
 
         configureHeaderView()
         updateDialogBlur(needDialogBlur: self.needDialogBlur)
-       // self.automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -551,7 +551,7 @@ class SPAlertController: UIViewController {
         case .fromTop:
             layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.top, notEqualAttribute: .bottom, lessOrGreaterRelation: .lessThanOrEqual)
         case .fromBottom:
-            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: .bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
         case .fromLeft, .fromRight:
             layoutAlertControllerViewForAnimationTypeWithHV(hv: "V", equalAttribute: NSLayoutConstraint.Attribute.left, notEqualAttribute: .right, lessOrGreaterRelation: .lessThanOrEqual)
         default:
@@ -595,14 +595,16 @@ extension SPAlertController {
                 self.animationType = .fromBottom
             }
         }
-        self.animationType = animationType
+       
         
         if preferredStyle == .alert {
             self.minDistanceToEdges = (min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-275)/2
-            self.actionAxis = .horizontal
+            //self.actionAxis = .horizontal
+            _actionAxis = .horizontal
         } else {
             self.minDistanceToEdges = 70
-            self.actionAxis = .vertical
+           //self.actionAxis = .vertical
+            _actionAxis = .vertical
             self.cornerRadius = 13
         }
         self._customAlertView = customAlertView
@@ -652,7 +654,7 @@ extension SPAlertController {
         }
         
         alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: equalAttribute, relatedBy: .equal, toItem: alertControllerView.superview, attribute: equalAttribute, multiplier: 1.0, constant: 0))
-        let someSideConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: notEqualAttribute, relatedBy: relation, toItem: alertControllerView.superview, attribute: notEqualAttribute, multiplier: 1.0, constant: 0)
+        let someSideConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: notEqualAttribute, relatedBy: relation, toItem: alertControllerView.superview, attribute: notEqualAttribute, multiplier: 1.0, constant: minDistanceToEdges)
         someSideConstraint.priority = UILayoutPriority.init(999.0)
         alertControllerViewConstraints.append(someSideConstraint)
         NSLayoutConstraint.activate(alertControllerViewConstraints)
@@ -853,7 +855,9 @@ extension SPAlertController {
                 let width = attrs.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil).size.width
                 
                 if ceilf(Float(width)) > Float(preButtonWidth) {
-                    actionAxis = .vertical
+                    
+                    //actionAxis = .vertical
+                    _actionAxis = .vertical
                     updateActionAxis()
                     actionSequenceView.setNeedsUpdateConstraints()
                     break// 一定要break，只要有一个按钮文字过长就垂直排列
@@ -862,7 +866,8 @@ extension SPAlertController {
             } else {
                 let width = action.title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSAttributedString.Key.font: action.titleFont], context: nil).size.width
                 if ceilf(Float(width)) > Float(preButtonWidth){
-                    actionAxis = .vertical
+                   // actionAxis = .vertical
+                    _actionAxis = .vertical
                     updateActionAxis()
                     actionSequenceView.setNeedsUpdateConstraints()
                     break

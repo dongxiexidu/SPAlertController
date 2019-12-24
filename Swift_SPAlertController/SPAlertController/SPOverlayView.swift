@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2019/12/6.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,7 @@ class SPOverlayView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.isUserInteractionEnabled = true
     }
     
     required init?(coder: NSCoder) {

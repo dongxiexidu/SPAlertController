@@ -156,6 +156,7 @@ extension SPAlertController{
     }
     
     public func addAction(action: SPAlertAction) {
+        //FIXME:self.actions.mutableCopy;
         actions.append(action)
         // alert样式不论是否为取消样式的按钮，都直接按顺序添加
         if preferredStyle == .alert {
@@ -188,6 +189,8 @@ extension SPAlertController{
             }
         }
         updateActionAxis()
+        
+        
         // 这个block是保证外界在添加action之后再设置action属性时依然生效；
         // 当使用时在addAction之后再设置action的属性时，会回调这个block
         action.propertyChangedClosure = { [weak self] (action: SPAlertAction,needUpdateConstraints: Bool)  in

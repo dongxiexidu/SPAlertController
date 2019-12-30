@@ -16,7 +16,7 @@ class SPAlertPresentationController: UIPresentationController {
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
-    
+    //FIXME:进来2次,应该3次
     override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
         if let containerV = self.containerView {
@@ -28,7 +28,7 @@ class SPAlertPresentationController: UIPresentationController {
         super.containerViewDidLayoutSubviews()
     }
     
-    // MARK: -转场动画
+    // MARK: - 1.将要开始弹出
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
         
@@ -46,7 +46,7 @@ class SPAlertPresentationController: UIPresentationController {
         alertController.delegate?.willPresentAlertController(alertController: alertController)
         
     }
-    
+    // MARK: - 2.已经弹出
     override func presentationTransitionDidEnd(_ completed: Bool) {
         super.presentationTransitionDidEnd(completed)
         
@@ -54,6 +54,7 @@ class SPAlertPresentationController: UIPresentationController {
         alertController.delegate?.didPresentAlertController(alertController: alertController)
     }
     
+    // MARK: - 3.即将dismiss
     override func dismissalTransitionWillBegin() {
         super.dismissalTransitionWillBegin()
         
@@ -69,7 +70,7 @@ class SPAlertPresentationController: UIPresentationController {
         }
         alertController.delegate?.willDismissAlertController(alertController: alertController)
     }
-    
+    // MARK: - 4.已经dismissed
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         super.dismissalTransitionDidEnd(completed)
         
@@ -79,6 +80,7 @@ class SPAlertPresentationController: UIPresentationController {
         let alertController = self.presentedViewController as! SPAlertController
         alertController.delegate?.didDismissAlertController(alertController: alertController)
     }
+    
     // FIXME: 可能崩溃？
     override var frameOfPresentedViewInContainerView: CGRect{
         return self.presentedView!.frame

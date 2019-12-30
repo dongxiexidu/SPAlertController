@@ -65,6 +65,7 @@ class SPAlertControllerActionView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
+        _ = self.actionButton
         
         if self.actionButtonConstraints.count > 0 {
             NSLayoutConstraint.deactivate(self.actionButtonConstraints)
@@ -75,11 +76,11 @@ class SPAlertControllerActionView: UIView {
         actionButtonConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[actionButton]-0-|", options: [], metrics: nil, views: ["actionButton": actionButton]))
         // 按钮必须确认高度，因为其父视图及父视图的父视图乃至根视图都没有设置高度，而且必须用NSLayoutRelationEqual，如果用NSLayoutRelationGreaterThanOrEqual,虽然也能撑起父视图，但是当某个按钮的高度有所变化以后，stackView会将其余按钮按的高度同比增减
         
-        // titleLabel的内容自适应的高度
+        // titleLabel的内容自适应的高度 55
         let labelH: CGFloat = actionButton.titleLabel?.intrinsicContentSize.height ?? 0.0
-        // 按钮的上下内边距之和
+        // 按钮的上下内边距之和 0
         let topBottom_insetsSum: CGFloat = actionButton.contentEdgeInsets.top+actionButton.contentEdgeInsets.bottom
-        // 文字的上下间距之和,等于SP_ACTION_HEIGHT-默认字体大小,这是为了保证文字上下有一个固定间距值，不至于使文字靠按钮太紧，,由于按钮内容默认垂直居中，所以最终的顶部或底部间距为topBottom_marginSum/2.0,这个间距，几乎等于18号字体时，最小高度为49时的上下间距
+        // 文字的上下间距之和,等于SP_ACTION_HEIGHT-默认字体大小,这是为了保证文字上下有一个固定间距值，不至于使文字靠按钮太紧，,由于按钮内容默认垂直居中，所以最终的顶部或底部间距为topBottom_marginSum/2.0,这个间距，几乎等于18号字体时，最小高度为49时的上下间距 33.5
         let topBottom_marginSum: CGFloat = SP_ACTION_HEIGHT-UIFont.systemFont(ofSize: SP_ACTION_TITLE_FONTSIZE).lineHeight
         
         // 按钮高度
@@ -91,7 +92,7 @@ class SPAlertControllerActionView: UIView {
             relation = .greaterThanOrEqual
         }
         // 如果字体保持默认18号，只有一行文字时最终结果约等于SP_ACTION_HEIGHT
-        let buttonHonstraint = NSLayoutConstraint.init(item: actionButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: buttonH)
+        let buttonHonstraint = NSLayoutConstraint.init(item: actionButton, attribute: .height, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: buttonH)
         buttonHonstraint.priority = UILayoutPriority(rawValue: 999)
         actionButtonConstraints.append(buttonHonstraint)
         

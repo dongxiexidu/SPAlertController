@@ -11,14 +11,13 @@ import UIKit
 class SPAlertAnimation: NSObject {
     
     private var presenting: Bool = false
-
+    
     public class func animationIsPresenting(presenting: Bool) -> SPAlertAnimation{
         let alertAnimation = SPAlertAnimation.init(isPresenting: presenting)
         return alertAnimation
     }
     
-    convenience init(isPresenting: Bool) {
-        self.init()
+    private init(isPresenting: Bool) {
         self.presenting = isPresenting
     }
     
@@ -26,11 +25,12 @@ class SPAlertAnimation: NSObject {
 
 extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
     
+    // 1.动画时长
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
         return 0.25
     }
-    
+    // 2.如何执行动画
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         if self.presenting {
             self.presentAnimationTransition(transitionContext: transitionContext)
@@ -38,6 +38,9 @@ extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
             self.dismissAnimationTransition(transitionContext: transitionContext)
         }
     }
+}
+
+extension SPAlertAnimation {
     
     private func presentAnimationTransition(transitionContext: UIViewControllerContextTransitioning){
         let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
@@ -60,7 +63,8 @@ extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
             self.shrinkWhenPresentForController(alertController: alert, transition: transitionContext)
         case .none:
             self.noneWhenPresentForController(alertController: alert, transition: transitionContext)
-        default:
+        default:// FIXME:这里不应该进来
+            self.noneWhenPresentForController(alertController: alert, transition: transitionContext)
             break
         }
     }
@@ -87,12 +91,12 @@ extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
         case .none:
             self.dismissCorrespondingNoneForController(alertController: alert, transition: transitionContext)
         default:
+            self.dismissCorrespondingNoneForController(alertController: alert, transition: transitionContext)
             break
         }
     }
-}
-
-extension SPAlertAnimation {
+    
+    
     // 从底部弹出的present动画
     private func raiseUpWhenPresentForController(alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {

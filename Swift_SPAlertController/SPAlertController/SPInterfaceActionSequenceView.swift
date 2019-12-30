@@ -26,6 +26,7 @@ class SPInterfaceActionSequenceView: UIView {
         didSet (newValue){
             guard let value = newValue else { return }
             self.stackView.axis = value
+            //当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用updateConstraints.
             self.setNeedsUpdateConstraints()
         }
     }
@@ -126,7 +127,7 @@ extension SPInterfaceActionSequenceView {
     
     internal func addAction(action: SPAlertAction) {
         self.actions.append(action)
-        
+        _ = self.stackView
         let currentActionView = SPAlertControllerActionView.init()
         currentActionView.action = action
         currentActionView.addTarget(target: self, action: #selector(buttonClickedInActionView(actionView:)))
@@ -140,15 +141,13 @@ extension SPInterfaceActionSequenceView {
     }
     
     internal func addCancelAction(action: SPAlertAction) {
-        var condition = false
-        if cancelAction != nil {
-            condition = true
-        }
+     
         // 如果已经存在取消样式的按钮，则直接崩溃
-        assert(condition, "SPAlertController can only have one action with a style of SPAlertActionStyleCancel")
+        assert(cancelAction == nil, "SPAlertController can only have one action with a style of SPAlertActionStyleCancel")
+        self.cancelAction = action
         self.actions.append(action)
         
-        let cancelActionView = SPAlertControllerActionView()
+        let cancelActionView = SPAlertControllerActionView.init()
         cancelActionView.translatesAutoresizingMaskIntoConstraints = false
         cancelActionView.action = action
         cancelActionView.addTarget(target: self, action: #selector(buttonClickedInActionView(actionView:)))
@@ -190,8 +189,8 @@ extension SPInterfaceActionSequenceView {
             guard let actionView1 = arrangedSubviews[i] as? SPAlertControllerActionView else { return }
             guard let actionView2 = arrangedSubviews[i+1] as? SPAlertControllerActionView else { return }
             
-            guard let axis = axis else { return }
-            if axis == .horizontal {
+           // guard let axis = axis else { return }
+            if axis! == .horizontal {
                 actionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[actionLine]-0-|", options: [], metrics: nil, views: ["actionLine": actionLine]))
                 actionLineConstraints.append(NSLayoutConstraint.init(item: actionLine, attribute: .left, relatedBy: .equal, toItem: actionView1, attribute: .right, multiplier: 1.0, constant: 0))
                 actionLineConstraints.append(NSLayoutConstraint.init(item: actionLine, attribute: .right, relatedBy: .equal, toItem: actionView2, attribute: .left, multiplier: 1.0, constant: 0))
@@ -205,13 +204,16 @@ extension SPInterfaceActionSequenceView {
                 
                 actionLineConstraints.append(NSLayoutConstraint.init(item: actionLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: actionView1.afterSpacing))
             }
-            NSLayoutConstraint.activate(actionLineConstraints)
         }
+        NSLayoutConstraint.activate(actionLineConstraints)
     }
     
     
     override func updateConstraints() {
         super.updateConstraints()
+        _ = self.scrollView
+        _ = self.contentView
+        _ = self.cancelView
         
         // 停用约束
         NSLayoutConstraint.deactivate(self.constraints)
@@ -221,7 +223,7 @@ extension SPInterfaceActionSequenceView {
             var scrollViewConstraints = [NSLayoutConstraint]()
             
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[scrollView]-0-|", options: [], metrics: nil, views: ["scrollView": scrollView]))
-            scrollViewConstraints.append(NSLayoutConstraint.init(item: scrollView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0))
+            scrollViewConstraints.append(NSLayoutConstraint.init(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0))
             
             if cancelActionLine.superview != nil {
                 scrollViewConstraints.append(NSLayoutConstraint.init(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: cancelActionLine, attribute: .top, multiplier: 1.0, constant: 0))
@@ -244,8 +246,9 @@ extension SPInterfaceActionSequenceView {
             
             var minHeight: CGFloat = 0.0
             
-            guard let axis = axis else { return }
-            if axis == .vertical {
+            // TODO: guard
+           // guard let axis = axis else { return }
+            if axis! == .vertical {
                 if self.cancelAction != nil {
 // 如果有取消按钮且action总个数大于4，则除去取消按钮之外的其余部分的高度至少为3个半SP_ACTION_HEIGHT的高度,
 // 即加上取消按钮就是总高度至少为4个半SP_ACTION_HEIGHT的高度
@@ -283,28 +286,26 @@ extension SPInterfaceActionSequenceView {
             NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[stackView]-0-|", options: [], metrics: nil, views: ["stackView": stackView]))
             // 对stackView里面的分割线布局
             self.updateLineConstraints()
+        }
+        // cancelActionLine有superView则必有scrollView和cancelView
+        if cancelActionLine.superview != nil {
+            var cancelActionLineConstraints = [NSLayoutConstraint]()
+            cancelActionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[cancelActionLine]-0-|", options: [], metrics: nil, views: ["cancelActionLine" : cancelActionLine]))
+            cancelActionLineConstraints.append(NSLayoutConstraint.init(item: cancelActionLine, attribute: .bottom, relatedBy: .equal, toItem: cancelView, attribute: .top, multiplier: 1.0, constant: 0.0))
+            cancelActionLineConstraints.append(NSLayoutConstraint.init(item: cancelActionLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 8.0))
+            NSLayoutConstraint.activate(cancelActionLineConstraints)
+        }
+        
+        // 对cancelView布局 有取消样式的按钮才对cancelView布局
+        if cancelAction != nil {
+            var cancelViewConstraints = [NSLayoutConstraint]()
+            cancelViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[cancelView]-0-|", options: [], metrics: nil, views: ["cancelView": cancelView]))
+            cancelViewConstraints.append(NSLayoutConstraint.init(item: cancelView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
             
-            // cancelActionLine有superView则必有scrollView和cancelView
-            if cancelActionLine.superview != nil {
-                var cancelActionLineConstraints = [NSLayoutConstraint]()
-                cancelActionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[cancelActionLine]-0-|", options: [], metrics: nil, views: ["cancelActionLine" : cancelActionLine]))
-                cancelActionLineConstraints.append(NSLayoutConstraint.init(item: cancelActionLine, attribute: .bottom, relatedBy: .equal, toItem: cancelView, attribute: .top, multiplier: 1.0, constant: 0.0))
-                cancelActionLineConstraints.append(NSLayoutConstraint.init(item: cancelActionLine, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 8.0))
-                NSLayoutConstraint.activate(cancelActionLineConstraints)
+            if self.cancelActionLine.superview == nil {
+                cancelViewConstraints.append(NSLayoutConstraint.init(item: cancelView, attribute:.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
             }
-            
-            // 对cancelView布局 有取消样式的按钮才对cancelView布局
-            if cancelAction != nil {
-                var cancelViewConstraints = [NSLayoutConstraint]()
-                cancelViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[cancelView]-0-|", options: [], metrics: nil, views: ["cancelView": cancelView]))
-                cancelViewConstraints.append(NSLayoutConstraint.init(item: cancelView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0))
-                
-                if self.cancelActionLine.superview == nil {
-                    cancelViewConstraints.append(NSLayoutConstraint.init(item: cancelView, attribute:.top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
-                }
-                NSLayoutConstraint.activate(cancelViewConstraints)
-            }
-            
+            NSLayoutConstraint.activate(cancelViewConstraints)
         }
     }
     

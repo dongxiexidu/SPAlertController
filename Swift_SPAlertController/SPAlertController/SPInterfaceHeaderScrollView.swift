@@ -45,6 +45,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     
     lazy var contentView: UIView = {
         let contentV = UIView()
+        contentV.backgroundColor = .blue
         contentV.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(contentV)
         return contentV
@@ -117,7 +118,7 @@ extension SPInterfaceHeaderScrollView {
     override func updateConstraints() {
         super.updateConstraints()
         
-        
+        _ = self.contentView
         // 先移除旧约束，再添加新约束
         NSLayoutConstraint.deactivate(self.constraints)
         NSLayoutConstraint.deactivate(contentView.constraints)
@@ -195,29 +196,29 @@ extension SPInterfaceHeaderScrollView {
             if index > 0 {
                 titleLabelConstraints.append(NSLayoutConstraint.init(item: label, attribute: .top, relatedBy: .equal, toItem: labels[index-1], attribute: .bottom, multiplier: 1.0, constant: 7.5))
             }
-            NSLayoutConstraint.activate(titleLabelConstraints)
-            
-            if textFieldsArray.count > 0 {
-                var textFieldViewConstraints = [NSLayoutConstraint]()
-                // 没有titleLabel、messageLabel和iconView，
-                // textFieldView的顶部相对contentView,否则不用写,因为前面写好了
-                if labels.count == 0 && imageView.image == nil {
-                    textFieldViewConstraints.append(NSLayoutConstraint.init(item: textFieldView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: topMargin))
-                }
-                
-                textFieldViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-(==leftMargin)-[textFieldView]-(==rightMargin)-|", options: [], metrics: ["leftMargin": leftMargin, "rightMargin": rightMargin], views: ["textFieldView": textFieldView]))
-                textFieldViewConstraints.append(NSLayoutConstraint.init(item: textFieldView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: -bottomMargin))
-                NSLayoutConstraint.activate(textFieldViewConstraints)
+        }
+        NSLayoutConstraint.activate(titleLabelConstraints)
+        
+        if textFieldsArray.count > 0 {
+            var textFieldViewConstraints = [NSLayoutConstraint]()
+            // 没有titleLabel、messageLabel和iconView，
+            // textFieldView的顶部相对contentView,否则不用写,因为前面写好了
+            if labels.count == 0 && imageView.image == nil {
+                textFieldViewConstraints.append(NSLayoutConstraint.init(item: textFieldView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: topMargin))
             }
             
-            // systemLayoutSizeFittingSize:方法获取子控件撑起contentView后的高度，
-            // 如果子控件是UILabel，那么子label必须设置preferredMaxLayoutWidth
-            // 否则当label多行文本时计算不准确
-            let constantH = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-            let contentViewHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constantH)
-            contentViewHeightConstraint.isActive = true
-            
+            textFieldViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-(==leftMargin)-[textFieldView]-(==rightMargin)-|", options: [], metrics: ["leftMargin": leftMargin, "rightMargin": rightMargin], views: ["textFieldView": textFieldView]))
+            textFieldViewConstraints.append(NSLayoutConstraint.init(item: textFieldView, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: contentView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: -bottomMargin))
+            NSLayoutConstraint.activate(textFieldViewConstraints)
         }
+        
+        // systemLayoutSizeFittingSize:方法获取子控件撑起contentView后的高度，
+        // 如果子控件是UILabel，那么子label必须设置preferredMaxLayoutWidth
+        // 否则当label多行文本时计算不准确
+        let constantH = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let contentViewHeightConstraint = NSLayoutConstraint.init(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: constantH)
+        contentViewHeightConstraint.isActive = true
+
     }
     
 }

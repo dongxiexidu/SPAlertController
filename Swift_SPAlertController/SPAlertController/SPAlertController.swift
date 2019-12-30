@@ -247,6 +247,7 @@ class SPAlertController: UIViewController {
     private func updateDialogBlur(needDialogBlur: Bool) {
         if needDialogBlur == true {
             containerView.backgroundColor = .clear
+            containerView.backgroundColor = .orange
             if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
                 dimmingKnockoutBackdropView = dimmingdropView
                 // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
@@ -281,7 +282,7 @@ class SPAlertController: UIViewController {
     internal var otherActions = [SPAlertAction]()
     internal var textFields = [UITextField]()
     /// 是否强制排列，外界设置了actionAxis属性认为是强制
-    var isForceLayout: Bool = true
+    var isForceLayout: Bool = false
     /// 是否强制偏移，外界设置了offsetForAlert属性认为是强制
     var isForceOffset: Bool = true
     
@@ -315,6 +316,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertView: UIView = {
         let alert = UIView()
+        
         alert.frame = self.alertControllerView.bounds
         alert.autoresizingMask = [.flexibleWidth, .flexibleWidth]
         if self.customAlertView == nil {
@@ -386,13 +388,14 @@ class SPAlertController: UIViewController {
     
     lazy var containerView: UIView = {
         let containerV = UIView()
+        containerV.backgroundColor = .orange
         containerV.frame = self.alertControllerView.bounds
         containerV.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if preferredStyle == .alert {
             containerV.layer.cornerRadius = cornerRadius
             containerV.layer.masksToBounds = true
         } else {
-            if cornerRadius > 0 {
+            if cornerRadius > 0.0 {
                 let maskLayer = CAShapeLayer.init()
                 containerV.layer.mask = maskLayer
             }
@@ -404,6 +407,7 @@ class SPAlertController: UIViewController {
     lazy var headerView: SPInterfaceHeaderScrollView = {
         let header = SPInterfaceHeaderScrollView()
         header.backgroundColor = SP_NORMAL_COLOR
+        header.backgroundColor = .red
         header.translatesAutoresizingMaskIntoConstraints = false
         header.headerViewSafeAreaDidChangeClosure = { [weak self] in
             self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
@@ -429,21 +433,17 @@ class SPAlertController: UIViewController {
         return headerLine
     }()
     
-    
-    
-    
-
-    
     //MARK: - system methods
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+    // 先loadView(),后viewDidLoad()
     override func loadView() {
          super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
+        self.view.backgroundColor = .blue
     }
     
     override func viewDidLoad() {
@@ -452,6 +452,8 @@ class SPAlertController: UIViewController {
         configureHeaderView()
         updateDialogBlur(needDialogBlur: self.needDialogBlur)
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        self.view.backgroundColor = .blue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -470,6 +472,7 @@ class SPAlertController: UIViewController {
         }
     }
     
+    //FIXME:2次 应该进3次
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -572,7 +575,7 @@ extension SPAlertController {
             
         }
     }
-    
+    // private
     internal convenience init(title: String?,
                      message: String?,
                      customAlertView: UIView?,
@@ -586,6 +589,8 @@ extension SPAlertController {
         self.mainTitle = title
         self.message = message
         self.preferredStyle = preferredStyle
+        
+        self.animationType = animationType
         // 如果是默认动画，preferredStyle为alert时动画默认为alpha，
         // preferredStyle为actionShee时动画默认为fromBottom
         if animationType == .default {
@@ -599,11 +604,9 @@ extension SPAlertController {
         
         if preferredStyle == .alert {
             self.minDistanceToEdges = (min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-275)/2
-            //self.actionAxis = .horizontal
             _actionAxis = .horizontal
         } else {
             self.minDistanceToEdges = 70
-           //self.actionAxis = .vertical
             _actionAxis = .vertical
             self.cornerRadius = 13
         }
@@ -614,10 +617,10 @@ extension SPAlertController {
         self._componentView = componentView
         
         // 视图控制器定义它呈现视图控制器的过渡风格（默认为NO）
-        self.providesPresentationContextTransitionStyle = true;
-        self.definesPresentationContext = true;
-        self.modalPresentationStyle = .custom;
-        self.transitioningDelegate = self;
+        self.providesPresentationContextTransitionStyle = true
+        self.definesPresentationContext = true
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
     }
     
     func layoutAlertControllerViewForAnimationTypeWithHV(hv: String,
@@ -661,7 +664,7 @@ extension SPAlertController {
         self.alertControllerViewConstraints = alertControllerViewConstraints
     }
     
-    
+    //FIXME: 来了2次, 应该进来3次
     internal func layoutChildViews() {
         // 对头部布局
         layoutHeaderView()
@@ -779,12 +782,14 @@ extension SPAlertController {
         NSLayoutConstraint.activate(componentActionLineConstraints)
         self.componentActionLineConstraints = componentActionLineConstraints
     }
-    // 对action部分布局
+    // 对action部分布局,高度由子控件撑起
     private func layoutActionSequenceView() {
         let actionSequenceView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
         if actionSequenceView.superview == nil {
             return
         }
+        _ = self.alertView
+        _ = self.headerActionLine
         if let constraints = self.actionSequenceViewConstraints {
             NSLayoutConstraint.deactivate(constraints)
             self.actionSequenceViewConstraints = nil
@@ -855,8 +860,7 @@ extension SPAlertController {
                 let width = attrs.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, context: nil).size.width
                 
                 if ceilf(Float(width)) > Float(preButtonWidth) {
-                    
-                    //actionAxis = .vertical
+
                     _actionAxis = .vertical
                     updateActionAxis()
                     actionSequenceView.setNeedsUpdateConstraints()
@@ -866,7 +870,6 @@ extension SPAlertController {
             } else {
                 let width = action.title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSAttributedString.Key.font: action.titleFont], context: nil).size.width
                 if ceilf(Float(width)) > Float(preButtonWidth){
-                   // actionAxis = .vertical
                     _actionAxis = .vertical
                     updateActionAxis()
                     actionSequenceView.setNeedsUpdateConstraints()

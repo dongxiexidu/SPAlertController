@@ -44,7 +44,8 @@ extension SPAlertAnimation {
     
     private func presentAnimationTransition(transitionContext: UIViewControllerContextTransitioning){
         let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
-        guard let alert = alertController as? SPAlertController else { return }
+        let alert = alertController as! SPAlertController
+       // guard let alert = alertController as? SPAlertController else { return }
         
         switch alert.animationType {
         case .fromBottom:
@@ -116,6 +117,7 @@ extension SPAlertAnimation {
         var controlViewFrame = alertController.view.frame
         controlViewFrame.origin.y = SP_SCREEN_HEIGHT
         alertController.view.frame = controlViewFrame
+        // (0.0, 667.0, 375.0, 0.0)
         
         let duration = self.transitionDuration(using: transition)
         UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {

@@ -156,7 +156,7 @@ extension SPAlertController{
     }
     
     public func addAction(action: SPAlertAction) {
-        //FIXME:self.actions.mutableCopy;
+        //FIXME:actions 要修改为只读属性,防止外界添加
         actions.append(action)
         // alert样式不论是否为取消样式的按钮，都直接按顺序添加
         if preferredStyle == .alert {

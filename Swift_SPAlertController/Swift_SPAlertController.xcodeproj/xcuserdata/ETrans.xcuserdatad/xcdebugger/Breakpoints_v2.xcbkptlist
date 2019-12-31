@@ -18,54 +18,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F02C8352-1B92-40F8-A2B1-43B68918971A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/TestController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "animationController(forDismissed:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "446A64DD-0E0B-49B6-99AC-4470EF1A1B61"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/TestController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FD9C8C2E-0FB8-4567-B21D-3CA4D7F3A37A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/TestController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "animationController(forPresented:presenting:source:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "DB30B64D-0E07-4F47-9544-B6267BDC28D5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -185,8 +137,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "dismissCorrespondingRaiseUpForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -201,8 +153,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "fromRightWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -217,8 +169,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "dismissCorrespondingFromRightForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -233,8 +185,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "fromLeftWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -249,8 +201,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "dismissCorrespondingFromLeftForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -265,8 +217,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "dropDownWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -281,8 +233,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "dismissCorrespondingDropDownForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -297,8 +249,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "alphaWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -313,42 +265,10 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "dismissCorrespondingAlphaForController(alertController:transition:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E5496E5A-0A45-4F64-8ABC-8F76D8A45EB8 - 8c9a6a2761c8e122"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Swift_SPAlertController.SPAlertAnimation.(dismissCorrespondingAlphaForController in _1D41F09BE48C43B4769E822B26FD3298)(alertController: Swift_SPAlertController.SPAlertController, transition: __C.UIViewControllerContextTransitioning) -&gt; ()"
-                  moduleName = "Swift_SPAlertController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPAlertAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "339"
-                  endingLineNumber = "339"
-                  offsetFromSymbolStart = "147">
-               </Location>
-               <Location
-                  uuid = "E5496E5A-0A45-4F64-8ABC-8F76D8A45EB8 - e482bc8131f80af0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Swift_SPAlertController.SPAlertAnimation.(dismissCorrespondingAlphaForController in _1D41F09BE48C43B4769E822B26FD3298)(alertController: Swift_SPAlertController.SPAlertController, transition: __C.UIViewControllerContextTransitioning) -&gt; ()"
-                  moduleName = "Swift_SPAlertController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPAlertAnimation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "340"
-                  endingLineNumber = "340"
-                  offsetFromSymbolStart = "39">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -361,8 +281,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "expandWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -377,8 +297,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "dismissCorrespondingExpandForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -393,8 +313,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "shrinkWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -409,8 +329,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "dismissCorrespondingShrinkForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -425,8 +345,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "noneWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -441,8 +361,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "dismissCorrespondingNoneForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -457,8 +377,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "offSetCenter(alertController:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -697,8 +617,8 @@
             filePath = "SPAlertController/SPAlertControllerActionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "edgeInsetsAddEdgeInsets(i1:i2:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -729,8 +649,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "setCustomSpacing(spacing:afterActionIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -745,8 +665,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "customSpacingAfterActionIndex(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -761,8 +681,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "addAction(action:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -777,42 +697,10 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "filteredArrayFromArray(array:notInArray:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DCB9D7D9-43F8-4F49-9509-E49D103F4B36 - f75a3159ea8b5101"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Swift_SPAlertController.SPInterfaceActionSequenceView.filteredArrayFromArray(array: Swift.Array&lt;__C.UIView&gt;, notInArray: Swift.Array&lt;__C.UIView&gt;) -&gt; Swift.Array&lt;__C.UIView&gt;"
-                  moduleName = "Swift_SPAlertController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPInterfaceActionSequenceView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "165"
-                  endingLineNumber = "165"
-                  offsetFromSymbolStart = "77">
-               </Location>
-               <Location
-                  uuid = "DCB9D7D9-43F8-4F49-9509-E49D103F4B36 - 106768c491521c10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIView) -&gt; Swift.Bool in Swift_SPAlertController.SPInterfaceActionSequenceView.filteredArrayFromArray(array: Swift.Array&lt;__C.UIView&gt;, notInArray: Swift.Array&lt;__C.UIView&gt;) -&gt; Swift.Array&lt;__C.UIView&gt;"
-                  moduleName = "Swift_SPAlertController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPInterfaceActionSequenceView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "165"
-                  endingLineNumber = "165"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -825,8 +713,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "updateLineConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -841,8 +729,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "updateConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -857,8 +745,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "addLineForStackView(stackView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -873,8 +761,8 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "init(frame:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -889,41 +777,9 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "addTextField(textField:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "94D86EE3-12A1-4042-86B7-15C3EBEF4F15"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "safeAreaInsetsDidChange()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E1B9177D-68C4-4751-8AE8-B5D2749CC63C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "updateConstraints()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1177,8 +1033,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "669"
-            endingLineNumber = "669"
+            startingLineNumber = "685"
+            endingLineNumber = "685"
             landmarkName = "layoutChildViews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1193,8 +1049,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "630"
-            endingLineNumber = "630"
+            startingLineNumber = "644"
+            endingLineNumber = "644"
             landmarkName = "layoutAlertControllerViewForAnimationTypeWithHV(hv:equalAttribute:notEqualAttribute:lessOrGreaterRelation:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1209,8 +1065,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "loadView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1225,8 +1081,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1241,8 +1097,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "viewWillLayoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1257,8 +1113,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
             landmarkName = "viewDidLayoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1273,8 +1129,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "textFieldDidEndOnExit(textField:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1289,8 +1145,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "layoutAlertControllerViewForAlertStyle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1305,8 +1161,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
             landmarkName = "layoutAlertControllerViewForActionSheetStyle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1321,8 +1177,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "682"
-            endingLineNumber = "682"
+            startingLineNumber = "698"
+            endingLineNumber = "698"
             landmarkName = "layoutHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1337,8 +1193,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "717"
-            endingLineNumber = "717"
+            startingLineNumber = "735"
+            endingLineNumber = "735"
             landmarkName = "layoutHeaderActionLine()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1353,8 +1209,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "740"
-            endingLineNumber = "740"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "layoutComponentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1369,8 +1225,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "769"
-            endingLineNumber = "769"
+            startingLineNumber = "788"
+            endingLineNumber = "788"
             landmarkName = "layoutComponentActionLine()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1385,8 +1241,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "786"
-            endingLineNumber = "786"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
             landmarkName = "layoutActionSequenceView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1401,25 +1257,9 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "835"
-            endingLineNumber = "835"
+            startingLineNumber = "854"
+            endingLineNumber = "854"
             landmarkName = "getMaxWidth()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "699C3350-E191-4D1B-B92E-D598659AFDA5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "844"
-            endingLineNumber = "844"
-            landmarkName = "handleIncompleteTextDisplay()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1433,8 +1273,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
+            startingLineNumber = "905"
+            endingLineNumber = "905"
             landmarkName = "keyboardFrameWillChange(noti:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1449,8 +1289,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "899"
-            endingLineNumber = "899"
+            startingLineNumber = "918"
+            endingLineNumber = "918"
             landmarkName = "makeViewOffsetWithAnimated(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1465,25 +1305,9 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "910"
-            endingLineNumber = "910"
+            startingLineNumber = "929"
+            endingLineNumber = "929"
             landmarkName = "sizeForCustomView(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "27233ED6-29ED-4FA8-A125-469A018F37A3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "921"
-            endingLineNumber = "921"
-            landmarkName = "setupPreferredMaxLayoutWidthForLabel(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1497,8 +1321,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "931"
-            endingLineNumber = "931"
+            startingLineNumber = "952"
+            endingLineNumber = "952"
             landmarkName = "configureHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1577,8 +1401,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "604"
+            endingLineNumber = "604"
             landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1593,8 +1417,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "571"
-            endingLineNumber = "571"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "handleIQKeyboardManager()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1609,8 +1433,8 @@
             filePath = "SPAlertController/SPAlertControllerActionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "actionButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -1625,8 +1449,8 @@
             filePath = "SPAlertController/SPAlertControllerActionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "action"
             landmarkType = "24">
          </BreakpointContent>
@@ -2009,8 +1833,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "actionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2025,8 +1849,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "componentActionLine"
             landmarkType = "24">
          </BreakpointContent>
@@ -2041,8 +1865,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "alertControllerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2057,8 +1881,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "customAlertView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2073,8 +1897,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "customHeaderView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2089,8 +1913,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "customActionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2105,25 +1929,9 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "componentView"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3755BA19-3272-481F-AD37-362E6D7CC800"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
-            landmarkName = "containerView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2137,8 +1945,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "headerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2153,8 +1961,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "headerActionLine"
             landmarkType = "24">
          </BreakpointContent>
@@ -2169,8 +1977,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>
@@ -2185,8 +1993,8 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "textFieldView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2201,8 +2009,8 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "contentView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2217,8 +2025,8 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "titleLabel"
             landmarkType = "24">
          </BreakpointContent>
@@ -2233,25 +2041,9 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "messageLabel"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1803D94B-7110-4E0C-B1BB-49064A6E3CDB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "imageView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2313,8 +2105,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "stackView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2329,8 +2121,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "cancelView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2345,8 +2137,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "cancelActionLine"
             landmarkType = "24">
          </BreakpointContent>
@@ -2457,8 +2249,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "customActionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2473,8 +2265,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "customAlertView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2610,22 +2402,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "91BEFC94-A57D-47FD-9907-7AD945F83C5E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController+Public.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "layoutAlertControllerView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "48EBAE3F-277B-4AA4-A857-DF2883FF74BE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -2681,8 +2457,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "layoutAlertControllerViewForAlertStyle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2697,8 +2473,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
             landmarkName = "layoutAlertControllerViewForAlertStyle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2713,8 +2489,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "684"
-            endingLineNumber = "684"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
             landmarkName = "layoutHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2729,24 +2505,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
-            landmarkName = "layoutHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1F3CC6C3-9492-4020-BCFE-E985A1E2B6E5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "695"
-            endingLineNumber = "695"
+            startingLineNumber = "705"
+            endingLineNumber = "705"
             landmarkName = "layoutHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2761,8 +2521,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "709"
-            endingLineNumber = "709"
+            startingLineNumber = "727"
+            endingLineNumber = "727"
             landmarkName = "layoutHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2777,24 +2537,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "718"
-            endingLineNumber = "718"
-            landmarkName = "layoutHeaderActionLine()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE2C18D9-B9D7-43AE-A139-8BE55DBA6CA2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "724"
-            endingLineNumber = "724"
+            startingLineNumber = "736"
+            endingLineNumber = "736"
             landmarkName = "layoutHeaderActionLine()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2809,8 +2553,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "componentView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2825,8 +2569,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "761"
+            endingLineNumber = "761"
             landmarkName = "layoutComponentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2841,8 +2585,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "746"
-            endingLineNumber = "746"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
             landmarkName = "layoutComponentView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2857,24 +2601,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "606"
-            endingLineNumber = "606"
-            landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "44856148-EF31-4B0A-9FE8-28992D1A03BC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "597"
-            endingLineNumber = "597"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
             landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2937,8 +2665,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "actionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2953,8 +2681,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "actionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2969,8 +2697,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "alertView"
             landmarkType = "24">
          </BreakpointContent>
@@ -2985,8 +2713,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "customAlertView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3001,8 +2729,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "alertView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3017,8 +2745,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "scrollView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3081,8 +2809,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "addAction(action:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3097,8 +2825,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3113,8 +2841,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "headerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3129,8 +2857,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "headerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3145,8 +2873,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "customHeaderView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3161,42 +2889,10 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "customHeaderView"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5B202536-FDCA-4A0B-B738-483E6AA496E5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "926"
-            endingLineNumber = "926"
-            landmarkName = "setupPreferredMaxLayoutWidthForLabel(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "52AA3C02-E216-48DF-9E81-9E46D1BB17F9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
-            landmarkName = "setupPreferredMaxLayoutWidthForLabel(_:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3209,8 +2905,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "943"
-            endingLineNumber = "943"
+            startingLineNumber = "964"
+            endingLineNumber = "964"
             landmarkName = "configureHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3219,70 +2915,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1F729B24-216C-45A8-9ABF-56A42FB0C8F2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "939"
-            endingLineNumber = "939"
-            landmarkName = "configureHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6E2024BD-35B0-4510-9A42-A1FADE0BF241"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "946"
-            endingLineNumber = "946"
-            landmarkName = "configureHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "047EA788-C6DE-434F-908D-0908EF5DB617"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "952"
-            endingLineNumber = "952"
-            landmarkName = "configureHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B9B74B4B-326A-468C-91B6-0189ADA4CAAF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "956"
-            endingLineNumber = "956"
-            landmarkName = "configureHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A2688B83-4534-479B-BA89-232E8F8F7558"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -3298,16 +2930,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8D1AE202-71B8-48D1-85B1-96245738919E"
+            uuid = "6E2024BD-35B0-4510-9A42-A1FADE0BF241"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "924"
-            endingLineNumber = "924"
-            landmarkName = "setupPreferredMaxLayoutWidthForLabel(_:)"
+            startingLineNumber = "967"
+            endingLineNumber = "967"
+            landmarkName = "configureHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "047EA788-C6DE-434F-908D-0908EF5DB617"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "973"
+            endingLineNumber = "973"
+            landmarkName = "configureHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9B74B4B-326A-468C-91B6-0189ADA4CAAF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "977"
+            endingLineNumber = "977"
+            landmarkName = "configureHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2688B83-4534-479B-BA89-232E8F8F7558"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "981"
+            endingLineNumber = "981"
+            landmarkName = "configureHeaderView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3458,22 +3138,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D03ED306-7D20-4F1E-97A1-9C0E5DA874B9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
-            landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "26941A13-FE33-4D04-A2A4-705289C74AF9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -3497,8 +3161,8 @@
             filePath = "SPAlertController/SPAlertAnimation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "shrinkWhenPresentForController(alertController:transition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3513,8 +3177,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "updateLineConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3529,26 +3193,10 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "updateLineConstraints()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "19BB08AC-BBBD-4DBA-808E-8ACF9953A810"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
-            landmarkName = "headerActionLine"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3561,25 +3209,9 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "741"
-            endingLineNumber = "741"
+            startingLineNumber = "760"
+            endingLineNumber = "760"
             landmarkName = "layoutComponentView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "089F1E27-EC18-4D1A-9C56-E12FE837CEEF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "794"
-            endingLineNumber = "794"
-            landmarkName = "layoutActionSequenceView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3593,24 +3225,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "788"
-            endingLineNumber = "788"
-            landmarkName = "layoutActionSequenceView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "95C39F18-DD84-4582-85D4-D3EE4A532CBE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "798"
-            endingLineNumber = "798"
+            startingLineNumber = "807"
+            endingLineNumber = "807"
             landmarkName = "layoutActionSequenceView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3625,8 +3241,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "800"
-            endingLineNumber = "800"
+            startingLineNumber = "819"
+            endingLineNumber = "819"
             landmarkName = "layoutActionSequenceView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3641,8 +3257,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "customActionSequenceView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3698,22 +3314,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "84EB6CA8-3A73-4F7D-9C7C-E1A0E552449C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "609"
-            endingLineNumber = "609"
-            landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "99383090-E0C7-4117-BCC5-DEBEF9523E46"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -3721,8 +3321,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3769,8 +3369,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "containerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3785,8 +3385,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "containerView"
             landmarkType = "24">
          </BreakpointContent>
@@ -3801,8 +3401,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "addCancelAction(action:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4009,8 +3609,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
             landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4057,8 +3657,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "831"
-            endingLineNumber = "831"
+            startingLineNumber = "850"
+            endingLineNumber = "850"
             landmarkName = "updateActionAxis()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4073,8 +3673,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "829"
-            endingLineNumber = "829"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
             landmarkName = "updateActionAxis()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4105,8 +3705,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "827"
-            endingLineNumber = "827"
+            startingLineNumber = "846"
+            endingLineNumber = "846"
             landmarkName = "updateActionAxis()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4121,8 +3721,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "826"
-            endingLineNumber = "826"
+            startingLineNumber = "845"
+            endingLineNumber = "845"
             landmarkName = "updateActionAxis()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4141,22 +3741,6 @@
             endingLineNumber = "21"
             landmarkName = "stackViewDistribution"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A0B738E-72E7-41BB-B358-CE7293D08B2C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertAnimation.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "presentAnimationTransition(transitionContext:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4185,24 +3769,8 @@
             filePath = "SPAlertController/SPAlertControllerActionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "updateConstraints()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4E0DB1A9-5CDA-4003-8469-29E76C8DC200"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertControllerActionView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "updateConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4217,41 +3785,9 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "updateLineConstraints()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DE42EEEB-5386-4E1F-BE9F-75BE0040F376"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "693"
-            endingLineNumber = "693"
-            landmarkName = "layoutHeaderView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "398CEE88-4BAE-4051-B992-5EBDC46C5755"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SPAlertController/SPAlertController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "732"
-            endingLineNumber = "732"
-            landmarkName = "layoutHeaderActionLine()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4265,8 +3801,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "774"
-            endingLineNumber = "774"
+            startingLineNumber = "793"
+            endingLineNumber = "793"
             landmarkName = "layoutComponentActionLine()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4281,8 +3817,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "778"
-            endingLineNumber = "778"
+            startingLineNumber = "797"
+            endingLineNumber = "797"
             landmarkName = "layoutComponentActionLine()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4297,8 +3833,8 @@
             filePath = "SPAlertController/SPAlertController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "803"
-            endingLineNumber = "803"
+            startingLineNumber = "822"
+            endingLineNumber = "822"
             landmarkName = "layoutActionSequenceView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4313,8 +3849,8 @@
             filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "addCancelAction(action:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4329,8 +3865,8 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "updateConstraints()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4345,8 +3881,568 @@
             filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "updateConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCE85829-FFEB-42AF-82A5-2C19553EFD88"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "updateConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6A80A79-3537-48A3-BF28-7E43AED219F5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6798A5AC-0CDE-409C-B9EF-610EB6B15856"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
+            landmarkName = "init(title:message:customAlertView:customHeaderView:customActionSequenceView:componentView:preferredStyle:animationType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC859AFB-6FFD-4989-886B-15604BFA2DB4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "presentAnimationTransition(transitionContext:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B65297FC-E036-4CF1-B869-1AE1BE7538A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "cancelActionLine"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D24BD5F-604E-418B-B08B-D720AC0657F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceActionSequenceView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "updateConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B08F0F8-7FDC-4E12-BF51-BF827937A7AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "updateConstraints()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7EBEC1E-1C75-416E-88A8-0F15D0BE0206"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "652"
+            endingLineNumber = "652"
+            landmarkName = "layoutAlertControllerViewForAnimationTypeWithHV(hv:equalAttribute:notEqualAttribute:lessOrGreaterRelation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25EE65F9-5C75-4691-8289-16DB87E24F54"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "650"
+            endingLineNumber = "650"
+            landmarkName = "layoutAlertControllerViewForAnimationTypeWithHV(hv:equalAttribute:notEqualAttribute:lessOrGreaterRelation:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9203CB7-0718-4A96-8C44-15B0AE271939"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "710"
+            endingLineNumber = "710"
+            landmarkName = "layoutHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AB0524C-67F5-496E-9CD3-32A730F4FA2E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
+            landmarkName = "layoutHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19243231-D821-4CE6-9538-3E5169584B63"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
+            landmarkName = "headerActionLine"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD740BBB-F06C-4AD3-8752-9877902DDC61"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "744"
+            endingLineNumber = "744"
+            landmarkName = "layoutHeaderActionLine()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7220C5AD-407B-44CB-BC7B-B03114D2C732"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
+            landmarkName = "layoutHeaderActionLine()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04C8241E-C5AB-4918-8F56-DF335CDAC9B8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "safeAreaInsetsDidChange()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F483548D-A78A-43B1-91C1-EDEE3572BD0F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
+            landmarkName = "viewWillLayoutSubviews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD97A324-0D81-47E3-9F05-32E6C54AED6D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "minDistanceToEdges"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46507D8C-CB9B-4567-B1C5-27D6E654A1F0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
+            landmarkName = "layoutAlertControllerViewForActionSheetStyle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3978628-6255-4475-B3BB-1B240625E727"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "728"
+            endingLineNumber = "728"
+            landmarkName = "layoutHeaderView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "657048FA-6BED-4F72-9A3C-46CE1945A75E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "813"
+            endingLineNumber = "813"
+            landmarkName = "layoutActionSequenceView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "221A527D-5FDB-4DD0-8DDC-E49CC6DAB9E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "_updateCornerRadius(cornerRadius:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7690B35A-9DF8-45B0-8250-3B8637A1FFBA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
+            landmarkName = "handleIncompleteTextDisplay()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17199714-1EEE-4A27-A673-FCCC731FAAC0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "937"
+            endingLineNumber = "937"
+            landmarkName = "sizeForCustomView(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3EE10FA8-E3F8-418D-8BBC-C559B62CF1DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "943"
+            endingLineNumber = "943"
+            landmarkName = "setupPreferredMaxLayoutWidthForLabel(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98878718-473F-4FA1-A7FD-5B44D9BD7B74"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "932"
+            endingLineNumber = "932"
+            landmarkName = "sizeForCustomView(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8001FAB8-5847-4D20-967A-73C15A656C1E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "855"
+            endingLineNumber = "855"
+            landmarkName = "getMaxWidth()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41B2DA11-A115-4389-B8F7-5801F115AB4E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "856"
+            endingLineNumber = "856"
+            landmarkName = "getMaxWidth()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "210C138D-C863-4D1A-9A6F-4B7C48496D20"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "857"
+            endingLineNumber = "857"
+            landmarkName = "getMaxWidth()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A875E34B-1FDA-4A9C-A7EC-B08456759158"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "858"
+            endingLineNumber = "858"
+            landmarkName = "getMaxWidth()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D89D4588-2119-4544-AD6C-1130CDDA2651"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "raiseUpWhenPresentForController(alertController:transition:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D89D4588-2119-4544-AD6C-1130CDDA2651 - f0a82944acce0471"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift_SPAlertController.SPAlertAnimation.(raiseUpWhenPresentForController in _1D41F09BE48C43B4769E822B26FD3298)(alertController: Swift_SPAlertController.SPAlertController, transition: __C.UIViewControllerContextTransitioning) -&gt; ()"
+                  moduleName = "Swift_SPAlertController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPAlertAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "1541">
+               </Location>
+               <Location
+                  uuid = "D89D4588-2119-4544-AD6C-1130CDDA2651 - 941f6526618efafb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Swift_SPAlertController.SPAlertAnimation.(raiseUpWhenPresentForController in _1D41F09BE48C43B4769E822B26FD3298)(alertController: Swift_SPAlertController.SPAlertController, transition: __C.UIViewControllerContextTransitioning) -&gt; ()"
+                  moduleName = "Swift_SPAlertController"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ETrans/Pictures/git_%E4%B8%8A%E4%BC%A0/SPAlertController/Swift_SPAlertController/SPAlertController/SPAlertAnimation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4B0FDF9-45F6-4BBC-A215-4577A7F06906"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "raiseUpWhenPresentForController(alertController:transition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF7A5860-AA63-4183-8413-C4B0739D0B6D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPAlertAnimation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "raiseUpWhenPresentForController(alertController:transition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "275AB46F-5336-4EEA-BE7D-A30A7EC9AAA7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SPAlertController/SPInterfaceHeaderScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "updateConstraints()"
             landmarkType = "7">
          </BreakpointContent>

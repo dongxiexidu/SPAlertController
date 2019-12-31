@@ -273,6 +273,7 @@ class SPAlertController: UIViewController {
             } else {
                 containerView.backgroundColor = .white
             }
+            containerView.backgroundColor = .green
         }
     }
     
@@ -316,7 +317,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertView: UIView = {
         let alert = UIView()
-        
+        alert.backgroundColor = .red
         alert.frame = self.alertControllerView.bounds
         alert.autoresizingMask = [.flexibleWidth, .flexibleWidth]
         if self.customAlertView == nil {
@@ -327,6 +328,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertControllerView: UIView = {
         let alertC = UIView()
+        alertC.backgroundColor = .green
         alertC.translatesAutoresizingMaskIntoConstraints = false
         return alertC
     }()
@@ -471,7 +473,7 @@ class SPAlertController: UIViewController {
             }
         }
     }
-    
+    //1 2
     //FIXME:2次 应该进3次
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -552,13 +554,25 @@ class SPAlertController: UIViewController {
     func layoutAlertControllerViewForActionSheetStyle() {
         switch animationType {
         case .fromTop:
-            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.top, notEqualAttribute: .bottom, lessOrGreaterRelation: .lessThanOrEqual)
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H",
+                                                            equalAttribute: .top,
+                                                            notEqualAttribute: .bottom,
+                                                            lessOrGreaterRelation: .lessThanOrEqual)
         case .fromBottom:
-            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: .bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H",
+                                                            equalAttribute: .bottom,
+                                                            notEqualAttribute: .top,
+                                                            lessOrGreaterRelation: .greaterThanOrEqual)
         case .fromLeft, .fromRight:
-            layoutAlertControllerViewForAnimationTypeWithHV(hv: "V", equalAttribute: NSLayoutConstraint.Attribute.left, notEqualAttribute: .right, lessOrGreaterRelation: .lessThanOrEqual)
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "V",
+                                                            equalAttribute: .left,
+                                                            notEqualAttribute: .right,
+                                                            lessOrGreaterRelation: .lessThanOrEqual)
         default:
-            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H", equalAttribute: NSLayoutConstraint.Attribute.bottom, notEqualAttribute: .top, lessOrGreaterRelation: .greaterThanOrEqual)
+            layoutAlertControllerViewForAnimationTypeWithHV(hv: "H",
+                                                            equalAttribute: .bottom,
+                                                            notEqualAttribute: .top,
+                                                            lessOrGreaterRelation: .greaterThanOrEqual)
         }
     }
 }
@@ -630,7 +644,9 @@ extension SPAlertController {
         
         var alertControllerViewConstraints = [NSLayoutConstraint]()
         if self.customAlertView == nil {
-            alertControllerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "\(hv):|-0-[alertControllerView]-0-|", options: [], metrics: nil, views: ["alertControllerView": alertControllerView]))
+            let visualFormat = "\(hv):|-0-[alertControllerView]-0-|"
+            DLog(visualFormat)
+            alertControllerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: visualFormat, options: [], metrics: nil, views: ["alertControllerView": alertControllerView]))
         } else {
             let centerXorY = (hv == "H") ? NSLayoutConstraint.Attribute.centerX : NSLayoutConstraint.Attribute.centerY
             alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: centerXorY, relatedBy: .equal, toItem: alertControllerView.superview, attribute: centerXorY, multiplier: 1.0, constant: 0))
@@ -680,17 +696,18 @@ extension SPAlertController {
     
     // 对头部布局
     private func layoutHeaderView() {
-        let headerView = customHeaderView != nil ? customHeaderView! : self.headerView
-        if headerView.superview == nil {
+        let headerV = customHeaderView != nil ? customHeaderView! : self.headerView
+        if headerV.superview == nil {
             return
         }
+        _ = self.alertView
         if let constraints = self.headerViewConstraints {
             NSLayoutConstraint.deactivate(constraints)
             self.headerViewConstraints = nil
         }
         var headerViewConstraints = [NSLayoutConstraint]()
         if customHeaderView == nil {
-            headerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[headerView]-0-|", options: [], metrics: nil, views: ["headerView": headerView]))
+            headerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[headerV]-0-|", options: [], metrics: nil, views: ["headerV": headerV]))
         } else {
             if customViewSize.width > 0 {
                 let maxWidth = getMaxWidth()
@@ -704,10 +721,11 @@ extension SPAlertController {
             }
             headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
-        headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
+        headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
+        // alertView frame = (0 0; 375 0)
         
         if headerActionLine.superview == nil {
-            headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
+            headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
         }
         NSLayoutConstraint.activate(headerViewConstraints)
         self.headerViewConstraints = headerViewConstraints
@@ -718,6 +736,7 @@ extension SPAlertController {
         if headerActionLine.superview == nil {
             return
         }
+        //headerV (0 -262.5; 213.5 88.5)
         let headerV = customHeaderView != nil ? customHeaderView! : headerView
         let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
         if let constraints = self.headerViewConstraints {
@@ -924,7 +943,9 @@ extension SPAlertController {
             textLabel.preferredMaxLayoutWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minus
         } else {
             let minus = headerView.contentEdgeInsets.left+headerView.contentEdgeInsets.right
+            DLog(minus)
             textLabel.preferredMaxLayoutWidth = SP_SCREEN_WIDTH-minus
+            DLog(textLabel.preferredMaxLayoutWidth)
         }
     }
     

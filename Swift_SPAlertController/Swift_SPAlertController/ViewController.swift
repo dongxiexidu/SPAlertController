@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     func sheetController() {
-        let alert = SPAlertController.alertController(withTitle: "标题", message: "消息", preferredStyle: .actionSheet)
+        let alert = SPAlertController.alertController(withTitle: "标题标题标题标题标题", message: "消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息", preferredStyle: .actionSheet)
         alert.needDialogBlur = false
         let action1 = SPAlertAction.action(withTitle: "Default", style: .default) { (action) in
             print("点击了确定")

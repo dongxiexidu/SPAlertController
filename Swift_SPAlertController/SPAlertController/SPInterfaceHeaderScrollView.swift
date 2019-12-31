@@ -19,6 +19,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
         super.init(frame: frame)
         
         self.backgroundColor = .white
+        self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         if #available(iOS 11.0, *) {
             self.contentInsetAdjustmentBehavior = .never
@@ -53,6 +54,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.backgroundColor = .cyan
         label.font = UIFont.boldSystemFont(ofSize: SP_ACTION_TITLE_FONTSIZE)
         label.textAlignment = .center
         label.textColor = .black
@@ -171,7 +173,7 @@ extension SPInterfaceHeaderScrollView {
             labels.insert(titleLabel, at: 0)
         }
         if messageLabel.text!.count > 0 || messageLabel.attributedText != nil {
-            labels.insert(messageLabel, at: 0)
+            labels.append(messageLabel)
         }
         
         for (index, label) in labels.enumerated() {

@@ -59,6 +59,7 @@ class SPInterfaceActionSequenceView: UIView {
         let scrollV = UIScrollView()
         scrollV.backgroundColor = .white
         scrollV.showsHorizontalScrollIndicator = false
+        scrollV.showsVerticalScrollIndicator = false
         scrollV.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
             scrollV.contentInsetAdjustmentBehavior = .never
@@ -76,7 +77,7 @@ class SPInterfaceActionSequenceView: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillProportionally
-        stack.spacing = SP_LINE_WIDTH
+        stack.spacing = SP_LINE_WIDTH // 该间距腾出来的空间显示分割线
         stack.axis = .vertical
         self.contentView.addSubview(stack)
         return stack
@@ -160,21 +161,22 @@ extension SPInterfaceActionSequenceView {
     
     // 从一个数组筛选出不在另一个数组中的数组
     func filteredArrayFromArray(array: Array<UIView>,notInArray otherArray: [UIView])-> [UIView] {
-        
+        let arr = array.filter ({ otherArray.contains($0) == false })
+        DLog(arr)
         // 筛选出所有的分割线
-        return array.filter ({ otherArray.contains($0) == false })
+        return arr
     }
     
     // 更新分割线约束(细节)
     private func updateLineConstraints() {
-        
+        _ = self.stackView
         let arrangedSubviews = stackView.arrangedSubviews
         if arrangedSubviews.count <= 1 {
             return
         }
         // 线是 stackView.addSubview(actionLine) 筛选出所有的分割线
         let lines = self.filteredArrayFromArray(array: stackView.subviews, notInArray: stackView.arrangedSubviews)
-        
+        DLog(lines.count)
         if arrangedSubviews.count < lines.count {
             return
         }
@@ -186,8 +188,10 @@ extension SPInterfaceActionSequenceView {
         
         for i in 0..<lines.count {
             let actionLine = lines[i]
-            guard let actionView1 = arrangedSubviews[i] as? SPAlertControllerActionView else { return }
-            guard let actionView2 = arrangedSubviews[i+1] as? SPAlertControllerActionView else { return }
+//            guard let actionView1 = arrangedSubviews[i] as? SPAlertControllerActionView else { return }
+//            guard let actionView2 = arrangedSubviews[i+1] as? SPAlertControllerActionView else { return }
+            let actionView1 = arrangedSubviews[i] as! SPAlertControllerActionView
+            let actionView2 = arrangedSubviews[i+1] as! SPAlertControllerActionView
             
            // guard let axis = axis else { return }
             if axis! == .horizontal {
@@ -214,7 +218,7 @@ extension SPInterfaceActionSequenceView {
         _ = self.scrollView
         _ = self.contentView
         _ = self.cancelView
-        
+        _ = self.cancelActionLine
         // 停用约束
         NSLayoutConstraint.deactivate(self.constraints)
         
@@ -246,7 +250,7 @@ extension SPInterfaceActionSequenceView {
             
             var minHeight: CGFloat = 0.0
             
-            // TODO: guard
+            // TODO: 
            // guard let axis = axis else { return }
             if axis! == .vertical {
                 if self.cancelAction != nil {

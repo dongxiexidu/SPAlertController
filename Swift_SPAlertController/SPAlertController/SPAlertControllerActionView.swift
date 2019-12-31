@@ -11,7 +11,7 @@ import UIKit
 class SPAlertControllerActionView: UIView {
     
  
-    public var afterSpacing: CGFloat = 0.0
+    public var afterSpacing: CGFloat = SP_LINE_WIDTH
     
     private var actionButtonConstraints = [NSLayoutConstraint]()
     private var methodAction: Selector!
@@ -86,9 +86,8 @@ class SPAlertControllerActionView: UIView {
         // 按钮高度
         let buttonH = labelH+topBottom_insetsSum+topBottom_marginSum
         
-        guard let stackView = self.superview as? UIStackView else { return  }
         var relation = NSLayoutConstraint.Relation.equal
-        if stackView.axis == .horizontal {
+        if let stackView = self.superview as? UIStackView, stackView.axis == .horizontal {
             relation = .greaterThanOrEqual
         }
         // 如果字体保持默认18号，只有一行文字时最终结果约等于SP_ACTION_HEIGHT

@@ -17,13 +17,13 @@ extension SPAlertController: UIViewControllerTransitioningDelegate {
     // 2.如何弹出的动画
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        return SPAlertAnimation.animationIsPresenting(presenting: true)
+        return SPAlertAnimation.animationIsPresenting(isPresenting: true)
     }
     // 3.如何dismissed的动画
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         self.view.endEditing(true)
-        return SPAlertAnimation.animationIsPresenting(presenting: false)
+        return SPAlertAnimation.animationIsPresenting(isPresenting: false)
     }
     // 1.返回一个自定义的UIPresentationController
     // 控制控制器跳转的类,是iOS8新增的一个API，用来控制controller之间的跳转特效，

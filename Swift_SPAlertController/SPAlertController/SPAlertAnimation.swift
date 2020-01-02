@@ -12,12 +12,13 @@ class SPAlertAnimation: NSObject {
     
     private var presenting: Bool = false
     
-    public class func animationIsPresenting(presenting: Bool) -> SPAlertAnimation{
-        let alertAnimation = SPAlertAnimation.init(isPresenting: presenting)
+    public class func animationIsPresenting(isPresenting: Bool) -> SPAlertAnimation{
+        let alertAnimation = SPAlertAnimation.init(isPresenting: isPresenting)
         return alertAnimation
     }
     
     private init(isPresenting: Bool) {
+        super.init()
         self.presenting = isPresenting
     }
     
@@ -120,7 +121,7 @@ extension SPAlertAnimation {
         // (0.0, 667.0, 375.0, 0.0)
         
         let duration = self.transitionDuration(using: transition)
-        UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             var controlViewFrame = alertController.view.frame
             if alertController.preferredStyle == .actionSheet {
                 controlViewFrame.origin.y = SP_SCREEN_HEIGHT-controlViewFrame.size.height
@@ -450,5 +451,4 @@ extension SPAlertAnimation {
             alertController.view.center = controlViewCenter
         }
     }
-    
 }

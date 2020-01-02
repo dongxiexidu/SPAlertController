@@ -35,6 +35,7 @@ class SPInterfaceActionSequenceView: UIView {
     
     
     @objc func buttonClickedInActionView(actionView: SPAlertControllerActionView) {
+        
         var index: Int = 0
         for i in 0..<self.actions.count {
             if actionView.action == self.actions[i] {
@@ -128,7 +129,7 @@ extension SPInterfaceActionSequenceView {
     
     internal func addAction(action: SPAlertAction) {
         self.actions.append(action)
-        _ = self.stackView
+       
         let currentActionView = SPAlertControllerActionView.init()
         currentActionView.action = action
         currentActionView.addTarget(target: self, action: #selector(buttonClickedInActionView(actionView:)))
@@ -162,14 +163,13 @@ extension SPInterfaceActionSequenceView {
     // 从一个数组筛选出不在另一个数组中的数组
     func filteredArrayFromArray(array: Array<UIView>,notInArray otherArray: [UIView])-> [UIView] {
         let arr = array.filter ({ otherArray.contains($0) == false })
-        DLog(arr)
         // 筛选出所有的分割线
         return arr
     }
     
     // 更新分割线约束(细节)
     private func updateLineConstraints() {
-        _ = self.stackView
+      
         let arrangedSubviews = stackView.arrangedSubviews
         if arrangedSubviews.count <= 1 {
             return
@@ -215,10 +215,7 @@ extension SPInterfaceActionSequenceView {
     
     override func updateConstraints() {
         super.updateConstraints()
-        _ = self.scrollView
-        _ = self.contentView
-        _ = self.cancelView
-        _ = self.cancelActionLine
+        
         // 停用约束
         NSLayoutConstraint.deactivate(self.constraints)
         

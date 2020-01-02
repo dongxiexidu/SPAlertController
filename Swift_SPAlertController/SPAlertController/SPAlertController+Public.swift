@@ -138,7 +138,7 @@ extension SPAlertController{
     public func insertComponentView(_ componentView: UIView) {
         self._componentView = componentView
     }
-    
+    // 对自己创建的alertControllerView布局，在这个方法里，self.view才有父视图，有父视图才能改变其约束
     public func layoutAlertControllerView() {
         if alertControllerView.superview == nil {
             return

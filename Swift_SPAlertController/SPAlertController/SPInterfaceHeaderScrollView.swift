@@ -46,7 +46,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     
     lazy var contentView: UIView = {
         let contentV = UIView()
-        contentV.backgroundColor = .blue
+        contentV.backgroundColor = .white
         contentV.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(contentV)
         return contentV
@@ -54,7 +54,7 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .cyan
+      //  label.backgroundColor = .cyan
         label.font = UIFont.boldSystemFont(ofSize: SP_ACTION_TITLE_FONTSIZE)
         label.textAlignment = .center
         label.textColor = .black
@@ -120,7 +120,6 @@ extension SPInterfaceHeaderScrollView {
     override func updateConstraints() {
         super.updateConstraints()
         
-        _ = self.contentView
         // 先移除旧约束，再添加新约束
         NSLayoutConstraint.deactivate(self.constraints)
         NSLayoutConstraint.deactivate(contentView.constraints)

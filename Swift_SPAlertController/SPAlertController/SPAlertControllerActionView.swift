@@ -24,7 +24,7 @@ class SPAlertControllerActionView: UIView {
     }
     //手指按下然后在按钮有效事件范围内抬起
     @objc func touchUpInside() {
-        _ = target.perform(self.methodAction)
+        _ = target.perform(self.methodAction, with: self)
     }
     //手指按下或者手指按下后往外拽再往内拽
     @objc func touchDown(button: UIButton) {
@@ -65,7 +65,6 @@ class SPAlertControllerActionView: UIView {
     
     override func updateConstraints() {
         super.updateConstraints()
-        _ = self.actionButton
         
         if self.actionButtonConstraints.count > 0 {
             NSLayoutConstraint.deactivate(self.actionButtonConstraints)

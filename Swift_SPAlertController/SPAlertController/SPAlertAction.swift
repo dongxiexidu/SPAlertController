@@ -51,8 +51,8 @@ class SPAlertAction: NSObject {
     }
     /// action的标题字体,如果文字太长显示不全，会自动改变字体自适应按钮宽度，最多压缩文字为原来的0.5倍封顶
     public var titleFont: UIFont = UIFont.systemFont(ofSize: SP_ACTION_TITLE_FONTSIZE) {
-           didSet{// 颜色改变不需要更新布局
-               self.propertyChangedClosure?(self,false)
+           didSet{// 字体改变需要更新布局
+               self.propertyChangedClosure?(self,true)
            }
        }
     /// action的标题的内边距，如果在不改变字体的情况下想增大action的高度，可以设置该属性的top和bottom值,默认UIEdgeInsetsMake(0, 15, 0, 15)
@@ -88,9 +88,7 @@ class SPAlertAction: NSObject {
             self.titleColor = .black
         }
     }
-    
-    
-    
+
 }
 
 extension SPAlertAction: NSCopying{

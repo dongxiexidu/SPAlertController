@@ -247,8 +247,8 @@ class SPAlertController: UIViewController {
     private func updateDialogBlur(needDialogBlur: Bool) {
         if needDialogBlur == true {
             containerView.backgroundColor = .clear
-            containerView.backgroundColor = .orange
             if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
+                DLog("_UIDimmingKnockoutBackdropView 有值")
                 dimmingKnockoutBackdropView = dimmingdropView
                 // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
                 let selector = NSSelectorFromString("initWithStyle:")
@@ -271,10 +271,11 @@ class SPAlertController: UIViewController {
             if customAlertView != nil {
                 containerView.backgroundColor = .clear
             } else {
-                containerView.backgroundColor = .white
+//                containerView.backgroundColor = .white
+                containerView.backgroundColor = .lightGray
             }
-            containerView.backgroundColor = .green
         }
+        DLog(containerView)
     }
     
     // readonly
@@ -317,9 +318,9 @@ class SPAlertController: UIViewController {
     
     lazy var alertView: UIView = {
         let alert = UIView()
-        alert.backgroundColor = .red
+        alert.backgroundColor = .white
         alert.frame = self.alertControllerView.bounds
-        alert.autoresizingMask = [.flexibleWidth, .flexibleWidth]
+        alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if self.customAlertView == nil {
             self.containerView.addSubview(alert)
         }
@@ -328,7 +329,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertControllerView: UIView = {
         let alertC = UIView()
-        alertC.backgroundColor = .green
+        alertC.backgroundColor = .white
         alertC.translatesAutoresizingMaskIntoConstraints = false
         return alertC
     }()
@@ -390,8 +391,8 @@ class SPAlertController: UIViewController {
     
     lazy var containerView: UIView = {
         let containerV = UIView()
-        containerV.backgroundColor = .orange
-        containerV.frame = self.alertControllerView.bounds
+        containerV.backgroundColor = .white
+       // containerV.frame = self.alertControllerView.bounds
         containerV.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if preferredStyle == .alert {
             containerV.layer.cornerRadius = cornerRadius
@@ -409,7 +410,7 @@ class SPAlertController: UIViewController {
     lazy var headerView: SPInterfaceHeaderScrollView = {
         let header = SPInterfaceHeaderScrollView()
         header.backgroundColor = SP_NORMAL_COLOR
-        header.backgroundColor = .red
+       // header.backgroundColor = .red
         header.translatesAutoresizingMaskIntoConstraints = false
         header.headerViewSafeAreaDidChangeClosure = { [weak self] in
             self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
@@ -445,7 +446,7 @@ class SPAlertController: UIViewController {
          super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
-        self.view.backgroundColor = .blue
+       // self.view.backgroundColor = .blue
     }
     
     override func viewDidLoad() {
@@ -455,7 +456,7 @@ class SPAlertController: UIViewController {
         updateDialogBlur(needDialogBlur: self.needDialogBlur)
         self.automaticallyAdjustsScrollViewInsets = false
         
-        self.view.backgroundColor = .blue
+       // self.view.backgroundColor = .blue
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -473,11 +474,12 @@ class SPAlertController: UIViewController {
             }
         }
     }
-    //1 2
-    //FIXME:2次 应该进3次
+    
+    //FIXME:5次 应该进3次
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        DLog("viewWillLayoutSubviews ++++++++++++")
         // 屏幕旋转后宽高发生了交换，头部的label最大宽度需要重新计算
         setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
         setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
@@ -524,7 +526,8 @@ class SPAlertController: UIViewController {
         let bottomValue = minDistanceToEdges
         let maxWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minDistanceToEdges*2
         let maxHeight = SP_SCREEN_HEIGHT-topValue-bottomValue
-        
+        DLog(maxHeight)
+        DLog(maxWidth)
         if self.customAlertView == nil {
             // 当屏幕旋转的时候，为了保持alert样式下的宽高不变，因此取MIN(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)
             alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: maxWidth))
@@ -545,10 +548,24 @@ class SPAlertController: UIViewController {
         }
         let topConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: .top, relatedBy: .greaterThanOrEqual, toItem: alertControllerView.superview, attribute: .top, multiplier: 1.0, constant: topValue)
         topConstraint.priority = UILayoutPriority.init(999.0)
-        //这里优先级为999.0是为了小于垂直中心的优先级，如果含有文本输入框，键盘弹出后，特别是旋转到横屏后，对话框的空间比较小，这个时候优先偏移垂直中心，顶部优先级按理说应该会被忽略，但是由于子控件含有scrollView，所以该优先级仍然会被激活，子控件显示不全scrollView可以滑动。如果外界自定义了整个对话框，且自定义的view上含有文本输入框，子控件不含有scrollView，顶部间距会被忽略
         alertControllerViewConstraints.append(topConstraint)
+        //这里优先级为999.0是为了小于垂直中心的优先级，如果含有文本输入框，键盘弹出后，特别是旋转到横屏后，对话框的空间比较小，这个时候优先偏移垂直中心，顶部优先级按理说应该会被忽略，但是由于子控件含有scrollView，所以该优先级仍然会被激活，子控件显示不全scrollView可以滑动。如果外界自定义了整个对话框，且自定义的view上含有文本输入框，子控件不含有scrollView，顶部间距会被忽略
         let bottomConstraint = NSLayoutConstraint.init(item: alertControllerView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: alertControllerView.superview, attribute: .bottom, multiplier: 1.0, constant: -bottomValue)
         bottomConstraint.priority = UILayoutPriority.init(999.0)// 优先级跟顶部同理
+        alertControllerViewConstraints.append(bottomConstraint)
+        
+        let centerXConstraints = NSLayoutConstraint.init(item: alertControllerView, attribute: .centerX, relatedBy: .equal, toItem: alertControllerView.superview, attribute: .centerX, multiplier: 1.0, constant: offsetForAlert.x)
+        alertControllerViewConstraints.append(centerXConstraints)
+        
+        let constantY = (self.isBeingPresented && !self.isBeingDismissed)  ? 0 : offsetForAlert.y
+        let centerYConstraints = NSLayoutConstraint.init(item: alertControllerView, attribute: .centerY, relatedBy: .equal, toItem: alertControllerView.superview, attribute: .centerY, multiplier: 1.0, constant: constantY)
+        alertControllerViewConstraints.append(centerYConstraints)
+        
+        NSLayoutConstraint.activate(alertControllerViewConstraints)
+        self.alertControllerViewConstraints = alertControllerViewConstraints
+        
+        DLog("alertControllerView")
+        DLog(alertControllerView)
     }
     
     func layoutAlertControllerViewForActionSheetStyle() {
@@ -677,6 +694,8 @@ extension SPAlertController {
         someSideConstraint.priority = UILayoutPriority.init(999.0)
         alertControllerViewConstraints.append(someSideConstraint)
         NSLayoutConstraint.activate(alertControllerViewConstraints)
+        // 第二次和第三次 alertControllerView:frame = (0 667; 375 0)  UITransitionView: 0x7f8c4bf15620; frame = (0 0; 375 667);
+        DLog(alertControllerView)
         self.alertControllerViewConstraints = alertControllerViewConstraints
     }
     
@@ -700,7 +719,6 @@ extension SPAlertController {
         if headerV.superview == nil {
             return
         }
-        _ = self.alertView
         if let constraints = self.headerViewConstraints {
             NSLayoutConstraint.deactivate(constraints)
             self.headerViewConstraints = nil
@@ -712,14 +730,14 @@ extension SPAlertController {
             if customViewSize.width > 0 {
                 let maxWidth = getMaxWidth()
                 let headerViewWidth = min(maxWidth, customViewSize.width)
-                headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: headerViewWidth))
+                headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: headerViewWidth))
             }
             if customViewSize.height > 0 {
-                let customHeightConstraint = NSLayoutConstraint.init(item: headerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.height)
+                let customHeightConstraint = NSLayoutConstraint.init(item: headerV, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: customViewSize.height)
                 customHeightConstraint.priority = .defaultHigh
                 headerViewConstraints.append(customHeightConstraint)
             }
-            headerViewConstraints.append(NSLayoutConstraint.init(item: headerView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
+            headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
         headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         // alertView frame = (0 0; 375 0)
@@ -807,8 +825,7 @@ extension SPAlertController {
         if actionSequenceView.superview == nil {
             return
         }
-        _ = self.alertView
-        _ = self.headerActionLine
+        
         if let constraints = self.actionSequenceViewConstraints {
             NSLayoutConstraint.deactivate(constraints)
             self.actionSequenceViewConstraints = nil

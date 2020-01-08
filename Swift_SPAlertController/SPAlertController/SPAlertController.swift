@@ -46,7 +46,7 @@ class SPAlertController: UIViewController {
     
     /// 主标题
     public var mainTitle: String? {
-        didSet (newValue){
+        willSet (newValue){
             guard let title = newValue else { return }
             
             if self.isViewLoaded == false {
@@ -72,7 +72,7 @@ class SPAlertController: UIViewController {
     }
     /// 副标题
     public var message: String? {
-        didSet (newValue){
+        willSet (newValue){
             guard let message = newValue else { return }
             if self.isViewLoaded == false {
                 return
@@ -89,7 +89,7 @@ class SPAlertController: UIViewController {
     public var image: UIImage?
     /// 主标题颜色
     public var titleColor: UIColor = .black {
-        didSet (newValue){
+        willSet (newValue){
             if self.isViewLoaded == false {
                 return
             }
@@ -98,7 +98,7 @@ class SPAlertController: UIViewController {
     }
     /// 主标题字体,默认18,加粗
     public var titleFont: UIFont = UIFont.boldSystemFont(ofSize: SP_ACTION_TITLE_FONTSIZE) {
-        didSet (newValue){
+        willSet (newValue){
             if self.isViewLoaded == false {
                 return
             }
@@ -110,7 +110,7 @@ class SPAlertController: UIViewController {
     }
     /// 副标题颜色
     public var messageColor: UIColor = .black {
-        didSet (newValue){
+        willSet (newValue){
             if self.isViewLoaded == false {
                 return
             }
@@ -121,7 +121,7 @@ class SPAlertController: UIViewController {
     public var messageFont: UIFont = UIFont.systemFont(ofSize: 16)
     /// 对齐方式(包括主标题和副标题)
     public var textAlignment: NSTextAlignment? {
-        didSet (newValue){
+        willSet (newValue){
             guard let alignment = newValue else { return }
             headerView.titleLabel.textAlignment = alignment
             headerView.messageLabel.textAlignment = alignment
@@ -129,7 +129,7 @@ class SPAlertController: UIViewController {
     }
     
     public var imageLimitSize: CGSize = CGSize.init(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)) {
-        didSet (newValue){
+        willSet (newValue){
         
             headerView.imageLimitSize = newValue
             if presentationController?.presentingViewController != nil {
@@ -147,8 +147,8 @@ class SPAlertController: UIViewController {
     public var _actionAxis: NSLayoutConstraint.Axis = .horizontal
     //本框架任何一处都不允许调用actionAxis的setter方法，如果调用了则无法判断是外界调用还是内部调用
     public var actionAxis: NSLayoutConstraint.Axis? {
-        didSet (newValue){
-            guard let actonA = newValue else { return }
+        didSet {
+            guard let actonA = actionAxis else { return }
             // 调用该setter方法则认为是强制布局，该setter方法只有外界能调，
             // 这样才能判断外界有没有调用actionAxis的setter方法，从而是否按照外界的指定布局方式进行布局
             _actionAxis = actonA
@@ -160,7 +160,7 @@ class SPAlertController: UIViewController {
     * alert样式下该属性是指对话框四边与屏幕边缘之间的距离，此样式下默认值随设备变化，actionSheet样式下是指弹出边的对立边与屏幕之间的距离，比如如果从右边弹出，那么该属性指的就是对话框左边与屏幕之间的距离，此样式下默认值为70
     */
     public var minDistanceToEdges: CGFloat = 70 {
-        didSet (newValue){
+        didSet {
             if self.isViewLoaded == false {
                 return
             }
@@ -176,8 +176,8 @@ class SPAlertController: UIViewController {
     /// SPAlertControllerStyleAlert样式下默认6.0f，
     /// SPAlertControllerStyleActionSheet样式下默认13.0f，去除半径设置为0即可
     public var cornerRadius: CGFloat = 6.0 {
-        didSet (newValue){
-            _updateCornerRadius(cornerRadius: newValue)
+        didSet {
+            _updateCornerRadius(cornerRadius: cornerRadius)
         }
     }
     
@@ -212,7 +212,7 @@ class SPAlertController: UIViewController {
     }
     
     public var attributedTitle: NSAttributedString? {
-        didSet (newValue){
+        willSet (newValue){
             guard let value = newValue else { return }
             if self.isViewLoaded == false {
                 return
@@ -224,7 +224,7 @@ class SPAlertController: UIViewController {
         }
     }
     public var attributedMessage: NSAttributedString? {
-        didSet (newValue){
+        willSet (newValue){
             guard let value = newValue else { return }
             if self.isViewLoaded == false {
                 return
@@ -239,8 +239,8 @@ class SPAlertController: UIViewController {
     /// 是否需要对话框拥有毛玻璃,默认为YES
     public var needDialogBlur: Bool = true {
         
-        didSet (newValue){
-            updateDialogBlur(needDialogBlur: newValue)
+        didSet {
+            updateDialogBlur(needDialogBlur: needDialogBlur)
         }
     }
     
@@ -249,13 +249,13 @@ class SPAlertController: UIViewController {
             containerView.backgroundColor = .clear
             if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
                 DLog("_UIDimmingKnockoutBackdropView 有值")
-                dimmingKnockoutBackdropView = dimmingdropView
                 // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
                 let selector = NSSelectorFromString("initWithStyle:")
                 dimmingdropView.perform(selector, with: UIBlurEffect.Style.light)
                 dimmingdropView.frame = containerView.bounds
                 dimmingdropView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                self.containerView.insertSubview(dimmingdropView, at: 0)
+                dimmingKnockoutBackdropView = dimmingdropView
+                self.containerView.insertSubview(dimmingKnockoutBackdropView!, at: 0)
             } else {
                 // 这个else是防止假如_UIDimmingKnockoutBackdropView这个类不存在了的时候，做一个备案
                 let blur = UIBlurEffect.init(style: UIBlurEffect.Style.extraLight)
@@ -271,9 +271,9 @@ class SPAlertController: UIViewController {
             if customAlertView != nil {
                 containerView.backgroundColor = .clear
             } else {
-//                containerView.backgroundColor = .white
-                containerView.backgroundColor = .lightGray
+                containerView.backgroundColor = .white
             }
+            containerView.backgroundColor = .red
         }
         DLog(containerView)
     }
@@ -318,7 +318,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertView: UIView = {
         let alert = UIView()
-        alert.backgroundColor = .white
+        alert.backgroundColor = .lightGray
         alert.frame = self.alertControllerView.bounds
         alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if self.customAlertView == nil {
@@ -329,7 +329,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertControllerView: UIView = {
         let alertC = UIView()
-        alertC.backgroundColor = .white
+        alertC.backgroundColor = .blue
         alertC.translatesAutoresizingMaskIntoConstraints = false
         return alertC
     }()
@@ -392,7 +392,7 @@ class SPAlertController: UIViewController {
     lazy var containerView: UIView = {
         let containerV = UIView()
         containerV.backgroundColor = .white
-       // containerV.frame = self.alertControllerView.bounds
+        containerV.frame = self.alertControllerView.bounds
         containerV.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if preferredStyle == .alert {
             containerV.layer.cornerRadius = cornerRadius
@@ -493,7 +493,7 @@ class SPAlertController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         // 文字显示不全处理
         handleIncompleteTextDisplay()
     }
@@ -662,7 +662,7 @@ extension SPAlertController {
         var alertControllerViewConstraints = [NSLayoutConstraint]()
         if self.customAlertView == nil {
             let visualFormat = "\(hv):|-0-[alertControllerView]-0-|"
-            DLog(visualFormat)
+            //DLog(visualFormat)
             alertControllerViewConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: visualFormat, options: [], metrics: nil, views: ["alertControllerView": alertControllerView]))
         } else {
             let centerXorY = (hv == "H") ? NSLayoutConstraint.Attribute.centerX : NSLayoutConstraint.Attribute.centerY
@@ -747,6 +747,8 @@ extension SPAlertController {
         }
         NSLayoutConstraint.activate(headerViewConstraints)
         self.headerViewConstraints = headerViewConstraints
+        
+        DLog("alertView = \(alertView)")
     }
     
     // 对头部和action部分之间的分割线布局

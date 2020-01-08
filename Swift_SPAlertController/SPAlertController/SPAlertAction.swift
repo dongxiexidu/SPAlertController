@@ -17,15 +17,13 @@ class SPAlertAction: NSObject {
     }
     /// action的富文本标题
     public var attributedTitle: NSAttributedString? {
-        didSet (newValue){
-            guard let _ = newValue else { return }
+        didSet {
             self.propertyChangedClosure?(self,true)
         }
     }
     /// action的图标，位于title的左边
     public var image: UIImage? {
-        didSet (newValue){
-            guard let _ = newValue else { return }
+        didSet {
             self.propertyChangedClosure?(self,true)
         }
     }

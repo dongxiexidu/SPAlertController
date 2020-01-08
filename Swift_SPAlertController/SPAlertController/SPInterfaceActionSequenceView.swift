@@ -15,7 +15,7 @@ class SPInterfaceActionSequenceView: UIView {
     private var cancelAction: SPAlertAction?
     private var actionLineConstraints: [NSLayoutConstraint] = [NSLayoutConstraint]()
     public var stackViewDistribution: UIStackView.Distribution? {
-        didSet (newValue){
+        willSet (newValue){
             guard let value = newValue else { return }
             self.stackView.distribution = value
             self.setNeedsUpdateConstraints()
@@ -23,7 +23,7 @@ class SPInterfaceActionSequenceView: UIView {
     }
     
     public var axis: NSLayoutConstraint.Axis? {
-        didSet (newValue){
+        willSet (newValue){
             guard let value = newValue else { return }
             self.stackView.axis = value
             //当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用updateConstraints.

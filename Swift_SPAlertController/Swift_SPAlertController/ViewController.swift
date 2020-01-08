@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         customV.backgroundColor = .red
 
         let alert = SPAlertController.alertController(withCustomHeaderView: customV, preferredStyle: .alert, animationType: .expand)
-        alert.needDialogBlur = true
+        alert.needDialogBlur = false
         
 //        let action1 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
 //            print("点击了确定")
@@ -45,8 +45,8 @@ class ViewController: UIViewController {
 
     
     func alertController() {//消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
-        let alert = SPAlertController.alertController(withTitle: "标题", message: "消息消息", preferredStyle: .alert, animationType: .shrink)
-        alert.needDialogBlur = true
+        let alert = SPAlertController.alertController(withTitle: "标题", message: "消息消息", preferredStyle: .alert, animationType: .fromBottom)
+        alert.needDialogBlur = false
         let action1 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
             print("点击了确定")
         }

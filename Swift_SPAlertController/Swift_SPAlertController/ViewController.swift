@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        alertTest7()
+        attributedStringTest1()
     }
 }
 

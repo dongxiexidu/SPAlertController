@@ -145,10 +145,14 @@ class SPAlertControllerActionView: UIView {
                  // 设置完富文本之后，还原按钮普通文本的颜色，其实这行代码加不加都不影响，只是为了让按钮普通文本的颜色保持跟action.titleColor一致
                  self.actionButton.setTitleColor(action.titleColor, for: .normal)
              } else {
-                 if action.title.contains("\n") || action.title.contains("\r") {
-                     self.actionButton.titleLabel?.lineBreakMode = .byWordWrapping
-                 }
-                 self.actionButton.setTitle(action.title, for: .normal)
+                
+                if let title = action.title {
+                    if title.contains("\n") || title.contains("\r") {
+                        self.actionButton.titleLabel?.lineBreakMode = .byWordWrapping
+                    }
+                    self.actionButton.setTitle(title, for: .normal)
+                }
+                 
              }
              self.actionButton.setImage(action.image, for: .normal)
              self.actionButton.titleEdgeInsets = .init(top: 0, left: action.imageTitleSpacing, bottom: 0, right: -action.imageTitleSpacing)

@@ -142,6 +142,7 @@ extension ViewController{
         
         alert.addTextFieldWithConfigurationHandler { (textField) in
             DLog("第1个文本输入框回调")
+            // 这个block只会回调一次，因此可以在这里自由定制textFiled，如设置textField的相关属性，设置代理，添加addTarget，监听通知等
             self.phoneNumberTextField = textField
             textField.placeholder = "请输入手机号码"
             textField.clearButtonMode = .always

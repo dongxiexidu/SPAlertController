@@ -914,7 +914,8 @@ extension SPAlertController {
                 }
                 
             } else {
-                let width = action.title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSAttributedString.Key.font: action.titleFont], context: nil).size.width
+                guard let title = action.title else { return }
+                let width = title.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: SP_ACTION_HEIGHT), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSAttributedString.Key.font: action.titleFont], context: nil).size.width
                 if ceilf(Float(width)) > Float(preButtonWidth){
                     _actionAxis = .vertical
                     updateActionAxis()
@@ -924,8 +925,6 @@ extension SPAlertController {
             }
             
         }
-        
-        
     }
     
     //MARK: 键盘通知

@@ -10,7 +10,7 @@ import UIKit
 
 class SPAlertAction: NSObject {
     
-    public var title: String = "" {
+    public var title: String? {
         didSet{
             self.propertyChangedClosure?(self,true)
         }
@@ -61,14 +61,14 @@ class SPAlertAction: NSObject {
     /// 如果没有这个block，那使用时，只有在addAction之前设置action的属性才有效
     internal var propertyChangedClosure: ((SPAlertAction, Bool) ->Void)?
     
-    public class func action(withTitle title: String,
+    public class func action(withTitle title: String?,
                         style: SPAlertActionStyle,
                         handler: @escaping (SPAlertAction)->Void) -> SPAlertAction {
         let action = SPAlertAction.init(title: title, style: style, handler: handler)
         return action
     }
     
-    convenience init(title: String, style: SPAlertActionStyle, handler: @escaping ((SPAlertAction) ->Void)) {
+    convenience init(title: String?, style: SPAlertActionStyle, handler: @escaping ((SPAlertAction) ->Void)) {
         
         self.init()
         self.title = title

@@ -15,19 +15,21 @@ class SPInterfaceActionSequenceView: UIView {
     private var cancelAction: SPAlertAction?
     private var actionLineConstraints: [NSLayoutConstraint] = [NSLayoutConstraint]()
     public var stackViewDistribution: UIStackView.Distribution? {
-        willSet (newValue){
-            guard let value = newValue else { return }
-            self.stackView.distribution = value
-            self.setNeedsUpdateConstraints()
+        didSet {
+            if let value = stackViewDistribution{
+                self.stackView.distribution = value
+                self.setNeedsUpdateConstraints()
+            }
         }
     }
     
-    public var axis: NSLayoutConstraint.Axis? {
-        willSet (newValue){
-            guard let value = newValue else { return }
-            self.stackView.axis = value
-            //当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用updateConstraints.
-            self.setNeedsUpdateConstraints()
+    public var axis: NSLayoutConstraint.Axis = .horizontal {
+        didSet {
+           // if let value = axis {
+                self.stackView.axis = axis
+                //当一个自定义view的某个属性发生改变，并且可能影响到constraint时，需要调用此方法去标记constraints需要在未来的某个点更新，系统然后调用updateConstraints.
+                self.setNeedsUpdateConstraints()
+           // }
         }
     }
     
@@ -194,7 +196,7 @@ extension SPInterfaceActionSequenceView {
             let actionView2 = arrangedSubviews[i+1] as! SPAlertControllerActionView
             
            // guard let axis = axis else { return }
-            if axis! == .horizontal {
+            if axis == .horizontal {
                 actionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[actionLine]-0-|", options: [], metrics: nil, views: ["actionLine": actionLine]))
                 actionLineConstraints.append(NSLayoutConstraint.init(item: actionLine, attribute: .left, relatedBy: .equal, toItem: actionView1, attribute: .right, multiplier: 1.0, constant: 0))
                 actionLineConstraints.append(NSLayoutConstraint.init(item: actionLine, attribute: .right, relatedBy: .equal, toItem: actionView2, attribute: .left, multiplier: 1.0, constant: 0))
@@ -248,8 +250,8 @@ extension SPInterfaceActionSequenceView {
             var minHeight: CGFloat = 0.0
             
             // TODO: 
-           // guard let axis = axis else { return }
-            if axis! == .vertical {
+//            guard let axis = axis else { return }
+            if axis == .vertical {
                 if self.cancelAction != nil {
 // 如果有取消按钮且action总个数大于4，则除去取消按钮之外的其余部分的高度至少为3个半SP_ACTION_HEIGHT的高度,
 // 即加上取消按钮就是总高度至少为4个半SP_ACTION_HEIGHT的高度

@@ -46,8 +46,7 @@ class SPAlertController: UIViewController {
     
     /// 主标题
     public var mainTitle: String? {
-        willSet (newValue){
-            guard let title = newValue else { return }
+        didSet {
             
             if self.isViewLoaded == false {
                 return
@@ -55,7 +54,7 @@ class SPAlertController: UIViewController {
             // 如果条件为真，说明外界在对title赋值之前就已经使用了self.view，
             // 先走了viewDidLoad方法，如果先走的viewDidLoad，
             // 需要在title的setter方法中重新设置数据,以下setter方法中的条件同理
-            headerView.titleLabel.text = title
+            headerView.titleLabel.text = mainTitle
             
             // 文字发生变化后再更新布局，这里更新布局也不是那么重要，
             // 因为headerView中的布局方法只有当SPAlertController被present后才会走一次，
@@ -72,8 +71,7 @@ class SPAlertController: UIViewController {
     }
     /// 副标题
     public var message: String? {
-        willSet (newValue){
-            guard let message = newValue else { return }
+        didSet {
             if self.isViewLoaded == false {
                 return
             }
@@ -121,10 +119,11 @@ class SPAlertController: UIViewController {
     public var messageFont: UIFont = UIFont.systemFont(ofSize: 16)
     /// 对齐方式(包括主标题和副标题)
     public var textAlignment: NSTextAlignment? {
-        willSet (newValue){
-            guard let alignment = newValue else { return }
-            headerView.titleLabel.textAlignment = alignment
-            headerView.messageLabel.textAlignment = alignment
+        didSet {
+            if let alignment = textAlignment {
+                headerView.titleLabel.textAlignment = alignment
+                headerView.messageLabel.textAlignment = alignment
+            }
         }
     }
     
@@ -147,7 +146,7 @@ class SPAlertController: UIViewController {
     public var _actionAxis: NSLayoutConstraint.Axis = .horizontal
     //本框架任何一处都不允许调用actionAxis的setter方法，如果调用了则无法判断是外界调用还是内部调用
     public var actionAxis: NSLayoutConstraint.Axis? {
-        willSet {
+        didSet {
             guard let actonA = actionAxis else { return }
             // 调用该setter方法则认为是强制布局，该setter方法只有外界能调，
             // 这样才能判断外界有没有调用actionAxis的setter方法，从而是否按照外界的指定布局方式进行布局
@@ -169,7 +168,7 @@ class SPAlertController: UIViewController {
             if presentationController?.presentingViewController != nil {
                 layoutAlertControllerView()
                 headerView.setNeedsUpdateConstraints()
-                actionSequenceView.setNeedsUpdateConstraints()
+                actionSequenceView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -212,24 +211,22 @@ class SPAlertController: UIViewController {
     }
     
     public var attributedTitle: NSAttributedString? {
-        willSet (newValue){
-            guard let value = newValue else { return }
+        didSet {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.titleLabel.attributedText = value
+            headerView.titleLabel.attributedText = attributedTitle
             if presentationController?.presentingViewController != nil {
                 headerView.setNeedsUpdateConstraints()
             }
         }
     }
     public var attributedMessage: NSAttributedString? {
-        willSet (newValue){
-            guard let value = newValue else { return }
+        didSet {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.messageLabel.attributedText = value
+            headerView.messageLabel.attributedText = attributedMessage
             if presentationController?.presentingViewController != nil {
                 headerView.setNeedsUpdateConstraints()
             }
@@ -288,26 +285,40 @@ class SPAlertController: UIViewController {
     var isForceOffset: Bool = true
     
     //MARK: - lazy var
-    lazy var actionSequenceView: SPInterfaceActionSequenceView = {
-        let actionV = SPInterfaceActionSequenceView.init()
-        actionV.translatesAutoresizingMaskIntoConstraints = false
-        actionV.buttonClickedInActionViewClosure = { [weak self] index in
-            self?.dismiss(animated: true, completion: nil)
-            if let action = self?.actions[index] {
-                action.handler?(action)
+
+    // 注意:Obj-C中`@property (nonatomic, weak)`中通常用strong强引用,
+    // 弱引用的view必须要添加到父view中才有值
+    var _actionSequenceView: SPInterfaceActionSequenceView?
+    var actionSequenceView: SPInterfaceActionSequenceView?{
+        get{
+            if _actionSequenceView != nil {
+                return _actionSequenceView
+            } else {
+                let actionV = SPInterfaceActionSequenceView.init()
+                actionV.translatesAutoresizingMaskIntoConstraints = false
+                actionV.buttonClickedInActionViewClosure = { [weak self] index in
+                    self?.dismiss(animated: true, completion: nil)
+                    if let action = self?.actions[index] {
+                        action.handler?(action)
+                    }
+                }
+                if self.actions.count > 0 && self.customActionSequenceView == nil {
+                    self.alertView.addSubview(actionV)
+                    _actionSequenceView = actionV
+                    return _actionSequenceView
+                }else{
+                    return nil
+                }
             }
         }
-        if self.actions.count > 0 && self.customActionSequenceView == nil {
-            self.alertView.addSubview(actionV)
-        }
-        return actionV
-    }()
+    }
+    
     
     //
     lazy var componentActionLine: SPInterfaceActionItemSeparatorView = {
         let componentL = SPInterfaceActionItemSeparatorView()
         componentL.translatesAutoresizingMaskIntoConstraints = false
-        let flag = (actionSequenceView.superview != nil || customActionSequenceView?.superview != nil)
+        let flag = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
         // 必须组件view和action部分同时存在
         if componentL.superview != nil && flag {
             self.alertView.addSubview(componentL)
@@ -428,7 +439,7 @@ class SPAlertController: UIViewController {
         let headerLine = SPInterfaceActionItemSeparatorView()
         headerLine.translatesAutoresizingMaskIntoConstraints = false
         let flag1 = (headerView.superview != nil || customHeaderView?.superview != nil)
-        let flag2 = (actionSequenceView.superview != nil || customActionSequenceView?.superview != nil)
+        let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
         if flag1 && flag2 {
             self.alertView.addSubview(headerLine)
         }
@@ -442,7 +453,7 @@ class SPAlertController: UIViewController {
     }
     // 先loadView(),后viewDidLoad()
     override func loadView() {
-        // super.loadView()
+         super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
        // self.view.backgroundColor = .blue
@@ -453,7 +464,12 @@ class SPAlertController: UIViewController {
 
         configureHeaderView()
         updateDialogBlur(needDialogBlur: self.needDialogBlur)
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
         
        // self.view.backgroundColor = .blue
     }
@@ -474,7 +490,6 @@ class SPAlertController: UIViewController {
         }
     }
     
-    //FIXME:5次 应该进3次
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -525,8 +540,6 @@ class SPAlertController: UIViewController {
         let bottomValue = minDistanceToEdges
         let maxWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minDistanceToEdges*2
         let maxHeight = SP_SCREEN_HEIGHT-topValue-bottomValue
-//        DLog("maxHeight = \(maxHeight)") 567.0
-//        DLog("maxWidth = \(maxWidth)") 275.0
         if self.customAlertView == nil {
             // 当屏幕旋转的时候，为了保持alert样式下的宽高不变，因此取MIN(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)
             alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: maxWidth))
@@ -697,7 +710,6 @@ extension SPAlertController {
         self.alertControllerViewConstraints = alertControllerViewConstraints
     }
     
-    //FIXME: 来了2次, 应该进来3次
     internal func layoutChildViews() {
         // 对头部布局
         layoutHeaderView()
@@ -755,7 +767,7 @@ extension SPAlertController {
         }
         //headerV (0 -262.5; 213.5 88.5)
         let headerV = customHeaderView != nil ? customHeaderView! : headerView
-        let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
+        let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView!
         if let constraints = self.headerActionLineConstraints {
             NSLayoutConstraint.deactivate(constraints)
             self.headerActionLineConstraints = nil
@@ -820,7 +832,7 @@ extension SPAlertController {
     }
     // 对action部分布局,高度由子控件撑起
     private func layoutActionSequenceView() {
-        let actionSequenceView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
+        let actionSequenceView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView!
         if actionSequenceView.superview == nil {
             return
         }
@@ -848,8 +860,8 @@ extension SPAlertController {
             }
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
-        // FIXME: 需要可选??
-        if headerActionLine == nil {
+        // 没有headerView的情况
+        if headerView.superview == nil {
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         }
         actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
@@ -858,12 +870,11 @@ extension SPAlertController {
     }
     
     internal func updateActionAxis() {
-        actionSequenceView.axis = _actionAxis
-        
+        actionSequenceView?.axis = _actionAxis
         if _actionAxis == .vertical {// 布局方式为子控件自适应内容高度
-            actionSequenceView.stackViewDistribution = .fillProportionally
+            actionSequenceView?.stackViewDistribution = .fillProportionally
         } else {// 布局方式为子控件等宽
-            actionSequenceView.stackViewDistribution = .fillEqually
+            actionSequenceView?.stackViewDistribution = .fillEqually
         }
     }
     
@@ -898,7 +909,7 @@ extension SPAlertController {
 
                     _actionAxis = .vertical
                     updateActionAxis()
-                    actionSequenceView.setNeedsUpdateConstraints()
+                    actionSequenceView?.setNeedsUpdateConstraints()
                     break// 一定要break，只要有一个按钮文字过长就垂直排列
                 }
                 
@@ -907,7 +918,7 @@ extension SPAlertController {
                 if ceilf(Float(width)) > Float(preButtonWidth){
                     _actionAxis = .vertical
                     updateActionAxis()
-                    actionSequenceView.setNeedsUpdateConstraints()
+                    actionSequenceView?.setNeedsUpdateConstraints()
                     break
                 }
             }

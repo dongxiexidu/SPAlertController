@@ -17,7 +17,6 @@ class SPAlertPresentationController: UIPresentationController {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
     
-    //FIXME:进来2次,应该3次  1 2
     override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
         if let containerV = self.containerView {
@@ -82,7 +81,7 @@ class SPAlertPresentationController: UIPresentationController {
         alertController.delegate?.didDismissAlertController(alertController: alertController)
     }
     
-    // FIXME: 可能崩溃？
+  
     override var frameOfPresentedViewInContainerView: CGRect{
         return self.presentedView!.frame
     }

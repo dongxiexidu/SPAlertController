@@ -45,8 +45,8 @@ extension SPAlertAnimation {
     
     private func presentAnimationTransition(transitionContext: UIViewControllerContextTransitioning){
         let alertController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
-        let alert = alertController as! SPAlertController
-       // guard let alert = alertController as? SPAlertController else { return }
+        //let alert = alertController as! SPAlertController
+        guard let alert = alertController as? SPAlertController else { return }
         
         switch alert.animationType {
         case .fromBottom:

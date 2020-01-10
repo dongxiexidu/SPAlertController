@@ -10,15 +10,15 @@ import UIKit
 
 extension SPAlertController{
     
-    public class func alertController(withTitle title: String,
-                                               message: String,
+    public class func alertController(withTitle title: String?,
+                                               message: String?,
                                                preferredStyle: SPAlertControllerStyle)->SPAlertController {
         let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: SPAlertAnimationType.default)
         return alertVC
     }
     
-    public class func alertController(withTitle title: String,
-                                               message: String,
+    public class func alertController(withTitle title: String?,
+                                               message: String?,
                                                preferredStyle: SPAlertControllerStyle,
                                                animationType: SPAlertAnimationType)
         ->SPAlertController {
@@ -104,7 +104,7 @@ extension SPAlertController{
                 }
                 index += 1
             }
-            actionSequenceView.setCustomSpacing(spacing: spacing, afterActionIndex: index)
+            actionSequenceView?.setCustomSpacing(spacing: spacing, afterActionIndex: index)
         }
     }
     @available(iOS 11.0, *)
@@ -117,7 +117,7 @@ extension SPAlertController{
                 }
                 index += 1
             }
-            return actionSequenceView.customSpacingAfterActionIndex(index)
+            return actionSequenceView!.customSpacingAfterActionIndex(index)
         }
         return 0.0
     }
@@ -164,13 +164,13 @@ extension SPAlertController{
                 //alert样式不论是否为取消样式的按钮，都直接按顺序添加
                 otherActions.append(action)
             }
-            actionSequenceView.addAction(action: action)
+            actionSequenceView?.addAction(action: action)
         } else { // actionSheet样式
             if action.style == .cancel {
-                actionSequenceView.addCancelAction(action: action)
+                actionSequenceView?.addCancelAction(action: action)
             } else {
                 otherActions.append(action)
-                actionSequenceView.addAction(action: action)
+                actionSequenceView?.addAction(action: action)
             }
         }
         
@@ -205,7 +205,7 @@ extension SPAlertController{
                         break
                     }
                 }
-                if let actionView = self.actionSequenceView.stackView.arrangedSubviews[index] as?  SPAlertControllerActionView {
+                if let actionView = self.actionSequenceView?.stackView.arrangedSubviews[index] as?  SPAlertControllerActionView {
                     actionView.action = action
                 }
                 if let _ = self.presentationController{
@@ -216,7 +216,7 @@ extension SPAlertController{
             } else {
                 if action.style == .cancel {
                     // cancelView中只有唯一的一个actionView
-                    if let actionView = self.actionSequenceView.cancelView.subviews.last as? SPAlertControllerActionView {
+                    if let actionView = self.actionSequenceView?.cancelView.subviews.last as? SPAlertControllerActionView {
                         // 这个判断可以不加，加判断是防止有一天改动框架不小心在cancelView中加了新的view产生安全隐患
                         actionView.action = action
                     }
@@ -230,7 +230,7 @@ extension SPAlertController{
                             break
                         }
                     }
-                    if let actionView = self.actionSequenceView.stackView.arrangedSubviews[index] as?  SPAlertControllerActionView {
+                    if let actionView = self.actionSequenceView?.stackView.arrangedSubviews[index] as?  SPAlertControllerActionView {
                         actionView.action = action
                     }
                     
@@ -238,7 +238,7 @@ extension SPAlertController{
             }
             if let _ = self.presentationController, needUpdateConstraints == true {
                 //如果在present完成后的某个时刻再去设置action的属性，字体等改变需要更新布局
-                self.actionSequenceView.setNeedsUpdateConstraints()
+                self.actionSequenceView?.setNeedsUpdateConstraints()
             }
         }
         

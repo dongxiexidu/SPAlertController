@@ -17,12 +17,14 @@ class ViewController: UIViewController {
     var alertController: SPAlertController!
     
     var lookBlur: Bool = false
-    
+    var sureAction: SPAlertAction!
+    var phoneNumberTextField: UITextField!
+    var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        alertTest1()
+        alertTest7()
     }
 }
 

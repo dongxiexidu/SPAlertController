@@ -17,8 +17,8 @@ class ViewController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-//        sheetController()
-        alertController()
+        sheetController()
+//        alertController()
 //        customAlert()
     }
 
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 
     
     func alertController() {//消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息
-        let alert = SPAlertController.alertController(withTitle: "标题", message: "消息消息", preferredStyle: .alert, animationType: .fromBottom)
+        let alert = SPAlertController.alertController(withTitle: "标题", message: "消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息", preferredStyle: .alert, animationType: .fromBottom)
         alert.needDialogBlur = false
         let action1 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
             print("点击了确定")

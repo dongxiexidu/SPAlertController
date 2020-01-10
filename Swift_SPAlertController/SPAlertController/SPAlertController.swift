@@ -147,7 +147,7 @@ class SPAlertController: UIViewController {
     public var _actionAxis: NSLayoutConstraint.Axis = .horizontal
     //本框架任何一处都不允许调用actionAxis的setter方法，如果调用了则无法判断是外界调用还是内部调用
     public var actionAxis: NSLayoutConstraint.Axis? {
-        didSet {
+        willSet {
             guard let actonA = actionAxis else { return }
             // 调用该setter方法则认为是强制布局，该setter方法只有外界能调，
             // 这样才能判断外界有没有调用actionAxis的setter方法，从而是否按照外界的指定布局方式进行布局
@@ -201,8 +201,8 @@ class SPAlertController: UIViewController {
                     break
                 }
                 
-                if let maskLayer = containerView.layer.mask {
-                    maskLayer.shadowPath = UIBezierPath.init(roundedRect: containerView.bounds, byRoundingCorners: UIRectCorner.init(corner), cornerRadii: CGSize.init(width: cornerRadius, height: cornerRadius)).cgPath
+                if let maskLayer = containerView.layer.mask as? CAShapeLayer {
+                    maskLayer.path = UIBezierPath.init(roundedRect: containerView.bounds, byRoundingCorners: UIRectCorner.init(corner), cornerRadii: CGSize.init(width: cornerRadius, height: cornerRadius)).cgPath
                     maskLayer.frame = containerView.bounds
                 }
             } else {
@@ -268,14 +268,13 @@ class SPAlertController: UIViewController {
         } else {
             dimmingKnockoutBackdropView?.removeFromSuperview()
             dimmingKnockoutBackdropView = nil
-            if customAlertView != nil {
+            if _customAlertView != nil {
                 containerView.backgroundColor = .clear
             } else {
                 containerView.backgroundColor = .white
             }
             containerView.backgroundColor = .red
         }
-        DLog(containerView)
     }
     
     // readonly
@@ -329,7 +328,7 @@ class SPAlertController: UIViewController {
     
     lazy var alertControllerView: UIView = {
         let alertC = UIView()
-        alertC.backgroundColor = .blue
+       // alertC.backgroundColor = .blue
         alertC.translatesAutoresizingMaskIntoConstraints = false
         return alertC
     }()
@@ -443,7 +442,7 @@ class SPAlertController: UIViewController {
     }
     // 先loadView(),后viewDidLoad()
     override func loadView() {
-         super.loadView()
+        // super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
        // self.view.backgroundColor = .blue
@@ -526,8 +525,8 @@ class SPAlertController: UIViewController {
         let bottomValue = minDistanceToEdges
         let maxWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minDistanceToEdges*2
         let maxHeight = SP_SCREEN_HEIGHT-topValue-bottomValue
-        DLog(maxHeight)
-        DLog(maxWidth)
+//        DLog("maxHeight = \(maxHeight)") 567.0
+//        DLog("maxWidth = \(maxWidth)") 275.0
         if self.customAlertView == nil {
             // 当屏幕旋转的时候，为了保持alert样式下的宽高不变，因此取MIN(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)
             alertControllerViewConstraints.append(NSLayoutConstraint.init(item: alertControllerView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: maxWidth))
@@ -564,8 +563,7 @@ class SPAlertController: UIViewController {
         NSLayoutConstraint.activate(alertControllerViewConstraints)
         self.alertControllerViewConstraints = alertControllerViewConstraints
         
-        DLog("alertControllerView")
-        DLog(alertControllerView)
+        DLog("alertControllerView=\(alertControllerView)")
     }
     
     func layoutAlertControllerViewForActionSheetStyle() {
@@ -740,7 +738,6 @@ extension SPAlertController {
             headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
         headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
-        // alertView frame = (0 0; 375 0)
         
         if headerActionLine.superview == nil {
             headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
@@ -759,9 +756,9 @@ extension SPAlertController {
         //headerV (0 -262.5; 213.5 88.5)
         let headerV = customHeaderView != nil ? customHeaderView! : headerView
         let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
-        if let constraints = self.headerViewConstraints {
+        if let constraints = self.headerActionLineConstraints {
             NSLayoutConstraint.deactivate(constraints)
-            self.headerViewConstraints = nil
+            self.headerActionLineConstraints = nil
         }
         
         var headerActionLineConstraints = [NSLayoutConstraint]()

@@ -41,6 +41,7 @@
 		D6D1EF8523C851D2002B16B3 /* 背景1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6D1EF7723C851D1002B16B3 /* 背景1.jpg */; };
 		D6D1EF8623C851D2002B16B3 /* image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6D1EF7823C851D1002B16B3 /* image3.jpg */; };
 		D6D1EF8823C882D5002B16B3 /* ViewController+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D1EF8723C882D4002B16B3 /* ViewController+Sheet.swift */; };
+		D6D1EF8A23C8841C002B16B3 /* ViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D1EF8923C8841C002B16B3 /* ViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		D6D1EF7723C851D1002B16B3 /* 背景1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "背景1.jpg"; sourceTree = "<group>"; };
 		D6D1EF7823C851D1002B16B3 /* image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpg; sourceTree = "<group>"; };
 		D6D1EF8723C882D4002B16B3 /* ViewController+Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Sheet.swift"; sourceTree = "<group>"; };
+		D6D1EF8923C8841C002B16B3 /* ViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				D6315176238E4FD30043D403 /* AppDelegate.swift */,
 				D631517A238E4FD30043D403 /* ViewController.swift */,
 				D6D1EF8723C882D4002B16B3 /* ViewController+Sheet.swift */,
+				D6D1EF8923C8841C002B16B3 /* ViewController+Alert.swift */,
 				D61C822223BAE3C800D0FC6B /* DLog.swift */,
 				D631517C238E4FD30043D403 /* Main.storyboard */,
 				D631517F238E4FD40043D403 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 				D631F91F239BA0BD000BA923 /* SPAlertController+transitionDelegate.swift in Sources */,
 				D67AE244239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift in Sources */,
 				D67AE23C239A25E400BC0A38 /* SPAlertController.swift in Sources */,
+				D6D1EF8A23C8841C002B16B3 /* ViewController+Alert.swift in Sources */,
 				D631517B238E4FD30043D403 /* ViewController.swift in Sources */,
 				D67AE238239A254C00BC0A38 /* SPAlertControllerDelegate.swift in Sources */,
 				D67AE240239A26E000BC0A38 /* SPOverlayView.swift in Sources */,

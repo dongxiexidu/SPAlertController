@@ -66,4 +66,31 @@ extension ViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    // 示例17:富文本(头部设置富文本)
+       func attributedStringTest2() {
+           let alertController = SPAlertController.alertController(withTitle: "", message: "确定拨打吗？", preferredStyle: .alert, animationType: .default)
+           let num = "15012345689"
+           let desc = "可能是一个电话号码"
+           let totalTitle = num+"\n"+desc
+           let attrTitle = NSMutableAttributedString.init(string: totalTitle)
+        
+           // 设置富文本子标题的字体
+           attrTitle.addAttribute(.foregroundColor, value: SYSTEM_COLOR, range: NSRange.init(location: 0, length: num.count))
+           alertController.attributedTitle = attrTitle
+           
+           
+           let action1 = SPAlertAction.action(withTitle: "取消",  style: .destructive) { (action) in
+               print("点击了`取消`")
+           }
+           let action2 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
+               print("点击了'确定'")
+           }
+           action2.titleColor = SYSTEM_COLOR
+           alertController.addAction(action: action1)
+           alertController.addAction(action: action2)
+           self.present(alertController, animated: true, completion: nil)
+       }
+       
+    
 }

@@ -269,7 +269,7 @@ extension SPAlertController{
         
         //FIXME:self.textFields.mutableCopy
         self.textFields.append(textField)
-        headerView.addTextField(textField: textField)
+        headerView!.addTextField(textField: textField)
         handler?(textField)
     }
 }

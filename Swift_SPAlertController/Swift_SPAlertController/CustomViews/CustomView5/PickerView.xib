@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PickerView" customModule="Swift_SPAlertController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHj-at-rg5">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eXu-nm-mhb"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem title="取消" id="bCz-vV-MW9">
+                            <connections>
+                                <action selector="cancelClick:" destination="iN0-l3-epB" id="jng-DJ-GdJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="blP-kJ-Lur"/>
+                        <barButtonItem title="确定" id="uHo-LR-TIh">
+                            <connections>
+                                <action selector="doneClick:" destination="iN0-l3-epB" id="gau-Mo-1gg"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leO-Sb-psp">
+                    <rect key="frame" x="0.0" y="44" width="414" height="196"/>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="leO-Sb-psp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="0va-Td-9vl"/>
+                <constraint firstAttribute="trailing" secondItem="BHj-at-rg5" secondAttribute="trailing" id="7CH-30-5Bo"/>
+                <constraint firstItem="leO-Sb-psp" firstAttribute="top" secondItem="BHj-at-rg5" secondAttribute="bottom" id="CFh-8n-U5K"/>
+                <constraint firstItem="BHj-at-rg5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="G5m-w9-Lnp"/>
+                <constraint firstAttribute="bottom" secondItem="leO-Sb-psp" secondAttribute="bottom" id="P7W-Yi-Dsb"/>
+                <constraint firstItem="BHj-at-rg5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ki8-4L-GHP"/>
+                <constraint firstItem="leO-Sb-psp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sa9-vi-Nmg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pickView" destination="leO-Sb-psp" id="aYV-vs-nZg"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="-119.19642857142857"/>
+        </view>
+    </objects>
+</document>

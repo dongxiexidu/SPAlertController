@@ -54,7 +54,7 @@ class SPAlertController: UIViewController {
             // 如果条件为真，说明外界在对title赋值之前就已经使用了self.view，
             // 先走了viewDidLoad方法，如果先走的viewDidLoad，
             // 需要在title的setter方法中重新设置数据,以下setter方法中的条件同理
-            headerView.titleLabel.text = mainTitle
+            headerView?.titleLabel.text = mainTitle
             
             // 文字发生变化后再更新布局，这里更新布局也不是那么重要，
             // 因为headerView中的布局方法只有当SPAlertController被present后才会走一次，
@@ -64,7 +64,7 @@ class SPAlertController: UIViewController {
             if presentationController?.presentingViewController != nil {
                 // 这个if条件的意思是当SPAlertController被present后的某个时刻设置了title，
                 // 如果在present之前设置的就不用更新，系统会主动更新
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
             
         }
@@ -75,9 +75,9 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.messageLabel.text = message
+            headerView?.messageLabel.text = message
             if presentationController?.presentingViewController != nil {
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -91,7 +91,7 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.titleLabel.textColor = newValue
+            headerView?.titleLabel.textColor = newValue
         }
     }
     /// 主标题字体,默认18,加粗
@@ -100,9 +100,9 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.titleLabel.font = newValue
+            headerView?.titleLabel.font = newValue
             if presentationController?.presentingViewController != nil {
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -112,7 +112,7 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.messageLabel.textColor = newValue
+            headerView?.messageLabel.textColor = newValue
         }
     }
     ///  副标题字体,默认16,未加粗
@@ -121,8 +121,8 @@ class SPAlertController: UIViewController {
     public var textAlignment: NSTextAlignment? {
         didSet {
             if let alignment = textAlignment {
-                headerView.titleLabel.textAlignment = alignment
-                headerView.messageLabel.textAlignment = alignment
+                headerView?.titleLabel.textAlignment = alignment
+                headerView?.messageLabel.textAlignment = alignment
             }
         }
     }
@@ -130,9 +130,9 @@ class SPAlertController: UIViewController {
     public var imageLimitSize: CGSize = CGSize.init(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT)) {
         willSet (newValue){
         
-            headerView.imageLimitSize = newValue
+            headerView?.imageLimitSize = newValue
             if presentationController?.presentingViewController != nil {
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -163,11 +163,14 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
-            setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
+            if let headerV = headerView {
+                setupPreferredMaxLayoutWidthForLabel(headerV.titleLabel)
+                setupPreferredMaxLayoutWidthForLabel(headerV.messageLabel)
+            }
+            
             if presentationController?.presentingViewController != nil {
                 layoutAlertControllerView()
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
                 actionSequenceView?.setNeedsUpdateConstraints()
             }
         }
@@ -215,9 +218,9 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.titleLabel.attributedText = attributedTitle
+            headerView?.titleLabel.attributedText = attributedTitle
             if presentationController?.presentingViewController != nil {
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -226,9 +229,9 @@ class SPAlertController: UIViewController {
             if self.isViewLoaded == false {
                 return
             }
-            headerView.messageLabel.attributedText = attributedMessage
+            headerView?.messageLabel.attributedText = attributedMessage
             if presentationController?.presentingViewController != nil {
-                headerView.setNeedsUpdateConstraints()
+                headerView?.setNeedsUpdateConstraints()
             }
         }
     }
@@ -291,9 +294,7 @@ class SPAlertController: UIViewController {
     var _actionSequenceView: SPInterfaceActionSequenceView?
     var actionSequenceView: SPInterfaceActionSequenceView?{
         get{
-            if _actionSequenceView != nil {
-                return _actionSequenceView
-            } else {
+            if _actionSequenceView == nil {
                 let actionV = SPInterfaceActionSequenceView.init()
                 actionV.translatesAutoresizingMaskIntoConstraints = false
                 actionV.buttonClickedInActionViewClosure = { [weak self] index in
@@ -302,14 +303,12 @@ class SPAlertController: UIViewController {
                         action.handler?(action)
                     }
                 }
-                if self.actions.count > 0 && self.customActionSequenceView == nil {
-                    self.alertView.addSubview(actionV)
+                if self.actions.count > 0 && self.customActionSequenceView == nil && self.alertView != nil{
+                    self.alertView!.addSubview(actionV)
                     _actionSequenceView = actionV
-                    return _actionSequenceView
-                }else{
-                    return nil
                 }
             }
+            return _actionSequenceView
         }
     }
     
@@ -321,21 +320,26 @@ class SPAlertController: UIViewController {
         let flag = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
         // 必须组件view和action部分同时存在
         if componentL.superview != nil && flag {
-            self.alertView.addSubview(componentL)
+            self.alertView?.addSubview(componentL)
         }
         return componentL
     }()
-    
-    lazy var alertView: UIView = {
-        let alert = UIView()
-        alert.backgroundColor = .lightGray
-        alert.frame = self.alertControllerView.bounds
-        alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        if self.customAlertView == nil {
-            self.containerView.addSubview(alert)
+    var _alertView: UIView?
+    var alertView: UIView? {
+        get{
+            if _alertView == nil {
+                let alert = UIView()
+                alert.backgroundColor = .lightGray
+                alert.frame = self.alertControllerView.bounds
+                alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                if self.customAlertView == nil {
+                    _alertView = alert
+                    self.containerView.addSubview(alert)
+                }
+            }
+            return _alertView
         }
-        return alert
-    }()
+    }
     
     lazy var alertControllerView: UIView = {
         let alertC = UIView()
@@ -366,7 +370,7 @@ class SPAlertController: UIViewController {
                 customViewSize = sizeForCustomView(_customHeaderView!)
             }
             _customHeaderView?.translatesAutoresizingMaskIntoConstraints = false
-            self.alertView.addSubview(_customHeaderView!)
+            self.alertView?.addSubview(_customHeaderView!)
         }
         return _customHeaderView
     }
@@ -378,23 +382,23 @@ class SPAlertController: UIViewController {
                 customViewSize = sizeForCustomView(_customActionSequenceView!)
             }
             _customActionSequenceView?.translatesAutoresizingMaskIntoConstraints = false
-            self.alertView.addSubview(_customActionSequenceView!)
+            self.alertView?.addSubview(_customActionSequenceView!)
         }
         return _customActionSequenceView
     }
     
     //
     var componentView: UIView? {
-        // customAlertView有值但是没有父view
+        // _componentView有值但是没有父view
         if _componentView != nil && _componentView?.superview == nil {
-            assert(self.headerActionLine.superview != nil, "Due to the -componentView is added between the -head and the -action section, the -head and -action must exist together")
+            assert(self.headerActionLine!.superview != nil, "Due to the -componentView is added between the -head and the -action section, the -head and -action must exist together")
             // 获取_componentView的大小
             if customViewSize.equalTo(.zero) {
                 customViewSize = sizeForCustomView(_componentView!)
             }
             
-            _customAlertView?.translatesAutoresizingMaskIntoConstraints = false
-            self.alertView.addSubview(_componentView!)
+            _componentView?.translatesAutoresizingMaskIntoConstraints = false
+            self.alertView?.addSubview(_componentView!)
         }
         return _componentView
     }
@@ -417,34 +421,58 @@ class SPAlertController: UIViewController {
         return containerV
     }()
     
-    lazy var headerView: SPInterfaceHeaderScrollView = {
-        let header = SPInterfaceHeaderScrollView()
-        header.backgroundColor = SP_NORMAL_COLOR
-       // header.backgroundColor = .red
-        header.translatesAutoresizingMaskIntoConstraints = false
-        header.headerViewSafeAreaDidChangeClosure = { [weak self] in
-            self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
-            self?.setupPreferredMaxLayoutWidthForLabel(header.messageLabel)
-        }
-        if self.customHeaderView == nil {
-            if (mainTitle != nil && mainTitle!.count > 0) || attributedTitle != nil || (message != nil && message!.count > 0) || attributedMessage != nil || textFields.count > 0 || image != nil{
-                self.alertView.addSubview(header)
+    
+    var _headerView: SPInterfaceHeaderScrollView?
+    var headerView: SPInterfaceHeaderScrollView? {
+        get{
+            if _headerView == nil {
+                let header = SPInterfaceHeaderScrollView()
+                 header.backgroundColor = SP_NORMAL_COLOR
+                // header.backgroundColor = .red
+                 header.translatesAutoresizingMaskIntoConstraints = false
+                 header.headerViewSafeAreaDidChangeClosure = { [weak self] in
+                     self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
+                     self?.setupPreferredMaxLayoutWidthForLabel(header.messageLabel)
+                 }
+                 if self.customHeaderView == nil {
+                     if (mainTitle != nil && mainTitle!.count > 0) || attributedTitle != nil || (message != nil && message!.count > 0) || attributedMessage != nil || textFields.count > 0 || image != nil{
+                        _headerView = header
+                        self.alertView?.addSubview(header)
+                     }
+                 }
             }
+            return _headerView
         }
         
-        return header
-    }()
+    }
     
-    lazy var headerActionLine: SPInterfaceActionItemSeparatorView = {
-        let headerLine = SPInterfaceActionItemSeparatorView()
-        headerLine.translatesAutoresizingMaskIntoConstraints = false
-        let flag1 = (headerView.superview != nil || customHeaderView?.superview != nil)
-        let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
-        if flag1 && flag2 {
-            self.alertView.addSubview(headerLine)
+//    lazy var headerActionLine: SPInterfaceActionItemSeparatorView = {
+//        let headerLine = SPInterfaceActionItemSeparatorView()
+//        headerLine.translatesAutoresizingMaskIntoConstraints = false
+//        let flag1 = (headerView.superview != nil || customHeaderView?.superview != nil)
+//        let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
+//        if flag1 && flag2 {
+//            self.alertView.addSubview(headerLine)
+//        }
+//        return headerLine
+//    }()
+    
+    var _headerActionLine: SPInterfaceActionItemSeparatorView?
+    var headerActionLine: SPInterfaceActionItemSeparatorView? {
+        get{
+            if _headerActionLine == nil {
+                let headerLine = SPInterfaceActionItemSeparatorView()
+                headerLine.translatesAutoresizingMaskIntoConstraints = false
+                let flag1 = (headerView?.superview != nil || customHeaderView?.superview != nil)
+                let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
+                if flag1 && flag2 {
+                    _headerActionLine = headerLine
+                    self.alertView?.addSubview(headerLine)
+                }
+            }
+            return _headerActionLine
         }
-        return headerLine
-    }()
+    }
     
     //MARK: - system methods
     
@@ -495,8 +523,11 @@ class SPAlertController: UIViewController {
         
         DLog("viewWillLayoutSubviews ++++++++++++")
         // 屏幕旋转后宽高发生了交换，头部的label最大宽度需要重新计算
-        setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
-        setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
+        if let headerV = headerView {
+            setupPreferredMaxLayoutWidthForLabel(headerV.titleLabel)
+            setupPreferredMaxLayoutWidthForLabel(headerV.messageLabel)
+        }
+        
         // 对自己创建的alertControllerView布局，在这个方法里，self.view才有父视图，有父视图才能改变其约束
         layoutAlertControllerView()
         layoutChildViews()
@@ -725,7 +756,8 @@ extension SPAlertController {
     
     // 对头部布局
     private func layoutHeaderView() {
-        let headerV = customHeaderView != nil ? customHeaderView! : self.headerView
+        let headerVTemp = customHeaderView != nil ? customHeaderView! : self.headerView
+        guard let headerV = headerVTemp else { return }
         if headerV.superview == nil {
             return
         }
@@ -751,21 +783,22 @@ extension SPAlertController {
         }
         headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         
-        if headerActionLine.superview == nil {
+        if headerActionLine?.superview == nil {
             headerViewConstraints.append(NSLayoutConstraint.init(item: headerV, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
         }
         NSLayoutConstraint.activate(headerViewConstraints)
         self.headerViewConstraints = headerViewConstraints
         
-        DLog("alertView = \(alertView)")
+       // DLog("alertView = \(alertView)")
     }
     
     // 对头部和action部分之间的分割线布局
     private func layoutHeaderActionLine() {
+        guard let headerActionLine = headerActionLine else { return }
         if headerActionLine.superview == nil {
             return
         }
-        //headerV (0 -262.5; 213.5 88.5)
+
         let headerV = customHeaderView != nil ? customHeaderView! : headerView
         let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView!
         if let constraints = self.headerActionLineConstraints {
@@ -832,7 +865,8 @@ extension SPAlertController {
     }
     // 对action部分布局,高度由子控件撑起
     private func layoutActionSequenceView() {
-        let actionSequenceView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView!
+        let actionSequenceViewTemp = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView
+        guard let actionSequenceView = actionSequenceViewTemp else { return }
         if actionSequenceView.superview == nil {
             return
         }
@@ -861,7 +895,7 @@ extension SPAlertController {
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
         // 没有headerView的情况
-        if headerView.superview == nil {
+        if headerView?.superview == nil {
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         }
         actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))
@@ -965,10 +999,10 @@ extension SPAlertController {
     
     private func setupPreferredMaxLayoutWidthForLabel(_ textLabel: UILabel) {
         if preferredStyle == .alert {
-            let minus = minDistanceToEdges*2+headerView.contentEdgeInsets.left+headerView.contentEdgeInsets.right
+            let minus = minDistanceToEdges*2+headerView!.contentEdgeInsets.left+headerView!.contentEdgeInsets.right
             textLabel.preferredMaxLayoutWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minus
         } else {
-            let minus = headerView.contentEdgeInsets.left+headerView.contentEdgeInsets.right
+            let minus = headerView!.contentEdgeInsets.left+headerView!.contentEdgeInsets.right
             DLog(minus)
             textLabel.preferredMaxLayoutWidth = SP_SCREEN_WIDTH-minus
             DLog(textLabel.preferredMaxLayoutWidth)
@@ -977,35 +1011,35 @@ extension SPAlertController {
     
     func configureHeaderView() {
         if let img = image {
-            headerView.imageLimitSize = imageLimitSize
-            headerView.imageView.image = img
-            headerView.setNeedsUpdateConstraints()
+            headerView?.imageLimitSize = imageLimitSize
+            headerView?.imageView.image = img
+            headerView?.setNeedsUpdateConstraints()
         }
         
         if let attrTitle = attributedTitle, attrTitle.length > 0 {
-            headerView.titleLabel.attributedText = attrTitle
-            setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
+            headerView?.titleLabel.attributedText = attrTitle
+            setupPreferredMaxLayoutWidthForLabel(headerView!.titleLabel)
         } else if mainTitle != nil && mainTitle!.count > 0 {
-            headerView.titleLabel.text = mainTitle
-            headerView.titleLabel.font = titleFont
-            headerView.titleLabel.textColor = titleColor
+            headerView?.titleLabel.text = mainTitle
+            headerView?.titleLabel.font = titleFont
+            headerView?.titleLabel.textColor = titleColor
             if let alignment = textAlignment {
-                headerView.titleLabel.textAlignment = alignment
+                headerView?.titleLabel.textAlignment = alignment
             }
-            setupPreferredMaxLayoutWidthForLabel(headerView.titleLabel)
+            setupPreferredMaxLayoutWidthForLabel(headerView!.titleLabel)
         }
         
         if let attrTitle = attributedMessage, attrTitle.length > 0  {
-            headerView.messageLabel.attributedText = attrTitle
-            setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
+            headerView?.messageLabel.attributedText = attrTitle
+            setupPreferredMaxLayoutWidthForLabel(headerView!.messageLabel)
         } else if (message != nil && message!.count > 0) {
-            headerView.messageLabel.text = message
-            headerView.messageLabel.font = messageFont
-            headerView.messageLabel.textColor = messageColor
+            headerView!.messageLabel.text = message
+            headerView!.messageLabel.font = messageFont
+            headerView!.messageLabel.textColor = messageColor
             if let alignment = textAlignment {
-                headerView.messageLabel.textAlignment = alignment
+                headerView!.messageLabel.textAlignment = alignment
             }
-            setupPreferredMaxLayoutWidthForLabel(headerView.messageLabel)
+            setupPreferredMaxLayoutWidthForLabel(headerView!.messageLabel)
         }
         
     }

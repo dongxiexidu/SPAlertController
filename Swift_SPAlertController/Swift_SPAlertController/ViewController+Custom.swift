@@ -3,7 +3,7 @@
 //  Swift_SPAlertController
 //
 //  Created by lidongxi on 2020/1/11.
-//  Copyright © 2020 HeFahu. All rights reserved.
+//  Copyright © 2020 lidongxi. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ extension ViewController {
        // sendAlertView.contentImage = UIImage.init(named: "send0")
         let alertController = SPAlertController.alertController(withCustomHeaderView: sendAlertView, preferredStyle: .alert, animationType: .default)
         alertController.needDialogBlur = false
-        let fittingSize = sendAlertView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+       // let fittingSize = sendAlertView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
        // alertController.updateCustomViewSize(size: fittingSize)
         let action1 = SPAlertAction.action(withTitle: "发送", style: .default) { (action) in
             print("点击了发送")
@@ -99,26 +99,5 @@ extension ViewController {
         alertController.needDialogBlur = false
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    // 示例26:插入一个组件
-    func customTest9() {
-        let centerView = MyCenterView.init(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth-40, height: 200))
-        let alertController = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .default)
-        alertController.insertComponentView(centerView)
-        let action1 = SPAlertAction.action(withTitle: "第1个", style: .default) { (action) in
-            print("点击了第1个")
-        }
-        let action2 = SPAlertAction.action(withTitle: "第2个", style: .destructive) { (action) in
-            print("点击了第2个")
-        }
-       
-        // 设置第2个action的颜色
-        action1.titleColor = SYSTEM_COLOR
-        action2.titleColor = .red
-        alertController.addAction(action: action1)
-        alertController.addAction(action: action2)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    
+
 }

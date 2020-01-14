@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D61C822323BAE3C800D0FC6B /* DLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61C822223BAE3C800D0FC6B /* DLog.swift */; };
+		D620F7DE23CD548B00807E96 /* ViewController+Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620F7DD23CD548B00807E96 /* ViewController+Special.swift */; };
+		D620F7E023CD5EA900807E96 /* ViewController+background.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620F7DF23CD5EA900807E96 /* ViewController+background.swift */; };
 		D62575F1239DD791001262A1 /* SPAlertController+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62575F0239DD791001262A1 /* SPAlertController+Public.swift */; };
 		D6315177238E4FD30043D403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6315176238E4FD30043D403 /* AppDelegate.swift */; };
 		D631517B238E4FD30043D403 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631517A238E4FD30043D403 /* ViewController.swift */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		D61C822223BAE3C800D0FC6B /* DLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLog.swift; sourceTree = "<group>"; };
+		D620F7DD23CD548B00807E96 /* ViewController+Special.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Special.swift"; sourceTree = "<group>"; };
+		D620F7DF23CD5EA900807E96 /* ViewController+background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+background.swift"; sourceTree = "<group>"; };
 		D62575F0239DD791001262A1 /* SPAlertController+Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPAlertController+Public.swift"; sourceTree = "<group>"; };
 		D6315173238E4FD30043D403 /* Swift_SPAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_SPAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6315176238E4FD30043D403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				D6D1EF8923C8841C002B16B3 /* ViewController+Alert.swift */,
 				D6B797E023C8B598007A7608 /* ViewController+Attributed.swift */,
 				D6B797E223C9581E007A7608 /* ViewController+Custom.swift */,
+				D620F7DD23CD548B00807E96 /* ViewController+Special.swift */,
+				D620F7DF23CD5EA900807E96 /* ViewController+background.swift */,
 				D61C822223BAE3C800D0FC6B /* DLog.swift */,
 				D6B797F223C96E1B007A7608 /* Nibloadable.swift */,
 				D6B797E423C95891007A7608 /* CustomViews */,
@@ -383,8 +389,10 @@
 			files = (
 				D65B853323CC3A0B00840186 /* MyView.swift in Sources */,
 				D6D1EF8823C882D5002B16B3 /* ViewController+Sheet.swift in Sources */,
+				D620F7DE23CD548B00807E96 /* ViewController+Special.swift in Sources */,
 				D65B854C23CC6CE000840186 /* MyCenterView.swift in Sources */,
 				D67AE246239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift in Sources */,
+				D620F7E023CD5EA900807E96 /* ViewController+background.swift in Sources */,
 				D631518C238E50400043D403 /* SPInterfaceActionItemSeparatorView.swift in Sources */,
 				D67AE23E239A269200BC0A38 /* SPAlertPresentationController.swift in Sources */,
 				D67AE248239A729200BC0A38 /* SPAlertControllerActionView.swift in Sources */,

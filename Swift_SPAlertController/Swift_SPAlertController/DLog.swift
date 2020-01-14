@@ -3,7 +3,7 @@
 //  IsuzuAuto
 //
 //  Created by lidongxi on 2019/8/17.
-//  Copyright © 2019 HeFahu. All rights reserved.
+//  Copyright © 2019 lidongxi. All rights reserved.
 //
 
 import Foundation

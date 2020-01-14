@@ -107,7 +107,7 @@ class SPAlertController: UIViewController {
         }
     }
     /// 副标题颜色
-    public var messageColor: UIColor = .black {
+    public var messageColor: UIColor = UIColor.gray {
         willSet (newValue){
             if self.isViewLoaded == false {
                 return
@@ -236,8 +236,8 @@ class SPAlertController: UIViewController {
         }
     }
     
-    /// 是否需要对话框拥有毛玻璃,默认为YES
-    public var needDialogBlur: Bool = true {
+    /// 是否需要对话框拥有毛玻璃,默认为false
+    public var needDialogBlur: Bool = false {
         
         didSet {
             updateDialogBlur(needDialogBlur: needDialogBlur)
@@ -255,6 +255,7 @@ class SPAlertController: UIViewController {
                 dimmingdropView.frame = containerView.bounds
                 dimmingdropView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 dimmingKnockoutBackdropView = dimmingdropView
+                dimmingKnockoutBackdropView?.backgroundColor = .white
                 self.containerView.insertSubview(dimmingKnockoutBackdropView!, at: 0)
             } else {
                 // 这个else是防止假如_UIDimmingKnockoutBackdropView这个类不存在了的时候，做一个备案
@@ -273,7 +274,6 @@ class SPAlertController: UIViewController {
             } else {
                 containerView.backgroundColor = .white
             }
-            containerView.backgroundColor = .red
         }
     }
     
@@ -326,19 +326,17 @@ class SPAlertController: UIViewController {
     }()
     var _alertView: UIView?
     var alertView: UIView? {
-        get{
-            if _alertView == nil {
-                let alert = UIView()
-                alert.backgroundColor = .lightGray
-                alert.frame = self.alertControllerView.bounds
-                alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                if self.customAlertView == nil {
-                    _alertView = alert
-                    self.containerView.addSubview(alert)
-                }
+        if _alertView == nil {
+            let alert = UIView()
+            //alert.backgroundColor = .lightGray
+            alert.frame = self.alertControllerView.bounds
+            alert.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            if self.customAlertView == nil {
+                _alertView = alert
+                self.containerView.addSubview(alert)
             }
-            return _alertView
         }
+        return _alertView
     }
     
     lazy var alertControllerView: UIView = {
@@ -424,39 +422,26 @@ class SPAlertController: UIViewController {
     
     var _headerView: SPInterfaceHeaderScrollView?
     var headerView: SPInterfaceHeaderScrollView? {
-        get{
-            if _headerView == nil {
-                let header = SPInterfaceHeaderScrollView()
-                 header.backgroundColor = SP_NORMAL_COLOR
-                // header.backgroundColor = .red
-                 header.translatesAutoresizingMaskIntoConstraints = false
-                 header.headerViewSafeAreaDidChangeClosure = { [weak self] in
-                     self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
-                     self?.setupPreferredMaxLayoutWidthForLabel(header.messageLabel)
-                 }
-                 if self.customHeaderView == nil {
-                     if (mainTitle != nil && mainTitle!.count > 0) || attributedTitle != nil || (message != nil && message!.count > 0) || attributedMessage != nil || textFields.count > 0 || image != nil{
-                        _headerView = header
-                        self.alertView?.addSubview(header)
-                     }
-                 }
+        if _headerView == nil {
+            let header = SPInterfaceHeaderScrollView()
+            header.backgroundColor = SP_NORMAL_COLOR
+            // header.backgroundColor = .red
+            header.translatesAutoresizingMaskIntoConstraints = false
+            header.headerViewSafeAreaDidChangeClosure = { [weak self] in
+                self?.setupPreferredMaxLayoutWidthForLabel(header.titleLabel)
+                self?.setupPreferredMaxLayoutWidthForLabel(header.messageLabel)
             }
-            return _headerView
+            if self.customHeaderView == nil {
+                if (mainTitle != nil && mainTitle!.count > 0) || attributedTitle != nil || (message != nil && message!.count > 0) || attributedMessage != nil || textFields.count > 0 || image != nil{
+                    _headerView = header
+                    self.alertView?.addSubview(header)
+                }
+            }
         }
+        return _headerView
         
     }
-    
-//    lazy var headerActionLine: SPInterfaceActionItemSeparatorView = {
-//        let headerLine = SPInterfaceActionItemSeparatorView()
-//        headerLine.translatesAutoresizingMaskIntoConstraints = false
-//        let flag1 = (headerView.superview != nil || customHeaderView?.superview != nil)
-//        let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
-//        if flag1 && flag2 {
-//            self.alertView.addSubview(headerLine)
-//        }
-//        return headerLine
-//    }()
-    
+
     var _headerActionLine: SPInterfaceActionItemSeparatorView?
     var headerActionLine: SPInterfaceActionItemSeparatorView? {
         get{
@@ -799,7 +784,9 @@ extension SPAlertController {
             return
         }
 
-        let headerV = customHeaderView != nil ? customHeaderView! : headerView
+        let headerVTemp = customHeaderView != nil ? customHeaderView! : headerView
+        guard let headerV = headerVTemp else { return }
+        
         let actionSequenceV: UIView = customActionSequenceView != nil ? customActionSequenceView! : self.actionSequenceView!
         if let constraints = self.headerActionLineConstraints {
             NSLayoutConstraint.deactivate(constraints)

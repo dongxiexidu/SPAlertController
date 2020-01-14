@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var alertController: SPAlertController!
-    
+    var haveBg: Bool = false
     var lookBlur: Bool = false
     var sureAction: SPAlertAction!
     var phoneNumberTextField: UITextField!
@@ -31,9 +31,11 @@ class ViewController: UIViewController {
       ],
     ["富文本(action设置富文本)","富文本(头部设置富文本)"
       ],
-    ["自定义头部(xib)","自定义整个对话框(alert样式)","自定义整个对话框(actionSheet样式(底))","自定义整个对话框(actionSheet样式(右)）","自定义整个对话框(actionSheet样式(左)）","自定义整个对话框(actionSheet样式(顶))","自定义整个对话框(pickerView)","自定义action部分","插入一个组件","自定义整个对话框(全屏)"
+    ["自定义头部(xib)","自定义整个对话框(alert样式)","自定义整个对话框(actionSheet样式(底))","自定义整个对话框(actionSheet样式(右)）","自定义整个对话框(actionSheet样式(左)）","自定义整个对话框(actionSheet样式(顶))","自定义整个对话框(pickerView)","自定义action部分","自定义整个对话框(全屏)"
       ],
-    ["当按钮过多时，以scrollView滑动","当文字和按钮同时过多时,二者都可滑动","含有文本输入框，且文字过多","action上的文字过长（垂直）","action上的文字过长（水平）"
+    ["当按钮过多时，以scrollView滑动","当文字和按钮同时过多时,二者都可滑动",
+    // "含有文本输入框，且文字过多",
+     "action上的文字过长（垂直）","action上的文字过长（水平）"
       ],
     ["透明黑色背景样式(背景无毛玻璃,默认)","背景毛玻璃Dark样式","背景毛玻璃ExtraLight样式","背景毛玻璃Light样式"
       ]
@@ -44,16 +46,48 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableHeaderView = UIView()
-        tableView.tableFooterView = UIView()
+        self.navigationItem.title = "演示Demo"
         tableView.sectionFooterHeight = 0.001
-        
-       // tableView.reloadData()
+        setupNav()
     }
     
+    private func setupNav() {
+        let changeBgBtn = UIButton.init(type: .custom)
+        changeBgBtn.setTitleColor(.black, for: .normal)
+        changeBgBtn.setTitleColor(.blue, for: .selected)
+        changeBgBtn.setTitle("切换背景", for: .normal)
+        changeBgBtn.addTarget(self, action: #selector(changeBackgroundImage(btn:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: changeBgBtn)
+        
+        let blurBtn = UIButton.init(type: .custom)
+        blurBtn.setTitleColor(.black, for: .normal)
+        blurBtn.setTitleColor(.blue, for: .selected)
+        blurBtn.setTitle("打开毛玻璃", for: .normal)
+        blurBtn.setTitle("关闭毛玻璃", for: .selected)
+        blurBtn.addTarget(self, action: #selector(lookBlurAction(btn:)), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: blurBtn)
+    }
     
+    @objc func changeBackgroundImage(btn: UIButton) {
+        if btn.isSelected == false{
+            tableView.backgroundView = UIImageView.init(image: UIImage.init(named: "背景2.jpg"))
+            haveBg = true
+        } else {
+            haveBg = false
+            tableView.backgroundView = nil
+        }
+        btn.isSelected = !btn.isSelected
+        tableView.reloadData()
+    }
+    @objc func lookBlurAction(btn: UIButton) {
+        lookBlur = !btn.isSelected
+//        if btn.isSelected {
+//            <#statements#>
+//        } else {
+//            <#statements#>
+//        }
+        btn.isSelected = !btn.isSelected
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -68,6 +102,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertControllerTestCell")!
         cell.textLabel?.text = dataSource[indexPath.section][indexPath.row]
         cell.textLabel?.font = .systemFont(ofSize: 12)
+        if haveBg == true {
+            cell.backgroundColor = .clear
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
     
@@ -160,13 +199,33 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 customTest7()
             case 7:
                 customTest8()
-            case 8:
-                customTest9()
             default:
                 actionSheetTest1()
             }
-        } else {
-            
-        }
+        } else if indexPath.section == 4 { // 特殊情况区
+            switch indexPath.row {
+            case 0:
+                specialtest1()
+            case 1:
+                specialtest2()
+            case 2:
+                specialtest4()
+            case 3:
+                specialtest5()
+            default:
+                actionSheetTest1()
+            }
+        } else if indexPath.section == 5 { // 背景毛玻璃示例
+                   switch indexPath.row {
+                   case 0:
+                    background(appearanceStyle: .translucent)
+                   case 1:
+                       background(appearanceStyle: .blurDark)
+                   case 2:
+                       background(appearanceStyle: .blurExtraLight)
+                   default:
+                       background(appearanceStyle: .blurExtraLight)
+                   }
+               }
     }
 }

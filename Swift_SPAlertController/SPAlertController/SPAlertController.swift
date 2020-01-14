@@ -198,7 +198,7 @@ class SPAlertController: UIViewController {
                 case .fromLeft:
                     corner = [.topRight, .bottomRight]
                 case .fromRight:
-                    corner = [.topLeft, .topRight]
+                    corner = [.topLeft, .bottomLeft]
                 default:
                     break
                 }
@@ -293,23 +293,21 @@ class SPAlertController: UIViewController {
     // 弱引用的view必须要添加到父view中才有值
     var _actionSequenceView: SPInterfaceActionSequenceView?
     var actionSequenceView: SPInterfaceActionSequenceView?{
-        get{
-            if _actionSequenceView == nil {
-                let actionV = SPInterfaceActionSequenceView.init()
-                actionV.translatesAutoresizingMaskIntoConstraints = false
-                actionV.buttonClickedInActionViewClosure = { [weak self] index in
-                    self?.dismiss(animated: true, completion: nil)
-                    if let action = self?.actions[index] {
-                        action.handler?(action)
-                    }
-                }
-                if self.actions.count > 0 && self.customActionSequenceView == nil && self.alertView != nil{
-                    self.alertView!.addSubview(actionV)
-                    _actionSequenceView = actionV
+        if _actionSequenceView == nil {
+            let actionV = SPInterfaceActionSequenceView.init()
+            actionV.translatesAutoresizingMaskIntoConstraints = false
+            actionV.buttonClickedInActionViewClosure = { [weak self] index in
+                self?.dismiss(animated: true, completion: nil)
+                if let action = self?.actions[index] {
+                    action.handler?(action)
                 }
             }
-            return _actionSequenceView
+            if self.actions.count > 0 && self.customActionSequenceView == nil && self.alertView != nil{
+                self.alertView!.addSubview(actionV)
+                _actionSequenceView = actionV
+            }
         }
+        return _actionSequenceView
     }
     
     
@@ -444,19 +442,18 @@ class SPAlertController: UIViewController {
 
     var _headerActionLine: SPInterfaceActionItemSeparatorView?
     var headerActionLine: SPInterfaceActionItemSeparatorView? {
-        get{
-            if _headerActionLine == nil {
-                let headerLine = SPInterfaceActionItemSeparatorView()
-                headerLine.translatesAutoresizingMaskIntoConstraints = false
-                let flag1 = (headerView?.superview != nil || customHeaderView?.superview != nil)
-                let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
-                if flag1 && flag2 {
-                    _headerActionLine = headerLine
-                    self.alertView?.addSubview(headerLine)
-                }
+        if _headerActionLine == nil {
+            let headerLine = SPInterfaceActionItemSeparatorView()
+            headerLine.translatesAutoresizingMaskIntoConstraints = false
+            let flag1 = (headerView?.superview != nil || customHeaderView?.superview != nil)
+            let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
+            DLog("flag1=\(flag1) flag2=\(flag2) ")
+            if flag1 && flag2 {
+                _headerActionLine = headerLine
+                self.alertView?.addSubview(headerLine)
             }
-            return _headerActionLine
         }
+        return _headerActionLine
     }
     
     //MARK: - system methods
@@ -659,7 +656,6 @@ extension SPAlertController {
             }
         }
        
-        
         if preferredStyle == .alert {
             self.minDistanceToEdges = (min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-275)/2
             _actionAxis = .horizontal
@@ -881,8 +877,8 @@ extension SPAlertController {
             }
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .centerX, relatedBy: .equal, toItem: alertView, attribute: .centerX, multiplier: 1.0, constant: 0))
         }
-        // 没有headerView的情况
-        if headerView?.superview == nil {
+       
+        if headerActionLine == nil {
             actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .top, relatedBy: .equal, toItem: alertView, attribute: .top, multiplier: 1.0, constant: 0))
         }
         actionSequenceViewConstraints.append(NSLayoutConstraint.init(item: actionSequenceView, attribute: .bottom, relatedBy: .equal, toItem: alertView, attribute: .bottom, multiplier: 1.0, constant: 0))

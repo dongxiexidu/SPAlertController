@@ -192,6 +192,11 @@ extension ViewController{
          alertController.addAction(action: action5)
          alertController.addAction(action: action6)
          alertController.addAction(action: action7)
+        //模拟多分区样式
+        if #available(iOS 11.0, *) {
+            alertController.setCustomSpacing(spacing: 6.0, aferAction: action2)
+            alertController.setCustomSpacing(spacing: 6.0, aferAction: action4)
+        }
          
          self.present(alertController, animated: true, completion: nil)
      }

@@ -13,15 +13,15 @@ extension ViewController {
     // 示例18:自定义头部(xib)
     func customTest1() {
         let sendAlertView = SendAlertView.loadFromNib()
-       // sendAlertView.contentImage = UIImage.init(named: "send0")
+//        sendAlertView.contentImage = UIImage.init(named: "send0.jpeg")
         let alertController = SPAlertController.alertController(withCustomHeaderView: sendAlertView, preferredStyle: .alert, animationType: .default)
         alertController.needDialogBlur = false
-       // let fittingSize = sendAlertView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-       // alertController.updateCustomViewSize(size: fittingSize)
+//        let fittingSize = sendAlertView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+//        alertController.updateCustomViewSize(size: fittingSize)
         let action1 = SPAlertAction.action(withTitle: "发送", style: .default) { (action) in
             print("点击了发送")
         }
-        let action2 = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
+        let action2 = SPAlertAction.action(withTitle: "取消", style: .destructive) { (action) in
             print("点击了取消")
         }
         alertController.addAction(action: action2)
@@ -99,5 +99,23 @@ extension ViewController {
         alertController.needDialogBlur = false
         self.present(alertController, animated: true, completion: nil)
     }
-
+    // 示例25:插入一个组件
+    func customTest9() {
+        let centerView = MyCenterView.init(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth-40, height: 200))
+        let alertController = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .default)
+        // 插入一个view
+        alertController.insertComponentView(centerView)
+        let action1 = SPAlertAction.action(withTitle: "第1个", style: .default) { (action) in
+            print("点击了第1个")
+        }
+        action1.titleColor = SYSTEM_COLOR
+        let action2 = SPAlertAction.action(withTitle: "第2个", style: .destructive) { (action) in
+            print("点击了第2个")
+        }
+        action2.titleColor = .red
+        alertController.addAction(action: action1)
+        alertController.addAction(action: action2)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }

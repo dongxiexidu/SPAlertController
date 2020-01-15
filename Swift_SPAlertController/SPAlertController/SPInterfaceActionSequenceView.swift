@@ -118,7 +118,6 @@ extension SPInterfaceActionSequenceView {
         }
         self.updateLineConstraints()
     }
-    
     internal func customSpacingAfterActionIndex(_ index: Int) -> CGFloat {
         
         guard let actionView = stackView.arrangedSubviews[index] as? SPAlertControllerActionView else { return 0.0 }

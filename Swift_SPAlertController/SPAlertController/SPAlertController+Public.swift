@@ -40,7 +40,7 @@ extension SPAlertController{
         return alertVC
     }
     
-    /// 创建控制器(自定义整个对话框)
+    /// 创建控制器(自定义对话框的头部)
     /// - Parameters:
     ///   - customHeaderView: 头部自定义view
     ///   - preferredStyle: 对话框样式
@@ -48,12 +48,17 @@ extension SPAlertController{
     public class func alertController(withCustomHeaderView customHeaderView: UIView,
                                                   preferredStyle: SPAlertControllerStyle,
                                                   animationType: SPAlertAnimationType)
-           ->SPAlertController {
+        ->SPAlertController {
             
         let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: nil, customHeaderView: customHeaderView, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
         return alertVC
     }
-
+    
+    /// 创建控制器(自定义对话框的action部分)
+    /// - Parameters:
+    ///   - customActionSequenceView: 自定义对话框的action部分
+    ///   - preferredStyle: 对话框样式
+    ///   - animationType: 动画类型
     public class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
                                                   preferredStyle: SPAlertControllerStyle,
                                                   animationType: SPAlertAnimationType)
@@ -70,7 +75,7 @@ extension SPAlertController{
     ///   - message: 副标题
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
-    class func alertControllerWithCustomActionSequenceView(customActionSequenceView: UIView,
+    public class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
                                                            title: String,
                                                            message: String,
                                                            preferredStyle: SPAlertControllerStyle,
@@ -156,7 +161,7 @@ extension SPAlertController{
     }
     
     public func addAction(action: SPAlertAction) {
-        //FIXME:actions 要修改为只读属性,防止外界添加
+        //FIXME:actions 要修改为只读属性,防止外界修改actions
         actions.append(action)
         // alert样式不论是否为取消样式的按钮，都直接按顺序添加
         if preferredStyle == .alert {

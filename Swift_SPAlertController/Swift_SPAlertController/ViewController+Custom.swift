@@ -95,7 +95,7 @@ extension ViewController {
             self?.presentedViewController?.dismiss(animated: true, completion: nil)
         }
         
-        let alertController = SPAlertController.alertControllerWithCustomActionSequenceView(customActionSequenceView: scoreView, title: "提示", message: "请给我们的app打分", preferredStyle: .alert, animationType: .default)
+        let alertController = SPAlertController.alertController(withCustomActionSequenceView: scoreView, title: "提示", message: "请给我们的app打分", preferredStyle: .alert, animationType: .default)
         alertController.needDialogBlur = false
         self.present(alertController, animated: true, completion: nil)
     }

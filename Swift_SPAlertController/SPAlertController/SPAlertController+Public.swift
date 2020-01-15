@@ -8,16 +8,16 @@
 
 import UIKit
 
-extension SPAlertController{
+public extension SPAlertController{
     
-    public class func alertController(withTitle title: String?,
+    class func alertController(withTitle title: String?,
                                                message: String?,
                                                preferredStyle: SPAlertControllerStyle)->SPAlertController {
         let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: SPAlertAnimationType.default)
         return alertVC
     }
     
-    public class func alertController(withTitle title: String?,
+    class func alertController(withTitle title: String?,
                                                message: String?,
                                                preferredStyle: SPAlertControllerStyle,
                                                animationType: SPAlertAnimationType)
@@ -31,7 +31,7 @@ extension SPAlertController{
     ///   - customAlertView: 整个对话框的自定义view
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
-    public class func alertController(withCustomAlertView customAlertView: UIView,
+    class func alertController(withCustomAlertView customAlertView: UIView,
                                                   preferredStyle: SPAlertControllerStyle,
                                                   animationType: SPAlertAnimationType)
            ->SPAlertController {
@@ -45,7 +45,7 @@ extension SPAlertController{
     ///   - customHeaderView: 头部自定义view
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
-    public class func alertController(withCustomHeaderView customHeaderView: UIView,
+    class func alertController(withCustomHeaderView customHeaderView: UIView,
                                                   preferredStyle: SPAlertControllerStyle,
                                                   animationType: SPAlertAnimationType)
         ->SPAlertController {
@@ -59,7 +59,7 @@ extension SPAlertController{
     ///   - customActionSequenceView: 自定义对话框的action部分
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
-    public class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
+    class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
                                                   preferredStyle: SPAlertControllerStyle,
                                                   animationType: SPAlertAnimationType)
            ->SPAlertController {
@@ -75,7 +75,7 @@ extension SPAlertController{
     ///   - message: 副标题
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
-    public class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
+    class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
                                                            title: String,
                                                            message: String,
                                                            preferredStyle: SPAlertControllerStyle,
@@ -86,7 +86,7 @@ extension SPAlertController{
     }
 
     /// 设置alert样式下的偏移量,动画为NO则跟属性offsetForAlert等效
-    public func setOffsetForAlert(_ offsetForAlert: CGPoint, animated: Bool) {
+    func setOffsetForAlert(_ offsetForAlert: CGPoint, animated: Bool) {
         self.offsetForAlert = offsetForAlert
         self.isForceOffset = true
         self.makeViewOffsetWithAnimated(animated)
@@ -95,7 +95,7 @@ extension SPAlertController{
     
     ///设置action与下一个action之间的间距, action仅限于非取消样式，必须在'-addAction:'之后设置，iOS11或iOS11以上才能使用
     @objc @available(iOS 11.0, *)
-    public func setCustomSpacing(spacing: CGFloat, aferAction action: SPAlertAction?) {
+    func setCustomSpacing(spacing: CGFloat, aferAction action: SPAlertAction?) {
         guard let action = action else { return }
         if action.style == .cancel {
             print("*** warning in -[SPAlertController setCustomSpacing:afterAction:]: 'the -action must not be a action with SPAlertActionStyleCancel style'")
@@ -113,7 +113,7 @@ extension SPAlertController{
         }
     }
     @available(iOS 11.0, *)
-    public func customSpacing(aferAction action: SPAlertAction) -> CGFloat {
+    func customSpacing(aferAction action: SPAlertAction) -> CGFloat {
         if self.otherActions.contains(action) == true {
             var index: Int = 0
             for item in self.otherActions{
@@ -128,23 +128,23 @@ extension SPAlertController{
     }
     
     // 设置蒙层的外观样式,可通过alpha调整透明度
-    public func setBackgroundViewAppearanceStyle(_ style: SPBackgroundViewAppearanceStyle, alpha: CGFloat) {
+    func setBackgroundViewAppearanceStyle(_ style: SPBackgroundViewAppearanceStyle, alpha: CGFloat) {
         backgroundViewAppearanceStyle = style
         backgroundViewAlpha = alpha
     }
     //更新自定义view的size，比如屏幕旋转，自定义view的大小发生了改变，可通过该方法更新size
-    public func updateCustomViewSize(size: CGSize) {
+    func updateCustomViewSize(size: CGSize) {
         customViewSize = size
         layoutAlertControllerView()
         layoutChildViews()
     }
     
     // 插入一个组件view，位置处于头部和action部分之间，要求头部和action部分同时存在
-    public func insertComponentView(_ componentView: UIView) {
+    func insertComponentView(_ componentView: UIView) {
         self._componentView = componentView
     }
     // 对自己创建的alertControllerView布局，在这个方法里，self.view才有父视图，有父视图才能改变其约束
-    public func layoutAlertControllerView() {
+    func layoutAlertControllerView() {
         if alertControllerView.superview == nil {
             return
         }
@@ -160,7 +160,7 @@ extension SPAlertController{
         }
     }
     
-    public func addAction(action: SPAlertAction) {
+    func addAction(action: SPAlertAction) {
         //FIXME:actions 要修改为只读属性,防止外界修改actions
         actions.append(action)
         // alert样式不论是否为取消样式的按钮，都直接按顺序添加
@@ -254,7 +254,7 @@ extension SPAlertController{
     * 一旦添加后就会回调一次(仅回调一次,因此可以在这个block块里面自由定制textFiled,
     * 如设置textField的属性,设置代理,添加addTarget,监听通知等)
     */
-    public func addTextFieldWithConfigurationHandler(handler: ((UITextField)->Void)?) {
+    func addTextFieldWithConfigurationHandler(handler: ((UITextField)->Void)?) {
         assert(preferredStyle == .alert, "SPAlertController does not allow 'addTextFieldWithConfigurationHandler:' to be called in the style of SPAlertControllerStyleActionSheet")
         
         let textField = UITextField()

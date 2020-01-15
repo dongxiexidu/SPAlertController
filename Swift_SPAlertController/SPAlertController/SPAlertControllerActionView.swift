@@ -57,9 +57,13 @@ class SPAlertControllerActionView: UIView {
     
     // 安全区域发生了改变,在这个方法里自动适配iPhoneX
     override func safeAreaInsetsDidChange() {
-        super.safeAreaInsetsDidChange()
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+            self.actionButton.contentEdgeInsets = self.edgeInsetsAddEdgeInsets(i1: self.safeAreaInsets, i2: action.titleEdgeInsets)
+        } else {
+            // Fallback on earlier versions
+        }
         
-        self.actionButton.contentEdgeInsets = self.edgeInsetsAddEdgeInsets(i1: self.safeAreaInsets, i2: action.titleEdgeInsets)
         self.setNeedsUpdateConstraints()
     }
     

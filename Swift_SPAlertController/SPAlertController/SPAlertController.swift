@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPAlertController: UIViewController {
+public class SPAlertController: UIViewController {
     
     private var _customAlertView: UIView?
     private var _customHeaderView: UIView?
@@ -24,9 +24,9 @@ class SPAlertController: UIViewController {
     private var headerViewConstraints: [NSLayoutConstraint]?
     private var actionSequenceViewConstraints: [NSLayoutConstraint]?
     
-    public var preferredStyle: SPAlertControllerStyle = .alert
-    public var delegate: SPAlertControllerDelegate?
-    public var animationType: SPAlertAnimationType = .default
+    internal var preferredStyle: SPAlertControllerStyle = .alert
+    internal var delegate: SPAlertControllerDelegate?
+    internal var animationType: SPAlertAnimationType = .default
     
     // 对话框的偏移量，y值为正向下偏移，为负向上偏移；x值为正向右偏移，为负向左偏移，
     //该属性只对SPAlertControllerStyleAlert样式有效,键盘的frame改变会自动偏移，如果手动设置偏移只会取手动设置的
@@ -40,7 +40,7 @@ class SPAlertController: UIViewController {
     /// 是否单击背景退出对话框,默认为YES
     public var tapBackgroundViewDismiss: Bool = true
     /// 默认为 无毛玻璃效果,黑色透明(默认是0.5透明)
-    public var backgroundViewAppearanceStyle: SPBackgroundViewAppearanceStyle = .translucent
+    internal var backgroundViewAppearanceStyle: SPBackgroundViewAppearanceStyle = .translucent
     public var backgroundViewAlpha: CGFloat = 0.5
     
     
@@ -248,7 +248,7 @@ class SPAlertController: UIViewController {
         if needDialogBlur == true {
             containerView.backgroundColor = .clear
             if let dimmingdropView = NSClassFromString("_UIDimmingKnockoutBackdropView")?.alloc() as? UIView {
-                DLog("_UIDimmingKnockoutBackdropView 有值")
+//                DLog("_UIDimmingKnockoutBackdropView 有值")
                 // 下面4行相当于self.dimmingKnockoutBackdropView = [self.dimmingKnockoutBackdropView performSelector:NSSelectorFromString(@"initWithStyle:") withObject:@(UIBlurEffectStyleLight)];
                 let selector = NSSelectorFromString("initWithStyle:")
                 dimmingdropView.perform(selector, with: UIBlurEffect.Style.light)
@@ -451,7 +451,7 @@ class SPAlertController: UIViewController {
             headerLine.translatesAutoresizingMaskIntoConstraints = false
             let flag1 = (headerView?.superview != nil || customHeaderView?.superview != nil)
             let flag2 = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
-            DLog("flag1=\(flag1) flag2=\(flag2) ")
+//            DLog("flag1=\(flag1) flag2=\(flag2) ")
             if flag1 && flag2 {
                 _headerActionLine = headerLine
                 self.alertView?.addSubview(headerLine)
@@ -466,14 +466,14 @@ class SPAlertController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     // 先loadView(),后viewDidLoad()
-    override func loadView() {
+    override public func loadView() {
          super.loadView()
         // 重新创建self.view，这样可以采用自己的一套布局，轻松改变控制器view的大小
         self.view = self.alertControllerView
        // self.view.backgroundColor = .blue
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         configureHeaderView()
@@ -488,7 +488,7 @@ class SPAlertController: UIViewController {
        // self.view.backgroundColor = .blue
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         handleIQKeyboardManager()
@@ -504,10 +504,10 @@ class SPAlertController: UIViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
+    override public func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        DLog("viewWillLayoutSubviews ++++++++++++")
+       // DLog("viewWillLayoutSubviews ++++++++++++")
         // 屏幕旋转后宽高发生了交换，头部的label最大宽度需要重新计算
         if let headerV = headerView {
             setupPreferredMaxLayoutWidthForLabel(headerV.titleLabel)
@@ -522,7 +522,7 @@ class SPAlertController: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
         // 文字显示不全处理
@@ -593,7 +593,7 @@ class SPAlertController: UIViewController {
         NSLayoutConstraint.activate(alertControllerViewConstraints)
         self.alertControllerViewConstraints = alertControllerViewConstraints
         
-        DLog("alertControllerView=\(alertControllerView)")
+//        DLog("alertControllerView=\(alertControllerView)")
     }
     
     func layoutAlertControllerViewForActionSheetStyle() {
@@ -722,7 +722,7 @@ extension SPAlertController {
         alertControllerViewConstraints.append(someSideConstraint)
         NSLayoutConstraint.activate(alertControllerViewConstraints)
         // 第二次和第三次 alertControllerView:frame = (0 667; 375 0)  UITransitionView: 0x7f8c4bf15620; frame = (0 0; 375 667);
-        DLog(alertControllerView)
+//        DLog(alertControllerView)
         self.alertControllerViewConstraints = alertControllerViewConstraints
     }
     
@@ -991,9 +991,9 @@ extension SPAlertController {
             textLabel.preferredMaxLayoutWidth = min(SP_SCREEN_WIDTH, SP_SCREEN_HEIGHT)-minus
         } else {
             let minus = headerView!.contentEdgeInsets.left+headerView!.contentEdgeInsets.right
-            DLog(minus)
+//            DLog(minus)
             textLabel.preferredMaxLayoutWidth = SP_SCREEN_WIDTH-minus
-            DLog(textLabel.preferredMaxLayoutWidth)
+//            DLog(textLabel.preferredMaxLayoutWidth)
         }
     }
     

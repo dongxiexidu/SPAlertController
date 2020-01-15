@@ -98,7 +98,7 @@ class SPAlertPresentationController: UIPresentationController {
     
     @objc func tapOverlayView() {
         let alertController = self.presentedViewController as! SPAlertController
-        DLog(alertController.backgroundViewAlpha)
+//        DLog(alertController.backgroundViewAlpha)
         if alertController.tapBackgroundViewDismiss {
             alertController.dismiss(animated: true, completion: nil)
         }

@@ -103,14 +103,18 @@ extension SPInterfaceHeaderScrollView {
     
     // 监听安全内边距的改变
     override func safeAreaInsetsDidChange() {
-        super.safeAreaInsetsDidChange()
-        
-        let safeTop = safeAreaInsets.top < 20 ? 20 : safeAreaInsets.top+10
-        let safeLeft = safeAreaInsets.left < 15 ? 15 : safeAreaInsets.left
-        let safeBottom = safeAreaInsets.bottom < 20 ? 20 : safeAreaInsets.bottom+6
-        let safeRight = safeAreaInsets.right < 15 ? 15 : safeAreaInsets.right
-        
-        contentEdgeInsets = .init(top: safeTop, left: safeLeft, bottom: safeBottom, right: safeRight)
+        if #available(iOS 11.0, *) {
+            super.safeAreaInsetsDidChange()
+            
+            let safeTop = safeAreaInsets.top < 20 ? 20 : safeAreaInsets.top+10
+            let safeLeft = safeAreaInsets.left < 15 ? 15 : safeAreaInsets.left
+            let safeBottom = safeAreaInsets.bottom < 20 ? 20 : safeAreaInsets.bottom+6
+            let safeRight = safeAreaInsets.right < 15 ? 15 : safeAreaInsets.right
+            
+            contentEdgeInsets = .init(top: safeTop, left: safeLeft, bottom: safeBottom, right: safeRight)
+        } else {
+            // Fallback on earlier versions
+        }
         // 这个block，主要是更新Label的最大预估宽度
         self.headerViewSafeAreaDidChangeClosure?()
         self.setNeedsUpdateConstraints()

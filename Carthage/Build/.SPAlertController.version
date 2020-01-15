@@ -1,0 +1,19 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "760e5bf1f23264f24d9e694720f18962d021c9bc",
+  "iOS" : [
+    {
+      "name" : "SPAlertController",
+      "hash" : "18dbe791f0d50be3c0534467f9ccd32ba6e3cd000baeb90c5d0eceb33a16b6e1",
+      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+    }
+  ]
+}

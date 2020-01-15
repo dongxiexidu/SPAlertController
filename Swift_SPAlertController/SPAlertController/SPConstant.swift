@@ -19,12 +19,12 @@ let SP_STATUS_BAR_HEIGHT: CGFloat = Is_iPhoneX ? 44.0 : 20.0
 let SP_ACTION_TITLE_FONTSIZE: CGFloat = 18.0
 let SP_ACTION_HEIGHT: CGFloat = 55.0
 
-enum SPAlertControllerStyle {
+public enum SPAlertControllerStyle {
     case actionSheet
     case alert
 }
 
-enum SPAlertAnimationType: Int {
+public enum SPAlertAnimationType: Int {
     case `default`
     case fromBottom
     case fromTop
@@ -37,13 +37,13 @@ enum SPAlertAnimationType: Int {
     case none
 }
 
-enum SPAlertActionStyle {
+public enum SPAlertActionStyle {
     case `default`
     case cancel
     case destructive
 }
 
-enum SPBackgroundViewAppearanceStyle {
+public enum SPBackgroundViewAppearanceStyle {
     case translucent
     case blurDark
     case blurExtraLight

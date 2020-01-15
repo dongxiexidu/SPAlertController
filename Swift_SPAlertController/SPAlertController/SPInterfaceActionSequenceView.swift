@@ -177,7 +177,7 @@ extension SPInterfaceActionSequenceView {
         }
         // 线是 stackView.addSubview(actionLine) 筛选出所有的分割线
         let lines = self.filteredArrayFromArray(array: stackView.subviews, notInArray: stackView.arrangedSubviews)
-        DLog(lines.count)
+//        DLog(lines.count)
         if arrangedSubviews.count < lines.count {
             return
         }

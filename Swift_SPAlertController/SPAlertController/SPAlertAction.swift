@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SPAlertAction: NSObject {
+public class SPAlertAction: NSObject {
     
     public var title: String? {
         didSet{
@@ -91,7 +91,7 @@ class SPAlertAction: NSObject {
 
 extension SPAlertAction: NSCopying{
     // 由于要对装载action的数组进行拷贝，所以SPAlertAction也需要支持拷贝
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         let action = SPAlertAction()
         action.title = self.title
         action.attributedTitle = self.attributedTitle

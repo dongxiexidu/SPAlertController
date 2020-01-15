@@ -312,16 +312,20 @@ class SPAlertController: UIViewController {
     
     
     //
-    lazy var componentActionLine: SPInterfaceActionItemSeparatorView = {
-        let componentL = SPInterfaceActionItemSeparatorView()
-        componentL.translatesAutoresizingMaskIntoConstraints = false
-        let flag = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
-        // 必须组件view和action部分同时存在
-        if componentL.superview != nil && flag {
-            self.alertView?.addSubview(componentL)
+    var _componentActionLine: SPInterfaceActionItemSeparatorView?
+    var componentActionLine: SPInterfaceActionItemSeparatorView? {
+        if _componentActionLine == nil {
+            let componentL = SPInterfaceActionItemSeparatorView()
+            componentL.translatesAutoresizingMaskIntoConstraints = false
+            let flag = (actionSequenceView?.superview != nil || customActionSequenceView?.superview != nil)
+            // 必须组件view和action部分同时存在
+            if _componentView?.superview != nil && flag {
+                self.alertView!.addSubview(componentL)
+                _componentActionLine = componentL
+            }
         }
-        return componentL
-    }()
+        return _componentActionLine
+    }
     var _alertView: UIView?
     var alertView: UIView? {
         if _alertView == nil {
@@ -394,7 +398,7 @@ class SPAlertController: UIViewController {
             }
             
             _componentView?.translatesAutoresizingMaskIntoConstraints = false
-            self.alertView?.addSubview(_componentView!)
+            self.alertView!.addSubview(_componentView!)
         }
         return _componentView
     }
@@ -831,6 +835,7 @@ extension SPAlertController {
     
     // 对组件view与action部分之间的分割线布局
     private func layoutComponentActionLine() {
+        guard let componentActionLine = componentActionLine else { return }
         if componentActionLine.superview == nil {
             return
         }

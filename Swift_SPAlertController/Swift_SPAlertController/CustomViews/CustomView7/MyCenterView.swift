@@ -12,7 +12,7 @@ class MyCenterView: UIView, UITableViewDataSource {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        tableView.frame = self.bounds
+        
         self.addSubview(tableView)
     }
     
@@ -22,19 +22,9 @@ class MyCenterView: UIView, UITableViewDataSource {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         tableView.frame = self.bounds
     }
-    
-//    override func updateConstraints() {
-//        super.updateConstraints()
-//
-//        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//        tableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10

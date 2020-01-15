@@ -105,6 +105,7 @@ extension ViewController {
         let alertController = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .default)
         // 插入一个view
         alertController.insertComponentView(centerView)
+        
         let action1 = SPAlertAction.action(withTitle: "第1个", style: .default) { (action) in
             print("点击了第1个")
         }

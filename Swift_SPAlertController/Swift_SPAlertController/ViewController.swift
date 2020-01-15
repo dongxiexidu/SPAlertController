@@ -31,7 +31,7 @@ class ViewController: UIViewController {
       ],
     ["富文本(action设置富文本)","富文本(头部设置富文本)"
       ],
-    ["自定义头部(xib)","自定义整个对话框(alert样式)","自定义整个对话框(actionSheet样式(底))","自定义整个对话框(actionSheet样式(右)）","自定义整个对话框(actionSheet样式(左)）","自定义整个对话框(actionSheet样式(顶))","自定义整个对话框(pickerView)","自定义action部分","自定义整个对话框(全屏)"
+    ["自定义头部(xib)","自定义整个对话框(alert样式)","自定义整个对话框(actionSheet样式(底))","自定义整个对话框(actionSheet样式(右)）","自定义整个对话框(actionSheet样式(左)）","自定义整个对话框(actionSheet样式(顶))","自定义整个对话框(pickerView)","自定义action部分","插入一个组件"
       ],
     ["当按钮过多时，以scrollView滑动","当文字和按钮同时过多时,二者都可滑动",
     // "含有文本输入框，且文字过多",
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
     
     private func setupNav() {
         let changeBgBtn = UIButton.init(type: .custom)
+        changeBgBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         changeBgBtn.setTitleColor(.black, for: .normal)
         changeBgBtn.setTitleColor(.blue, for: .selected)
         changeBgBtn.setTitle("切换背景", for: .normal)
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: changeBgBtn)
         
         let blurBtn = UIButton.init(type: .custom)
+        blurBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         blurBtn.setTitleColor(.black, for: .normal)
         blurBtn.setTitleColor(.blue, for: .selected)
         blurBtn.setTitle("打开毛玻璃", for: .normal)

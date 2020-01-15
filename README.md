@@ -63,7 +63,7 @@ self.present(alertController, animated: true, completion: nil)
 ```
 public class func alertController(withTitle title: String?,
                                        message: String?,
-                                       preferredStyle: SPAlertControllerStyle,
+                                       preferredStyle: SPAlertControllerStyle)
                                        ->SPAlertController
 ```
 ```
@@ -71,7 +71,7 @@ public class func alertController(withTitle title: String?,
                                        message: String?,
                                        preferredStyle: SPAlertControllerStyle,
                                        animationType: SPAlertAnimationType)
-->SPAlertController
+                                       ->SPAlertController
 ```
 上面2种创建方式唯一的区别就是：第2种方式多了一个animationType参数，该参数可以设置弹出动画。如果以第一种方式创建，会采用默认动画，默认动画跟preferredStyle 有关，如果是SPAlertControllerStyle.actionSheet样式，默认动画为从底部弹出，如果是SPAlertControllerStyle.alert样式，默认动画为从中间弹出
 ### SPAlertController的头部配置

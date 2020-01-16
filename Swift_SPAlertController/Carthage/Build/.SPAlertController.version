@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "ae0dd14752c111edcb1fcf5f2b0fce0499ed60ef",
+  "commitish" : "d30655281d13543885ff22c5d30b5d0841235c94",
   "iOS" : [
     {
       "name" : "SPAlertController",
-      "hash" : "1fa3cd6d2284e7d4814f56ed0f6fda31bd4e9160fe7478d5523c61126598c7dc",
+      "hash" : "6b956630d3dcb1af538ce7087bbf5c9b42fae72551a9f54efb996a9b044999f7",
       "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
     }
   ]

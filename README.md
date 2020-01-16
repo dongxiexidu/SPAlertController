@@ -7,7 +7,7 @@
 [![Pod License](http://img.shields.io/cocoapods/l/SPAlertController.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/SPStore/SPAlertController)
 # 目录
-* [CocoaPods](#CocoaPods) 
+* [cathage](#cathage) 
 * [使用示例](#使用示例)
 * [API及属性详解](#API及属性详解) 
 * [自定义各大View](#自定义各大View)
@@ -31,17 +31,16 @@
 - [x] 全面适配iPhoneX，iPhoneXR，iPhoneXS，iPhoneXS MAX
 
 
-## CocoaPods
+## cathage
 ##### 版本1.0
 ```
-platform:ios,'9.0'
-target 'MyApp' do
-  pod 'SPAlertController', '~> 3.1.0'
-end
+#git "https://github.com/dongxiexidu/SPAlertController.git" "master"
 ```
 
 ## 使用示例
 ```
+import SPAlertController
+
 let alertController = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .actionSheet)
 let action1 = SPAlertAction.action(withTitle: "Default", style: .default) { (action) in
     print("点击了Default")

@@ -235,11 +235,13 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 
 @protocol UIViewControllerAnimatedTransitioning;
 @class UIPresentationController;
+@protocol UIViewControllerInteractiveTransitioning;
 
 @interface SPAlertController (SWIFT_EXTENSION(SPAlertController)) <UIViewControllerTransitioningDelegate>
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
 - (UIPresentationController * _Nullable)presentationControllerForPresentedViewController:(UIViewController * _Nonnull)presented presentingViewController:(UIViewController * _Nullable)presenting sourceViewController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerInteractiveTransitioning> _Nullable)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning> _Nonnull)animator SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -247,6 +249,8 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 /// 设置action与下一个action之间的间距, action仅限于非取消样式，必须在’-addAction:’之后设置，iOS11或iOS11以上才能使用
 - (void)setCustomSpacingWithSpacing:(CGFloat)spacing aferAction:(SPAlertAction * _Nullable)action SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
+
+
 
 
 
@@ -487,11 +491,13 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 
 @protocol UIViewControllerAnimatedTransitioning;
 @class UIPresentationController;
+@protocol UIViewControllerInteractiveTransitioning;
 
 @interface SPAlertController (SWIFT_EXTENSION(SPAlertController)) <UIViewControllerTransitioningDelegate>
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
 - (UIPresentationController * _Nullable)presentationControllerForPresentedViewController:(UIViewController * _Nonnull)presented presentingViewController:(UIViewController * _Nullable)presenting sourceViewController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerInteractiveTransitioning> _Nullable)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning> _Nonnull)animator SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -499,6 +505,8 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 /// 设置action与下一个action之间的间距, action仅限于非取消样式，必须在’-addAction:’之后设置，iOS11或iOS11以上才能使用
 - (void)setCustomSpacingWithSpacing:(CGFloat)spacing aferAction:(SPAlertAction * _Nullable)action SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
+
+
 
 
 
@@ -743,11 +751,13 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 
 @protocol UIViewControllerAnimatedTransitioning;
 @class UIPresentationController;
+@protocol UIViewControllerInteractiveTransitioning;
 
 @interface SPAlertController (SWIFT_EXTENSION(SPAlertController)) <UIViewControllerTransitioningDelegate>
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
 - (UIPresentationController * _Nullable)presentationControllerForPresentedViewController:(UIViewController * _Nonnull)presented presentingViewController:(UIViewController * _Nullable)presenting sourceViewController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerInteractiveTransitioning> _Nullable)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning> _Nonnull)animator SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -755,6 +765,8 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 /// 设置action与下一个action之间的间距, action仅限于非取消样式，必须在’-addAction:’之后设置，iOS11或iOS11以上才能使用
 - (void)setCustomSpacingWithSpacing:(CGFloat)spacing aferAction:(SPAlertAction * _Nullable)action SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
+
+
 
 
 
@@ -995,11 +1007,13 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 
 @protocol UIViewControllerAnimatedTransitioning;
 @class UIPresentationController;
+@protocol UIViewControllerInteractiveTransitioning;
 
 @interface SPAlertController (SWIFT_EXTENSION(SPAlertController)) <UIViewControllerTransitioningDelegate>
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
 - (UIPresentationController * _Nullable)presentationControllerForPresentedViewController:(UIViewController * _Nonnull)presented presentingViewController:(UIViewController * _Nullable)presenting sourceViewController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerInteractiveTransitioning> _Nullable)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning> _Nonnull)animator SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1007,6 +1021,8 @@ SWIFT_CLASS("_TtC17SPAlertController17SPAlertController")
 /// 设置action与下一个action之间的间距, action仅限于非取消样式，必须在’-addAction:’之后设置，iOS11或iOS11以上才能使用
 - (void)setCustomSpacingWithSpacing:(CGFloat)spacing aferAction:(SPAlertAction * _Nullable)action SWIFT_AVAILABILITY(ios,introduced=11.0);
 @end
+
+
 
 
 

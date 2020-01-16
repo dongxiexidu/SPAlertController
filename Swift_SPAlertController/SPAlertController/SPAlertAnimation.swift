@@ -10,14 +10,16 @@ import UIKit
 
 class SPAlertAnimation: NSObject {
     
+    var interactor: SPInteractiveTransition
     private var presenting: Bool = false
     
-    public class func animationIsPresenting(isPresenting: Bool) -> SPAlertAnimation{
-        let alertAnimation = SPAlertAnimation.init(isPresenting: isPresenting)
+    public class func animationIsPresenting(isPresenting: Bool, interactor: SPInteractiveTransition) -> SPAlertAnimation{
+        let alertAnimation = SPAlertAnimation.init(isPresenting: isPresenting, interactor: interactor)
         return alertAnimation
     }
     
-    private init(isPresenting: Bool) {
+    private init(isPresenting: Bool, interactor: SPInteractiveTransition) {
+        self.interactor = interactor
         super.init()
         self.presenting = isPresenting
     }
@@ -33,9 +35,9 @@ extension SPAlertAnimation: UIViewControllerAnimatedTransitioning{
     }
     // 2.如何执行动画
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if self.presenting {
+        if self.presenting == true {
             self.presentAnimationTransition(transitionContext: transitionContext)
-        } else {
+        } else { // 退出动画
             self.dismissAnimationTransition(transitionContext: transitionContext)
         }
     }
@@ -50,23 +52,23 @@ extension SPAlertAnimation {
         
         switch alert.animationType {
         case .fromBottom:
-            self.raiseUpWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.raiseUpWhenPresent(forController: alert, transition: transitionContext)
         case .fromRight:
-            self.fromRightWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.fromRightWhenPresent(forController: alert, transition: transitionContext)
         case .fromTop:
-            self.dropDownWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.dropDownWhenPresent(forController: alert, transition: transitionContext)
         case .fromLeft:
-            self.fromLeftWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.fromLeftWhenPresent(forController: alert, transition: transitionContext)
         case .fade:
-            self.alphaWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.alphaWhenPresent(forController: alert, transition: transitionContext)
         case .expand:
-            self.expandWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.expandWhenPresent(forController: alert, transition: transitionContext)
         case .shrink:
-            self.shrinkWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.shrinkWhenPresent(forController: alert, transition: transitionContext)
         case .none:
-            self.noneWhenPresentForController(alertController: alert, transition: transitionContext)
-        default:// FIXME:这里不应该进来
-            self.noneWhenPresentForController(alertController: alert, transition: transitionContext)
+            self.noneWhenPresent(forController: alert, transition: transitionContext)
+        default:
+            self.noneWhenPresent(forController: alert, transition: transitionContext)
             break
         }
     }
@@ -75,32 +77,37 @@ extension SPAlertAnimation {
         let alertController = transitionContext.viewController(forKey: .from)
         guard let alert = alertController as? SPAlertController else { return }
         
+        if interactor.hasStarted || interactor.shouldFinish {
+            self.dismissInteractive(forController: alert, transition: transitionContext)
+            return
+        }
+        
         switch alert.animationType {
         case .fromBottom:
-            self.dismissCorrespondingRaiseUpForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingRaiseUp(forController: alert, transition: transitionContext)
         case .fromRight:
-            self.dismissCorrespondingFromRightForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingFromRight(forController: alert, transition: transitionContext)
         case .fromTop:
-            self.dismissCorrespondingDropDownForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingDropDown(forController: alert, transition: transitionContext)
         case .fromLeft:
-            self.dismissCorrespondingFromLeftForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingFromLeft(forController: alert, transition: transitionContext)
         case .fade:
-            self.dismissCorrespondingAlphaForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingAlpha(forController: alert, transition: transitionContext)
         case .expand:
-            self.dismissCorrespondingExpandForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingExpand(forController: alert, transition: transitionContext)
         case .shrink:
-            self.dismissCorrespondingShrinkForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingShrink(forController: alert, transition: transitionContext)
         case .none:
-            self.dismissCorrespondingNoneForController(alertController: alert, transition: transitionContext)
+            self.dismissCorrespondingNone(forController: alert, transition: transitionContext)
         default:
-            self.dismissCorrespondingNoneForController(alertController: alert, transition: transitionContext)
+            self.dismissInteractive(forController: alert, transition: transitionContext)
             break
         }
     }
     
     
     // 从底部弹出的present动画
-    private func raiseUpWhenPresentForController(alertController: SPAlertController,
+    private func raiseUpWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -137,7 +144,7 @@ extension SPAlertAnimation {
         
     }
     // 从底部弹出对应的dismiss动画
-    private func dismissCorrespondingRaiseUpForController(alertController: SPAlertController,
+    private func dismissCorrespondingRaiseUp(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let duration = self.transitionDuration(using: transition)
@@ -151,7 +158,7 @@ extension SPAlertAnimation {
         })
     }
     // 从右边弹出的present动画
-    private func fromRightWhenPresentForController(alertController: SPAlertController,
+    private func fromRightWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -190,7 +197,7 @@ extension SPAlertAnimation {
         })
     }
     // 从右边弹出对应的dismiss动画
-    private func dismissCorrespondingFromRightForController(alertController: SPAlertController,
+    private func dismissCorrespondingFromRight(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let duration = self.transitionDuration(using: transition)
@@ -204,7 +211,7 @@ extension SPAlertAnimation {
         })
     }
     // 从左边弹出的present动画
-    private func fromLeftWhenPresentForController(alertController: SPAlertController,
+    private func fromLeftWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -244,7 +251,7 @@ extension SPAlertAnimation {
         })
     }
     // 从左边弹出对应的dismiss动画
-    private func dismissCorrespondingFromLeftForController(alertController: SPAlertController,
+    private func dismissCorrespondingFromLeft(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let duration = self.transitionDuration(using: transition)
@@ -258,7 +265,7 @@ extension SPAlertAnimation {
         })
     }
     // 从顶部弹出的present动画
-    private func dropDownWhenPresentForController(alertController: SPAlertController,
+    private func dropDownWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -294,7 +301,7 @@ extension SPAlertAnimation {
         })
     }
     // 从顶部弹出对应的dismiss动画
-    private func dismissCorrespondingDropDownForController(alertController: SPAlertController,
+    private func dismissCorrespondingDropDown(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         let duration = self.transitionDuration(using: transition)
         UIView.animate(withDuration: duration, animations: {
@@ -308,7 +315,7 @@ extension SPAlertAnimation {
     }
     
     // alpha值从0到1变化的present动画
-    private func alphaWhenPresentForController(alertController: SPAlertController,
+    private func alphaWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -335,7 +342,7 @@ extension SPAlertAnimation {
         })
     }
     // alpha值从0到1变化对应的的dismiss动画
-    private func dismissCorrespondingAlphaForController(alertController: SPAlertController,
+    private func dismissCorrespondingAlpha(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let duration = self.transitionDuration(using: transition)
@@ -347,7 +354,7 @@ extension SPAlertAnimation {
     }
     
     // 发散的prensent动画
-    private func expandWhenPresentForController(alertController: SPAlertController,
+    private func expandWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -376,7 +383,7 @@ extension SPAlertAnimation {
         })
     }
     // 发散对应的dismiss动画
-    private func dismissCorrespondingExpandForController(alertController: SPAlertController,
+    private func dismissCorrespondingExpand(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let duration = self.transitionDuration(using: transition)
@@ -389,7 +396,7 @@ extension SPAlertAnimation {
     }
     
     // 收缩的present动画
-    private func shrinkWhenPresentForController(alertController: SPAlertController,
+    private func shrinkWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -419,15 +426,15 @@ extension SPAlertAnimation {
         })
     }
     // 收缩对应的的dismiss动画
-    private func dismissCorrespondingShrinkForController(alertController: SPAlertController,
+    private func dismissCorrespondingShrink(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         // 与发散对应的dismiss动画相同
-        self.dismissCorrespondingExpandForController(alertController: alertController, transition: transition)
+        self.dismissCorrespondingExpand(forController: alertController, transition: transition)
     }
     
     // 无动画
-    private func noneWhenPresentForController(alertController: SPAlertController,
+    private func noneWhenPresent(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         
         let containerView = transition.containerView
@@ -438,9 +445,29 @@ extension SPAlertAnimation {
     }
     
     // 无动画
-    private func dismissCorrespondingNoneForController(alertController: SPAlertController,
+    private func dismissCorrespondingNone(forController alertController: SPAlertController,
                                          transition: UIViewControllerContextTransitioning) {
         transition.completeTransition(transition.isAnimated)
+    }
+    
+    // 手势退出
+    private func dismissInteractive(forController alertController: SPAlertController,
+                                         transition: UIViewControllerContextTransitioning) {
+        
+        UIView.animate(withDuration: 0.32, delay: 0.0, options: [.beginFromCurrentState], animations: { 
+            var offsetHeight: CGFloat = alertController.view.bounds.size.height
+            if offsetHeight < 300 {
+                offsetHeight = 300
+            }
+            offsetHeight = -offsetHeight
+            if alertController.animationType == .fromTop && alertController.preferredStyle == .actionSheet {
+                offsetHeight = -offsetHeight
+            }
+            alertController.view.bounds.origin = CGPoint(x: 0, y: offsetHeight)
+            alertController.view.alpha = 0.0
+        }, completion: { _ in
+            transition.completeTransition(!transition.transitionWasCancelled)
+        })
     }
     
     private func offSetCenter(alertController: SPAlertController) {

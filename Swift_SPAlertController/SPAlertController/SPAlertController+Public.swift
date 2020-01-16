@@ -277,6 +277,46 @@ public extension SPAlertController{
         headerView!.addTextField(textField: textField)
         handler?(textField)
     }
+    
+    func shake() {
+        alertControllerView.pv_shake()
+    }
 }
 
+
+internal extension UIView {
+
+    /// The key for the fade animation
+    var fadeKey: String { return "FadeAnimation" }
+    var shakeKey: String { return "ShakeAnimation" }
+
+
+    func pv_layoutIfNeededAnimated(duration: CFTimeInterval = 0.08) {
+        UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(), animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    // As found at https://gist.github.com/mourad-brahim/cf0bfe9bec5f33a6ea66#file-uiview-animations-swift-L9
+    // Slightly modified
+    func pv_shake() {
+        layer.removeAnimation(forKey: shakeKey)
+        let vals: [Double] = [-2, 2, -2, 2, 0]
+        
+        let translation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        translation.values = vals
+        
+        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        rotation.values = vals.map { (degrees: Double) in
+            let radians: Double = (Double.pi * degrees) / 180.0
+            return radians
+        }
+        
+        let shakeGroup: CAAnimationGroup = CAAnimationGroup()
+        shakeGroup.animations = [translation, rotation]
+        shakeGroup.duration = 0.3
+        self.layer.add(shakeGroup, forKey: shakeKey)
+    }
+}
 

@@ -35,17 +35,26 @@ extension ViewController{
         let action1 = SPAlertAction.action(withTitle: "第1个", style: .default) { (action) in
             print("点击了第1个")
         }
+        
         let action2 = SPAlertAction.action(withTitle: "第2个", style: .destructive) { (action) in
-            print("点击了第2个")
+            // 抖动动画
+            alert.shake()
         }
+        action2.dismissOnTap = false
+        
         let action3 = SPAlertAction.action(withTitle: "第3个", style: .default) { (action) in
             print("点击了第3个")
+        }
+        let action4 = SPAlertAction.action(withTitle: "第4个", style: .default) { (action) in
+            print("点击了第4个")
         }
         // 设置第2个action的颜色
         action1.titleColor = SYSTEM_COLOR
         alert.addAction(action: action1)
         alert.addAction(action: action2)
         alert.addAction(action: action3)
+        alert.addAction(action: action4)
+        alert.tapBackgroundViewDismiss = false
         self.present(alert, animated: true, completion: nil)
     }
     

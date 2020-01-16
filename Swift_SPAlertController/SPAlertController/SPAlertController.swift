@@ -10,6 +10,10 @@ import UIKit
 
 public class SPAlertController: UIViewController {
     
+    /// Interactor class for pan gesture dismissal
+    lazy var interactor = SPInteractiveTransition()
+    /// 拖拽退出view
+    public var panGestureDismissal: Bool = false
     private var _customAlertView: UIView?
     private var _customHeaderView: UIView?
     private var _customActionSequenceView: UIView?
@@ -297,8 +301,10 @@ public class SPAlertController: UIViewController {
             let actionV = SPInterfaceActionSequenceView.init()
             actionV.translatesAutoresizingMaskIntoConstraints = false
             actionV.buttonClickedInActionViewClosure = { [weak self] index in
-                self?.dismiss(animated: true, completion: nil)
                 if let action = self?.actions[index] {
+                    if action.dismissOnTap == true {
+                        self?.dismiss(animated: true, completion: nil)
+                    }
                     action.handler?(action)
                 }
             }
@@ -673,6 +679,14 @@ extension SPAlertController {
         self._customActionSequenceView = customActionSequenceView
         // componentView参数是为了支持老版本的自定义footerView
         self._componentView = componentView
+        
+        // Allow for dialog dismissal on dialog pan gesture
+        if panGestureDismissal {
+            let panRecognizer = UIPanGestureRecognizer(target: interactor, action: #selector(SPInteractiveTransition.handlePan))
+            panRecognizer.cancelsTouchesInView = false
+            interactor.viewController = self
+            alertControllerView.addGestureRecognizer(panRecognizer)
+        }
         
         // 视图控制器定义它呈现视图控制器的过渡风格（默认为NO）
         self.providesPresentationContextTransitionStyle = true

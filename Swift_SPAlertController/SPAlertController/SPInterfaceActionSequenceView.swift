@@ -189,11 +189,9 @@ extension SPInterfaceActionSequenceView {
         
         for i in 0..<lines.count {
             let actionLine = lines[i]
-//            guard let actionView1 = arrangedSubviews[i] as? SPAlertControllerActionView else { return }
-//            guard let actionView2 = arrangedSubviews[i+1] as? SPAlertControllerActionView else { return }
-            let actionView1 = arrangedSubviews[i] as! SPAlertControllerActionView
-            let actionView2 = arrangedSubviews[i+1] as! SPAlertControllerActionView
-            
+            guard let actionView1 = arrangedSubviews[i] as? SPAlertControllerActionView else { return }
+            guard let actionView2 = arrangedSubviews[i+1] as? SPAlertControllerActionView else { return }
+ 
            // guard let axis = axis else { return }
             if axis == .horizontal {
                 actionLineConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[actionLine]-0-|", options: [], metrics: nil, views: ["actionLine": actionLine]))

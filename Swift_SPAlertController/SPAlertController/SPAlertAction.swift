@@ -10,6 +10,9 @@ import UIKit
 
 public class SPAlertAction: NSObject {
     
+    /// Whether button should dismiss popup when tapped
+    open var dismissOnTap = true
+    
     public var title: String? {
         didSet{
             self.propertyChangedClosure?(self,true)

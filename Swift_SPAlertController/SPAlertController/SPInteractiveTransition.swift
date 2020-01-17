@@ -24,9 +24,6 @@ class SPInteractiveTransition: UIPercentDrivenInteractiveTransition {
         guard let vc = viewController else { return }
 
         guard let progress = calculateProgress(sender: sender) else { return }
-        //var proressValue = progress
-        
-        print("proressValue=",progress)
         switch sender.state {
         case .began:
             hasStarted = true
@@ -59,10 +56,9 @@ extension SPInteractiveTransition {
 
         // http://www.thorntech.com/2016/02/ios-tutorial-close-modal-dragging/
         let translation = sender.translation(in: vc.view)
-        let verticalMovement = translation.y / vc.view.bounds.height
+        let verticalMovement: CGFloat = translation.y / vc.view.bounds.height
+
         var downwardMovement: Float = 0.0
-//        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
-//        let downwardMovementPercent = fminf(downwardMovement, 1.0)
         if viewController?.animationType == .fromTop && viewController?.preferredStyle == .actionSheet {
             downwardMovement = fmaxf(Float(-verticalMovement), 0.0)
         } else {

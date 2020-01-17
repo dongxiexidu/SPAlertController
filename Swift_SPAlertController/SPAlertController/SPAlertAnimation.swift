@@ -456,12 +456,15 @@ extension SPAlertAnimation {
         
         UIView.animate(withDuration: 0.32, delay: 0.0, options: [.beginFromCurrentState], animations: { 
             var offsetHeight: CGFloat = alertController.view.bounds.size.height
-            if offsetHeight < 300 {
-                offsetHeight = 300
+            if offsetHeight < 200 {
+                offsetHeight = 200
             }
             offsetHeight = -offsetHeight
             if alertController.animationType == .fromTop && alertController.preferredStyle == .actionSheet {
                 offsetHeight = -offsetHeight
+            }
+            if alertController.preferredStyle == .alert {
+                offsetHeight = -(SP_SCREEN_HEIGHT-alertController.view.bounds.size.height)/2
             }
             alertController.view.bounds.origin = CGPoint(x: 0, y: offsetHeight)
             alertController.view.alpha = 0.0

@@ -13,6 +13,7 @@ extension ViewController{
     
     //示例9:alert 默认动画(收缩动画)
     func alertTest1() {
+        
         let alert = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .default)
         alert.needDialogBlur = lookBlur
         let action1 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
@@ -36,7 +37,7 @@ extension ViewController{
             print("点击了第1个")
         }
         
-        let action2 = SPAlertAction.action(withTitle: "第2个", style: .destructive) { (action) in
+        let action2 = SPAlertAction.action(withTitle: "抖动动画", style: .destructive) { (action) in
             // 抖动动画
             alert.shake()
         }

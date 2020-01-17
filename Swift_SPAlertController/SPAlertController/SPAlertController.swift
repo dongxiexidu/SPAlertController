@@ -12,8 +12,8 @@ public class SPAlertController: UIViewController {
     
     /// Interactor class for pan gesture dismissal
     lazy var interactor = SPInteractiveTransition()
-    /// 拖拽退出view
-    public var panGestureDismissal: Bool = false
+    /// 拖拽退出view,暂时只支持向下拖拽退出,.fromTop向上拖拽退出
+    private var panGestureDismissal: Bool = true
     private var _customAlertView: UIView?
     private var _customHeaderView: UIView?
     private var _customActionSequenceView: UIView?
@@ -648,7 +648,8 @@ extension SPAlertController {
                      customActionSequenceView: UIView?,
                      componentView: UIView?,
                      preferredStyle: SPAlertControllerStyle,
-                     animationType: SPAlertAnimationType) {
+                     animationType: SPAlertAnimationType,
+                     panGestureDismissal: Bool) {
         
         self.init()
         self.mainTitle = title
@@ -677,11 +678,14 @@ extension SPAlertController {
         self._customAlertView = customAlertView
         self._customHeaderView = customHeaderView
         self._customActionSequenceView = customActionSequenceView
-        // componentView参数是为了支持老版本的自定义footerView
-        self._componentView = componentView
         
+        self._componentView = componentView
+        self.panGestureDismissal = panGestureDismissal
+        
+        let flag1 = (preferredStyle == .actionSheet && animationType == .fromRight)
+        let flag2 = (preferredStyle == .actionSheet && animationType == .fromLeft)
         // Allow for dialog dismissal on dialog pan gesture
-        if panGestureDismissal {
+        if self.panGestureDismissal && !flag1 && !flag2{
             let panRecognizer = UIPanGestureRecognizer(target: interactor, action: #selector(SPInteractiveTransition.handlePan))
             panRecognizer.cancelsTouchesInView = false
             interactor.viewController = self

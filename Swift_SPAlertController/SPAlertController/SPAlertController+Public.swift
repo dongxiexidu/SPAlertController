@@ -11,18 +11,20 @@ import UIKit
 public extension SPAlertController{
     
     class func alertController(withTitle title: String?,
-                                               message: String?,
-                                               preferredStyle: SPAlertControllerStyle)->SPAlertController {
-        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: SPAlertAnimationType.default)
+                               message: String?,
+                               preferredStyle: SPAlertControllerStyle,
+                               panGestureDismissal: Bool = true)->SPAlertController {
+        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: SPAlertAnimationType.default, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
     
     class func alertController(withTitle title: String?,
-                                               message: String?,
-                                               preferredStyle: SPAlertControllerStyle,
-                                               animationType: SPAlertAnimationType)
+                               message: String?,
+                               preferredStyle: SPAlertControllerStyle,
+                               animationType: SPAlertAnimationType,
+                               panGestureDismissal: Bool = true)
         ->SPAlertController {
-        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
+        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
     
@@ -32,11 +34,12 @@ public extension SPAlertController{
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
     class func alertController(withCustomAlertView customAlertView: UIView,
-                                                  preferredStyle: SPAlertControllerStyle,
-                                                  animationType: SPAlertAnimationType)
+                               preferredStyle: SPAlertControllerStyle,
+                               animationType: SPAlertAnimationType,
+                               panGestureDismissal: Bool = true)
            ->SPAlertController {
             
-        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: customAlertView, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
+        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: customAlertView, customHeaderView: nil, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
     
@@ -46,11 +49,12 @@ public extension SPAlertController{
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
     class func alertController(withCustomHeaderView customHeaderView: UIView,
-                                                  preferredStyle: SPAlertControllerStyle,
-                                                  animationType: SPAlertAnimationType)
+                               preferredStyle: SPAlertControllerStyle,
+                               animationType: SPAlertAnimationType,
+                               panGestureDismissal: Bool = true)
         ->SPAlertController {
             
-        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: nil, customHeaderView: customHeaderView, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
+        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: nil, customHeaderView: customHeaderView, customActionSequenceView: nil, componentView: nil, preferredStyle: preferredStyle, animationType: animationType, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
     
@@ -60,11 +64,12 @@ public extension SPAlertController{
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
     class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
-                                                  preferredStyle: SPAlertControllerStyle,
-                                                  animationType: SPAlertAnimationType)
+                               preferredStyle: SPAlertControllerStyle,
+                               animationType: SPAlertAnimationType,
+                               panGestureDismissal: Bool = true)
            ->SPAlertController {
             
-        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: nil, customHeaderView: nil, customActionSequenceView: customActionSequenceView, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
+        let alertVC = SPAlertController.init(title: nil, message: nil, customAlertView: nil, customHeaderView: nil, customActionSequenceView: customActionSequenceView, componentView: nil, preferredStyle: preferredStyle, animationType: animationType, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
     
@@ -76,12 +81,13 @@ public extension SPAlertController{
     ///   - preferredStyle: 对话框样式
     ///   - animationType: 动画类型
     class func alertController(withCustomActionSequenceView customActionSequenceView: UIView,
-                                                           title: String,
-                                                           message: String,
-                                                           preferredStyle: SPAlertControllerStyle,
-                                                           animationType: SPAlertAnimationType) -> SPAlertController{
+                               title: String,
+                               message: String,
+                               preferredStyle: SPAlertControllerStyle,
+                               animationType: SPAlertAnimationType,
+                               panGestureDismissal: Bool = true) -> SPAlertController{
         
-        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: customActionSequenceView, componentView: nil, preferredStyle: preferredStyle, animationType: animationType)
+        let alertVC = SPAlertController.init(title: title, message: message, customAlertView: nil, customHeaderView: nil, customActionSequenceView: customActionSequenceView, componentView: nil, preferredStyle: preferredStyle, animationType: animationType, panGestureDismissal: panGestureDismissal)
         return alertVC
     }
 

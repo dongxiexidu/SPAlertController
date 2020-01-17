@@ -23,7 +23,7 @@ extension ViewController{
             print("点击了取消")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         // 设置第2个action的颜色
         action2.titleColor = SYSTEM_COLOR
@@ -53,7 +53,7 @@ extension ViewController{
             print("点击了第4个")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         // 设置第2个action的颜色
         action1.titleColor = SYSTEM_COLOR
@@ -78,7 +78,7 @@ extension ViewController{
             print("点击了取消")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         action2.titleColor = .red
         alert.addAction(action: action1)
@@ -100,7 +100,7 @@ extension ViewController{
             print("点击了取消")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         action2.titleColor = SYSTEM_COLOR
         alert.addAction(action: action1)
@@ -126,7 +126,7 @@ extension ViewController{
             print("点击了第3个")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         alert.addAction(action: action1)
         alert.addAction(action: action2)
@@ -143,7 +143,7 @@ extension ViewController{
             print("点击了取消")
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         action.titleColor = SYSTEM_COLOR
         alert.addAction(action: action)
@@ -152,7 +152,7 @@ extension ViewController{
     
     //示例15:alert 含有文本输入框
     func alertTest7() {
-        let alert = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .shrink)
+        let alert = SPAlertController.alertController(withTitle: "我是主标题", message: "我是副标题", preferredStyle: .alert, animationType: .default)
         let action1 = SPAlertAction.action(withTitle: "确定", style: .default) { (action) in
             print("点击了确定")
         }
@@ -183,7 +183,7 @@ extension ViewController{
             textField.addTarget(self, action: #selector(self.textFieldDidChanged(textField:)), for: .editingChanged)
         }
         if customBlur {
-            alert.customOverlayView = customOverlay
+            alert.customOverlayView = CustomOverlayView()
         }
         self.present(alert, animated: true, completion: nil)
     }

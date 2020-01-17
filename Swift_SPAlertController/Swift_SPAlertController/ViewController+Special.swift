@@ -24,7 +24,7 @@ extension ViewController {
             print("点击了cancel")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -44,7 +44,7 @@ extension ViewController {
             print("点击了cancel")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -61,7 +61,7 @@ extension ViewController {
             print("点击了'上九天揽月，下五洋捉鳖")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         action2.titleColor = SYSTEM_COLOR
         alertController.addAction(action: action1)
@@ -80,7 +80,7 @@ extension ViewController {
              print("点击了'我的文字太长了，会压缩字体")
          }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
          action2.titleColor = SYSTEM_COLOR
          alertController.addAction(action: action1)

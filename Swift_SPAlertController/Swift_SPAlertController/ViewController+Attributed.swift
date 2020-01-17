@@ -59,7 +59,7 @@ extension ViewController {
             print("点击了取消")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -82,7 +82,7 @@ extension ViewController {
            alertController.attributedTitle = attrTitle
            
            if customBlur {
-               alertController.customOverlayView = customOverlay
+               alertController.customOverlayView = CustomOverlayView()
            }
            let action1 = SPAlertAction.action(withTitle: "取消",  style: .destructive) { (action) in
                print("点击了`取消`")

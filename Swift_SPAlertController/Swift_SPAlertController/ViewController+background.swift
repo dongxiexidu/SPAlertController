@@ -27,7 +27,7 @@ extension ViewController {
         alertController.addAction(action: action3)
         alertController.addAction(action: action2)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         } else {
             if appearanceStyle == .translucent {
                 // 0.5是半透明(默认),设置1为不透明,0为全透明

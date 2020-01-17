@@ -24,8 +24,6 @@ class ViewController: UIViewController {
     var sureAction: SPAlertAction!
     var phoneNumberTextField: UITextField!
     var passwordTextField: UITextField!
-    // 自定义背景毛玻璃
-    let customOverlay = CustomOverlayView()
     
     var titles = ["actionSheet样式","alert样式","富文本","自定义视图","特殊情况","背景毛玻璃"]
     var dataSource = [
@@ -46,6 +44,9 @@ class ViewController: UIViewController {
     ]
     let headerID = "header"
     
+    var blurBtn: UIButton!
+    var customBlurBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +64,7 @@ class ViewController: UIViewController {
         changeBgBtn.addTarget(self, action: #selector(changeBackgroundImage(btn:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: changeBgBtn)
         
-        let blurBtn = UIButton.init(type: .custom)
+        blurBtn = UIButton.init(type: .custom)
         blurBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         blurBtn.setTitleColor(.black, for: .normal)
         blurBtn.setTitleColor(.blue, for: .selected)
@@ -71,7 +72,7 @@ class ViewController: UIViewController {
         blurBtn.setTitle("关闭毛玻璃", for: .selected)
         blurBtn.addTarget(self, action: #selector(lookBlurAction(btn:)), for: .touchUpInside)
         
-        let customBlurBtn = UIButton.init(type: .custom)
+        customBlurBtn = UIButton.init(type: .custom)
         customBlurBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         customBlurBtn.setTitleColor(.black, for: .normal)
         customBlurBtn.setTitleColor(.blue, for: .selected)
@@ -81,6 +82,7 @@ class ViewController: UIViewController {
     }
     
     @objc func customBlurAction(btn: UIButton) {
+        blurBtn.isSelected = false
         if btn.isSelected == false{
             customBlur = true
         } else {
@@ -101,12 +103,10 @@ class ViewController: UIViewController {
         tableView.reloadData()
     }
     @objc func lookBlurAction(btn: UIButton) {
+        customBlurBtn.isSelected = false
+        customBlur = false
+        
         lookBlur = !btn.isSelected
-//        if btn.isSelected {
-//            <#statements#>
-//        } else {
-//            <#statements#>
-//        }
         btn.isSelected = !btn.isSelected
     }
 }

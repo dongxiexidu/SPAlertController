@@ -25,7 +25,7 @@ extension ViewController{
             print("点击了Cancel------")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action3) // 取消按钮一定排在最底部
@@ -45,7 +45,7 @@ extension ViewController{
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -62,7 +62,7 @@ extension ViewController{
             print("点击了第3个")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -83,7 +83,7 @@ extension ViewController{
             print("点击了第3个")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -111,7 +111,7 @@ extension ViewController{
             print("点击了cancel")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -140,7 +140,7 @@ extension ViewController{
             print("点击了第4个")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -168,7 +168,7 @@ extension ViewController{
             print("点击了第3个")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
@@ -205,7 +205,7 @@ extension ViewController{
             print("取消")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         action7.titleColor = SYSTEM_COLOR
         alertController.addAction(action: action1)

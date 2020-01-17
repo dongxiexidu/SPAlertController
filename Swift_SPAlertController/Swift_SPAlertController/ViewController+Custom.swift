@@ -25,7 +25,7 @@ extension ViewController {
             print("点击了取消")
         }
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action2)
         alertController.addAction(action: action1)
@@ -38,7 +38,7 @@ extension ViewController {
         let alertController = SPAlertController.alertController(withCustomAlertView: myView, preferredStyle: .alert, animationType: .default)
         alertController.offsetForAlert = CGPoint.init(x: 0, y: -100)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -54,7 +54,7 @@ extension ViewController {
         alertController.needDialogBlur = false
         alertController.updateCustomViewSize(size: CGSize.init(width: ScreenWidth, height: ScreenHeight*2/3))
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -65,7 +65,7 @@ extension ViewController {
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromRight)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -75,7 +75,7 @@ extension ViewController {
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromLeft)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -86,7 +86,7 @@ extension ViewController {
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromTop)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -103,7 +103,7 @@ extension ViewController {
         }
         let alertController = SPAlertController.alertController(withCustomAlertView: pickerView, preferredStyle: .actionSheet, animationType: .fromBottom)
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -119,7 +119,7 @@ extension ViewController {
         let alertController = SPAlertController.alertController(withCustomActionSequenceView: scoreView, title: "提示", message: "请给我们的app打分", preferredStyle: .alert, animationType: .default)
         alertController.needDialogBlur = false
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         self.present(alertController, animated: true, completion: nil)
     }
@@ -139,7 +139,7 @@ extension ViewController {
         }
         action2.titleColor = .red
         if customBlur {
-            alertController.customOverlayView = customOverlay
+            alertController.customOverlayView = CustomOverlayView()
         }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)

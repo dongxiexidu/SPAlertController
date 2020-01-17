@@ -28,8 +28,8 @@ extension SPAlertController: UIViewControllerTransitioningDelegate {
     // 1.返回一个自定义的UIPresentationController
     // 控制控制器跳转的类,是iOS8新增的一个API，用来控制controller之间的跳转特效，
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
-        return SPAlertPresentationController.init(presentedViewController: presented, presenting: presenting)
+        return SPAlertPresentationController.init(customOverlay: customOverlayView, presentedViewController: presented, presenting: presenting)
+        //return SPAlertPresentationController.init(presentedViewController: presented, presenting: presenting)
     }
     
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

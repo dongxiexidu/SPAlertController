@@ -42,6 +42,14 @@
 		D67AE244239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67AE243239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift */; };
 		D67AE246239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67AE245239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift */; };
 		D67AE248239A729200BC0A38 /* SPAlertControllerActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67AE247239A729200BC0A38 /* SPAlertControllerActionView.swift */; };
+		D6B59CDA23D15936003CA9A6 /* CGImage+Accelerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD223D15936003CA9A6 /* CGImage+Accelerate.swift */; };
+		D6B59CDB23D15936003CA9A6 /* CGContext+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD323D15936003CA9A6 /* CGContext+CGImage.swift */; };
+		D6B59CDC23D15936003CA9A6 /* CaptureQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD423D15936003CA9A6 /* CaptureQuality.swift */; };
+		D6B59CDD23D15936003CA9A6 /* TrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD623D15936003CA9A6 /* TrackingMode.swift */; };
+		D6B59CDE23D15936003CA9A6 /* UIImage+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD723D15936003CA9A6 /* UIImage+Blur.swift */; };
+		D6B59CDF23D15936003CA9A6 /* BlurLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD823D15936003CA9A6 /* BlurLayer.swift */; };
+		D6B59CE023D15936003CA9A6 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CD923D15936003CA9A6 /* DynamicBlurView.swift */; };
+		D6B59CE223D15FEA003CA9A6 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B59CE123D15FEA003CA9A6 /* CustomOverlayView.swift */; };
 		D6B797E123C8B598007A7608 /* ViewController+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B797E023C8B598007A7608 /* ViewController+Attributed.swift */; };
 		D6B797E323C9581F007A7608 /* ViewController+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B797E223C9581E007A7608 /* ViewController+Custom.swift */; };
 		D6B797EF23C95940007A7608 /* SendAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B797EE23C95940007A7608 /* SendAlertView.swift */; };
@@ -145,6 +153,15 @@
 		D67AE243239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInterfaceHeaderScrollView.swift; sourceTree = "<group>"; };
 		D67AE245239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInterfaceActionSequenceView.swift; sourceTree = "<group>"; };
 		D67AE247239A729200BC0A38 /* SPAlertControllerActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertControllerActionView.swift; sourceTree = "<group>"; };
+		D6B59CD223D15936003CA9A6 /* CGImage+Accelerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Accelerate.swift"; sourceTree = "<group>"; };
+		D6B59CD323D15936003CA9A6 /* CGContext+CGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+CGImage.swift"; sourceTree = "<group>"; };
+		D6B59CD423D15936003CA9A6 /* CaptureQuality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureQuality.swift; sourceTree = "<group>"; };
+		D6B59CD523D15936003CA9A6 /* DynamicBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicBlurView.h; sourceTree = "<group>"; };
+		D6B59CD623D15936003CA9A6 /* TrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingMode.swift; sourceTree = "<group>"; };
+		D6B59CD723D15936003CA9A6 /* UIImage+Blur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Blur.swift"; sourceTree = "<group>"; };
+		D6B59CD823D15936003CA9A6 /* BlurLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurLayer.swift; sourceTree = "<group>"; };
+		D6B59CD923D15936003CA9A6 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		D6B59CE123D15FEA003CA9A6 /* CustomOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
 		D6B797E023C8B598007A7608 /* ViewController+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Attributed.swift"; sourceTree = "<group>"; };
 		D6B797E223C9581E007A7608 /* ViewController+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Custom.swift"; sourceTree = "<group>"; };
 		D6B797EE23C95940007A7608 /* SendAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAlertView.swift; sourceTree = "<group>"; };
@@ -221,11 +238,13 @@
 				D620F7DD23CD548B00807E96 /* ViewController+Special.swift */,
 				D620F7DF23CD5EA900807E96 /* ViewController+background.swift */,
 				D61C822223BAE3C800D0FC6B /* DLog.swift */,
+				D6B59CE123D15FEA003CA9A6 /* CustomOverlayView.swift */,
 				D6B797F223C96E1B007A7608 /* Nibloadable.swift */,
 				D6B797E423C95891007A7608 /* CustomViews */,
 				D631517C238E4FD30043D403 /* Main.storyboard */,
 				D631517F238E4FD40043D403 /* Assets.xcassets */,
 				D6315181238E4FD40043D403 /* LaunchScreen.storyboard */,
+				D6B59CD123D15936003CA9A6 /* DynamicBlurView */,
 				D6D1EF6A23C851D1002B16B3 /* Images */,
 				D6315184238E4FD40043D403 /* Info.plist */,
 			);
@@ -252,6 +271,21 @@
 			);
 			path = SPAlertController;
 			sourceTree = SOURCE_ROOT;
+		};
+		D6B59CD123D15936003CA9A6 /* DynamicBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				D6B59CD223D15936003CA9A6 /* CGImage+Accelerate.swift */,
+				D6B59CD323D15936003CA9A6 /* CGContext+CGImage.swift */,
+				D6B59CD423D15936003CA9A6 /* CaptureQuality.swift */,
+				D6B59CD523D15936003CA9A6 /* DynamicBlurView.h */,
+				D6B59CD623D15936003CA9A6 /* TrackingMode.swift */,
+				D6B59CD723D15936003CA9A6 /* UIImage+Blur.swift */,
+				D6B59CD823D15936003CA9A6 /* BlurLayer.swift */,
+				D6B59CD923D15936003CA9A6 /* DynamicBlurView.swift */,
+			);
+			path = DynamicBlurView;
+			sourceTree = "<group>";
 		};
 		D6B797E423C95891007A7608 /* CustomViews */ = {
 			isa = PBXGroup;
@@ -497,6 +531,7 @@
 			files = (
 				D65B853323CC3A0B00840186 /* MyView.swift in Sources */,
 				D6D1EF8823C882D5002B16B3 /* ViewController+Sheet.swift in Sources */,
+				D6B59CE223D15FEA003CA9A6 /* CustomOverlayView.swift in Sources */,
 				D620F7DE23CD548B00807E96 /* ViewController+Special.swift in Sources */,
 				D65B854C23CC6CE000840186 /* MyCenterView.swift in Sources */,
 				D67AE246239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift in Sources */,
@@ -504,12 +539,16 @@
 				D631518C238E50400043D403 /* SPInterfaceActionItemSeparatorView.swift in Sources */,
 				D67AE23E239A269200BC0A38 /* SPAlertPresentationController.swift in Sources */,
 				D67AE248239A729200BC0A38 /* SPAlertControllerActionView.swift in Sources */,
+				D6B59CDB23D15936003CA9A6 /* CGContext+CGImage.swift in Sources */,
+				D6B59CDE23D15936003CA9A6 /* UIImage+Blur.swift in Sources */,
 				D67AE242239A335B00BC0A38 /* SPAlertAnimation.swift in Sources */,
+				D6B59CDC23D15936003CA9A6 /* CaptureQuality.swift in Sources */,
 				D65B854823CC637D00840186 /* HCSStarRatingView.m in Sources */,
 				D6B797EF23C95940007A7608 /* SendAlertView.swift in Sources */,
 				D631F91F239BA0BD000BA923 /* SPAlertController+transitionDelegate.swift in Sources */,
 				D67AE244239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift in Sources */,
 				D67AE23C239A25E400BC0A38 /* SPAlertController.swift in Sources */,
+				D6B59CDD23D15936003CA9A6 /* TrackingMode.swift in Sources */,
 				D6D1EF8A23C8841C002B16B3 /* ViewController+Alert.swift in Sources */,
 				D6609B8123D040A0005D3BF2 /* SPInteractiveTransition.swift in Sources */,
 				D65B854323CC5AF700840186 /* PickerView.swift in Sources */,
@@ -521,11 +560,14 @@
 				D67AE240239A26E000BC0A38 /* SPOverlayView.swift in Sources */,
 				D61C822323BAE3C800D0FC6B /* DLog.swift in Sources */,
 				D6B797F323C96E1B007A7608 /* Nibloadable.swift in Sources */,
+				D6B59CE023D15936003CA9A6 /* DynamicBlurView.swift in Sources */,
 				D65B854123CC550000840186 /* CommodityListView.swift in Sources */,
 				D62575F1239DD791001262A1 /* SPAlertController+Public.swift in Sources */,
 				D65B853E23CC459900840186 /* ShoppingCartCell.swift in Sources */,
 				D631518E238E509D0043D403 /* SPConstant.swift in Sources */,
+				D6B59CDA23D15936003CA9A6 /* CGImage+Accelerate.swift in Sources */,
 				D6486FD3239A1C8B00F3AFB7 /* SPAlertAction.swift in Sources */,
+				D6B59CDF23D15936003CA9A6 /* BlurLayer.swift in Sources */,
 				D6315177238E4FD30043D403 /* AppDelegate.swift in Sources */,
 				D65B853B23CC43BC00840186 /* ShoppingCartView.swift in Sources */,
 				D65B854A23CC63A200840186 /* ScoreView.swift in Sources */,

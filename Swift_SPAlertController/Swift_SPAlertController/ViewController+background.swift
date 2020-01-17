@@ -26,12 +26,15 @@ extension ViewController {
         alertController.addAction(action: action1)
         alertController.addAction(action: action3)
         alertController.addAction(action: action2)
-        
-        if appearanceStyle == .translucent {
-            // 0.5是半透明(默认),设置1为不透明,0为全透明
-            alertController.setBackgroundViewAppearanceStyle(appearanceStyle, alpha: 0.5)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
         } else {
-            alertController.setBackgroundViewAppearanceStyle(appearanceStyle, alpha: 1.0)
+            if appearanceStyle == .translucent {
+                // 0.5是半透明(默认),设置1为不透明,0为全透明
+                alertController.setBackgroundViewAppearanceStyle(appearanceStyle, alpha: 0.5)
+            } else {
+                alertController.setBackgroundViewAppearanceStyle(appearanceStyle, alpha: 1.0)
+            }
         }
         self.present(alertController, animated: true, completion: nil)
         

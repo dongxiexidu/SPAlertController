@@ -14,6 +14,9 @@ public class SPAlertController: UIViewController {
     lazy var interactor = SPInteractiveTransition()
     /// 拖拽退出view,暂时只支持向下拖拽退出,.fromTop向上拖拽退出
     private var panGestureDismissal: Bool = true
+    /// 自定义背景蒙版
+    public var customOverlayView: UIView?
+    
     private var _customAlertView: UIView?
     private var _customHeaderView: UIView?
     private var _customActionSequenceView: UIView?

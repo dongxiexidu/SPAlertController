@@ -12,6 +12,13 @@ import UIKit
 // 例如：显示一个模态窗口，大小和位置是自定义的，遮罩在原来的页面
 class SPAlertPresentationController: UIPresentationController {
     
+    /// 自定义背景蒙版
+    var customOverlayView: UIView?
+    convenience init(customOverlay: UIView?, presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        self.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        self.customOverlayView = customOverlay
+    }
+    
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -21,6 +28,7 @@ class SPAlertPresentationController: UIPresentationController {
         super.containerViewWillLayoutSubviews()
         if let containerV = self.containerView {
             self.overlayView.frame = containerV.bounds
+            //self.customOverlayView?.frame = containerV.bounds
         }
     }
     
@@ -33,7 +41,10 @@ class SPAlertPresentationController: UIPresentationController {
         super.presentationTransitionWillBegin()
         
         let alertController = self.presentedViewController as! SPAlertController
-        self.overlayView.setAppearanceStyle(appearanceStyle: alertController.backgroundViewAppearanceStyle, alpha: alertController.backgroundViewAlpha)
+        if customOverlayView == nil {
+            (overlayView as! SPOverlayView).setAppearanceStyle(appearanceStyle: alertController.backgroundViewAppearanceStyle, alpha: alertController.backgroundViewAlpha)
+        }
+        
         // 遮罩的alpha值从0～1变化，UIViewControllerTransitionCoordinator协是一个过渡协调器，当执行模态过渡或push过渡时，可以对视图中的其他部分做动画
         let coordinator = self.presentedViewController.transitionCoordinator
         if let coordinatorT = coordinator {
@@ -86,25 +97,45 @@ class SPAlertPresentationController: UIPresentationController {
         return self.presentedView!.frame
     }
     
+//    private lazy var overlayView: CustomOverlayView = {
+//        let overlay = CustomOverlayView.init()
+//        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapOverlayView))
+//        overlay.addGestureRecognizer(tap)
+//        self.containerView?.insertSubview(overlay, at: 0)
+//       // self.containerView?.addSubview(overlay)
+//        return overlay
+//    }()
+    var _overlayView: UIView?
+    private var overlayView: UIView {
+        if _overlayView == nil {
+            if let customView = customOverlayView {
+                _overlayView = customView
+            } else {
+                _overlayView = SPOverlayView.init()
+            }
+            _overlayView!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapOverlayView))
+            _overlayView!.addGestureRecognizer(tap)
+            self.containerView?.insertSubview(_overlayView!, at: 0)
+        }
+        return _overlayView!
+    }
     
-    lazy var overlayView: SPOverlayView = {
-        let overlay = SPOverlayView.init()
-        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapOverlayView))
-        overlay.addGestureRecognizer(tap)
-        self.containerView?.addSubview(overlay)
-        return overlay
-    }()
+//    lazy var overlayView: SPOverlayView = {
+//        let overlay = SPOverlayView.init()
+//        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapOverlayView))
+//        overlay.addGestureRecognizer(tap)
+//        self.containerView?.addSubview(overlay)
+//        return overlay
+//    }()
+
     
     @objc func tapOverlayView() {
         let alertController = self.presentedViewController as! SPAlertController
-//        DLog(alertController.backgroundViewAlpha)
         if alertController.tapBackgroundViewDismiss {
             alertController.dismiss(animated: true, completion: nil)
         }
     }
-    // TODO: 没必要吧？
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
 }

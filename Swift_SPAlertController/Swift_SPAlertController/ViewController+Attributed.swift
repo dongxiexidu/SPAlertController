@@ -58,7 +58,9 @@ extension ViewController {
         let action4 = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
             print("点击了取消")
         }
-        
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
         alertController.addAction(action: action3)
@@ -79,7 +81,9 @@ extension ViewController {
            attrTitle.addAttribute(.foregroundColor, value: SYSTEM_COLOR, range: NSRange.init(location: 0, length: num.count))
            alertController.attributedTitle = attrTitle
            
-           
+           if customBlur {
+               alertController.customOverlayView = customOverlay
+           }
            let action1 = SPAlertAction.action(withTitle: "取消",  style: .destructive) { (action) in
                print("点击了`取消`")
            }

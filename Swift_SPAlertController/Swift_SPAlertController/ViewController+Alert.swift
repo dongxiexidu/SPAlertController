@@ -22,6 +22,9 @@ extension ViewController{
         let action2 = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
             print("点击了取消")
         }
+        if customBlur {
+            alert.customOverlayView = customOverlay
+        }
         // 设置第2个action的颜色
         action2.titleColor = SYSTEM_COLOR
         alert.addAction(action: action1)
@@ -49,6 +52,9 @@ extension ViewController{
         let action4 = SPAlertAction.action(withTitle: "第4个", style: .default) { (action) in
             print("点击了第4个")
         }
+        if customBlur {
+            alert.customOverlayView = customOverlay
+        }
         // 设置第2个action的颜色
         action1.titleColor = SYSTEM_COLOR
         alert.addAction(action: action1)
@@ -71,6 +77,9 @@ extension ViewController{
         let action2 = SPAlertAction.action(withTitle: "取消", style: .destructive) { (action) in
             print("点击了取消")
         }
+        if customBlur {
+            alert.customOverlayView = customOverlay
+        }
         action2.titleColor = .red
         alert.addAction(action: action1)
         alert.addAction(action: action2)
@@ -89,6 +98,9 @@ extension ViewController{
         action1.titleColor = .red
         let action2 = SPAlertAction.action(withTitle: "取消", style: .destructive) { (action) in
             print("点击了取消")
+        }
+        if customBlur {
+            alert.customOverlayView = customOverlay
         }
         action2.titleColor = SYSTEM_COLOR
         alert.addAction(action: action1)
@@ -113,7 +125,9 @@ extension ViewController{
         let action3 = SPAlertAction.action(withTitle: "第3个", style: .destructive) { (action) in
             print("点击了第3个")
         }
-        
+        if customBlur {
+            alert.customOverlayView = customOverlay
+        }
         alert.addAction(action: action1)
         alert.addAction(action: action2)
         alert.addAction(action: action3)
@@ -127,6 +141,9 @@ extension ViewController{
         alert.image = UIImage.init(named: "zhiwen")
         let action = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
             print("点击了取消")
+        }
+        if customBlur {
+            alert.customOverlayView = customOverlay
         }
         action.titleColor = SYSTEM_COLOR
         alert.addAction(action: action)
@@ -165,7 +182,9 @@ extension ViewController{
             textField.clearButtonMode = .always
             textField.addTarget(self, action: #selector(self.textFieldDidChanged(textField:)), for: .editingChanged)
         }
-        
+        if customBlur {
+            alert.customOverlayView = customOverlay
+        }
         self.present(alert, animated: true, completion: nil)
     }
     

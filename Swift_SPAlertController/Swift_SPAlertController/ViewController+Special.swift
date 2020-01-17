@@ -23,6 +23,9 @@ extension ViewController {
         let cancelAction = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
             print("点击了cancel")
         }
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         alertController.addAction(action: cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -40,6 +43,9 @@ extension ViewController {
         let cancelAction = SPAlertAction.action(withTitle: "取消", style: .cancel) { (action) in
             print("点击了cancel")
         }
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         alertController.addAction(action: cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -53,6 +59,9 @@ extension ViewController {
         }
         let action2 = SPAlertAction.action(withTitle: "我的文字太长了，所以垂直排列显示更多文字，垂直后依然显示不全则压缩字体，压缩到0.5倍封顶", style: .default) { (action) in
             print("点击了'上九天揽月，下五洋捉鳖")
+        }
+        if customBlur {
+            alertController.customOverlayView = customOverlay
         }
         action2.titleColor = SYSTEM_COLOR
         alertController.addAction(action: action1)
@@ -70,6 +79,9 @@ extension ViewController {
          let action2 = SPAlertAction.action(withTitle: "我的文字太长了，会压缩字体", style: .default) { (action) in
              print("点击了'我的文字太长了，会压缩字体")
          }
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
          action2.titleColor = SYSTEM_COLOR
          alertController.addAction(action: action1)
          alertController.addAction(action: action2)

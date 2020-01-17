@@ -24,6 +24,9 @@ extension ViewController {
         let action2 = SPAlertAction.action(withTitle: "取消", style: .destructive) { (action) in
             print("点击了取消")
         }
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         alertController.addAction(action: action2)
         alertController.addAction(action: action1)
         self.present(alertController, animated: true, completion: nil)
@@ -34,6 +37,9 @@ extension ViewController {
         myView.cancelButton.addTarget(self, action: #selector(cancelButtonInCustomHeaderViewClicked), for: .touchUpInside)
         let alertController = SPAlertController.alertController(withCustomAlertView: myView, preferredStyle: .alert, animationType: .default)
         alertController.offsetForAlert = CGPoint.init(x: 0, y: -100)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -47,6 +53,9 @@ extension ViewController {
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromBottom)
         alertController.needDialogBlur = false
         alertController.updateCustomViewSize(size: CGSize.init(width: ScreenWidth, height: ScreenHeight*2/3))
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -55,6 +64,9 @@ extension ViewController {
         let shoppingCartView = ShoppingCartView.init(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth-70, height: ScreenHeight))
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromRight)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     // 示例22:自定义整个对话框(actionSheet样式从左边弹出)
@@ -62,6 +74,9 @@ extension ViewController {
         let shoppingCartView = ShoppingCartView.init(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth-70, height: ScreenHeight))
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromLeft)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -70,6 +85,9 @@ extension ViewController {
         let shoppingCartView = CommodityListView.init(frame: CGRect.init(x: 0, y: 0, width: ScreenWidth, height: 200))
         shoppingCartView.backgroundColor = .white
         let alertController = SPAlertController.alertController(withCustomAlertView: shoppingCartView, preferredStyle: .actionSheet, animationType: .fromTop)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -84,6 +102,9 @@ extension ViewController {
             self?.presentedViewController?.dismiss(animated: true, completion: nil)
         }
         let alertController = SPAlertController.alertController(withCustomAlertView: pickerView, preferredStyle: .actionSheet, animationType: .fromBottom)
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     // 示例25:自定义action部分
@@ -97,6 +118,9 @@ extension ViewController {
         
         let alertController = SPAlertController.alertController(withCustomActionSequenceView: scoreView, title: "提示", message: "请给我们的app打分", preferredStyle: .alert, animationType: .default)
         alertController.needDialogBlur = false
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     // 示例25:插入一个组件
@@ -114,6 +138,9 @@ extension ViewController {
             print("点击了第2个")
         }
         action2.titleColor = .red
+        if customBlur {
+            alertController.customOverlayView = customOverlay
+        }
         alertController.addAction(action: action1)
         alertController.addAction(action: action2)
         self.present(alertController, animated: true, completion: nil)

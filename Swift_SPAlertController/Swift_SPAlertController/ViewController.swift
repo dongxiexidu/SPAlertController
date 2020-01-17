@@ -19,9 +19,13 @@ class ViewController: UIViewController {
     var alertController: SPAlertController!
     var haveBg: Bool = false
     var lookBlur: Bool = false
+    var customBlur: Bool = false
+    
     var sureAction: SPAlertAction!
     var phoneNumberTextField: UITextField!
     var passwordTextField: UITextField!
+    // 自定义背景毛玻璃
+    let customOverlay = CustomOverlayView()
     
     var titles = ["actionSheet样式","alert样式","富文本","自定义视图","特殊情况","背景毛玻璃"]
     var dataSource = [
@@ -40,13 +44,12 @@ class ViewController: UIViewController {
     ["透明黑色背景样式(背景无毛玻璃,默认)","背景毛玻璃Dark样式","背景毛玻璃ExtraLight样式","背景毛玻璃Light样式"
       ]
     ]
-    var dic = [Int]()
     let headerID = "header"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "演示Demo"
+        self.navigationItem.title = "Demo"
         tableView.sectionFooterHeight = 0.001
         setupNav()
     }
@@ -67,7 +70,23 @@ class ViewController: UIViewController {
         blurBtn.setTitle("打开毛玻璃", for: .normal)
         blurBtn.setTitle("关闭毛玻璃", for: .selected)
         blurBtn.addTarget(self, action: #selector(lookBlurAction(btn:)), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: blurBtn)
+        
+        let customBlurBtn = UIButton.init(type: .custom)
+        customBlurBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        customBlurBtn.setTitleColor(.black, for: .normal)
+        customBlurBtn.setTitleColor(.blue, for: .selected)
+        customBlurBtn.setTitle("自定义毛玻璃", for: .normal)
+        customBlurBtn.addTarget(self, action: #selector(customBlurAction(btn:)), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem.init(customView: customBlurBtn), UIBarButtonItem.init(customView: blurBtn)]
+    }
+    
+    @objc func customBlurAction(btn: UIButton) {
+        if btn.isSelected == false{
+            customBlur = true
+        } else {
+            customBlur = false
+        }
+        btn.isSelected = !btn.isSelected
     }
     
     @objc func changeBackgroundImage(btn: UIButton) {
@@ -218,16 +237,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 actionSheetTest1()
             }
         } else if indexPath.section == 5 { // 背景毛玻璃示例
-                   switch indexPath.row {
-                   case 0:
-                    background(appearanceStyle: .translucent)
-                   case 1:
-                       background(appearanceStyle: .blurDark)
-                   case 2:
-                       background(appearanceStyle: .blurExtraLight)
-                   default:
-                       background(appearanceStyle: .blurExtraLight)
-                   }
-               }
+           switch indexPath.row {
+           case 0:
+                background(appearanceStyle: .translucent)
+           case 1:
+                background(appearanceStyle: .blurDark)
+           case 2:
+                background(appearanceStyle: .blurExtraLight)
+           default:
+                background(appearanceStyle: .blurExtraLight)
+           }
+        }
     }
 }

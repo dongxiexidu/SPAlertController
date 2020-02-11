@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SPAlertController"
-  s.version      =  "1.0"
+  s.version      =  "1.0.0"
   s.summary      = "万能提醒对话框.自定义弹窗"
 
   # This description is used to generate tags and improve search results.

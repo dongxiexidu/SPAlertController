@@ -503,7 +503,7 @@ public class SPAlertController: UIViewController {
         handleIQKeyboardManager()
         if !isForceOffset && customAlertView == nil && customHeaderView == nil && customActionSequenceView == nil && componentView == nil{
             // 监听键盘改变frame，键盘frame改变需要移动对话框
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         }
         if textFields.count > 0 {
             let firstTextfield = textFields[0]

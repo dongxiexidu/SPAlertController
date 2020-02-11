@@ -310,7 +310,8 @@ internal extension UIView {
         let vals: [Double] = [-2, 2, -2, 2, 0]
         
         let translation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+       // translation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        translation.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.default)
         translation.values = vals
         
         let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")

@@ -112,9 +112,15 @@ class SPAlertControllerActionView: UIView {
         return .init(top: i1.top+i2.top, left: i1.left+i2.left, bottom: bottom+i2.bottom, right: i1.right+i2.right)
      }
     
+    
     lazy var actionButton: UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.backgroundColor = SP_NORMAL_COLOR
+        if #available(iOS 13, *) {
+            btn.backgroundColor = .tertiarySystemBackground
+        } else {
+            btn.backgroundColor = SP_NORMAL_COLOR
+        }
+        
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.titleLabel?.textAlignment = .center
         btn.titleLabel?.adjustsFontSizeToFitWidth = true

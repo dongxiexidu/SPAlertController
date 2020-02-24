@@ -52,7 +52,11 @@ class SPInterfaceActionSequenceView: UIView {
     //MARK: - lazy var
     lazy var contentView: UIView = {
         let contentV = UIView()
-        contentV.backgroundColor = .white
+        if #available(iOS 13, *) {
+            contentV.backgroundColor = .tertiarySystemBackground
+        } else {
+            contentV.backgroundColor = .white
+        }
         contentV.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(contentV)
         return contentV
@@ -60,7 +64,12 @@ class SPInterfaceActionSequenceView: UIView {
     
     lazy var scrollView: UIScrollView = {
         let scrollV = UIScrollView()
-        scrollV.backgroundColor = .white
+        
+        if #available(iOS 13, *) {
+            scrollV.backgroundColor = .tertiarySystemBackground
+        } else {
+            scrollV.backgroundColor = .white
+        }
         scrollV.showsHorizontalScrollIndicator = false
         scrollV.showsVerticalScrollIndicator = false
         scrollV.translatesAutoresizingMaskIntoConstraints = false

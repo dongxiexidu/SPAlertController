@@ -12,6 +12,7 @@ let SP_SCREEN_WIDTH: CGFloat = UIScreen.main.bounds.size.width
 let SP_SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.size.height
 let SP_LINE_COLOR: UIColor = UIColor.gray.withAlphaComponent(0.3)
 let SP_NORMAL_COLOR: UIColor = UIColor.white.withAlphaComponent(0.7)
+
 let SP_SELECTED_COLOR: UIColor = UIColor.init(white: 1.0, alpha: 0.4)
 let SP_LINE_WIDTH: CGFloat = 1.0/UIScreen.main.scale
 let Is_iPhoneX: Bool = SP_SCREEN_HEIGHT >= 812.0

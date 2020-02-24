@@ -18,7 +18,12 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+       // self.backgroundColor = .white
+        if #available(iOS 13, *) {
+            self.backgroundColor = .tertiarySystemBackground
+        } else {
+            self.backgroundColor = .white
+        }
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         if #available(iOS 11.0, *) {
@@ -46,7 +51,11 @@ class SPInterfaceHeaderScrollView: UIScrollView {
     
     lazy var contentView: UIView = {
         let contentV = UIView()
-        contentV.backgroundColor = .white
+        if #available(iOS 13, *) {
+            contentV.backgroundColor = .tertiarySystemBackground
+        } else {
+            contentV.backgroundColor = .white
+        }
         contentV.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(contentV)
         return contentV

@@ -262,7 +262,12 @@ public class SPAlertController: UIViewController {
                 dimmingdropView.frame = containerView.bounds
                 dimmingdropView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 dimmingKnockoutBackdropView = dimmingdropView
-                dimmingKnockoutBackdropView?.backgroundColor = .white
+               //
+                if #available(iOS 13, *) {
+                    dimmingKnockoutBackdropView?.backgroundColor = .tertiarySystemBackground
+                } else {
+                    dimmingKnockoutBackdropView?.backgroundColor = .white
+                }
                 self.containerView.insertSubview(dimmingKnockoutBackdropView!, at: 0)
             } else {
                 // 这个else是防止假如_UIDimmingKnockoutBackdropView这个类不存在了的时候，做一个备案
@@ -279,7 +284,11 @@ public class SPAlertController: UIViewController {
             if _customAlertView != nil {
                 containerView.backgroundColor = .clear
             } else {
-                containerView.backgroundColor = .white
+                if #available(iOS 13, *) {
+                    containerView.backgroundColor = .tertiarySystemBackground
+                } else {
+                    containerView.backgroundColor = .white
+                }
             }
         }
     }
@@ -414,7 +423,12 @@ public class SPAlertController: UIViewController {
     
     lazy var containerView: UIView = {
         let containerV = UIView()
-        containerV.backgroundColor = .white
+        if #available(iOS 13, *) {
+            containerV.backgroundColor = .tertiarySystemBackground
+        } else {
+            containerV.backgroundColor = .white
+        }
+        
         containerV.frame = self.alertControllerView.bounds
         containerV.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         if preferredStyle == .alert {

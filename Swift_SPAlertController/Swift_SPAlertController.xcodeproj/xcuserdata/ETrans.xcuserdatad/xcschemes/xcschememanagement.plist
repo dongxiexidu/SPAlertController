@@ -6,8 +6,10 @@
 	<dict>
 		<key>SPAlertController.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Swift_SPAlertController.xcscheme</key>
 		<dict>
@@ -20,6 +22,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>D6315172238E4FD30043D403</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6A5A3B727F8009E00967937</key>
 		<dict>
 			<key>primary</key>
 			<true/>

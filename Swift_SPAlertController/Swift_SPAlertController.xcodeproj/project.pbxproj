@@ -153,6 +153,7 @@
 		D67AE243239A6AB200BC0A38 /* SPInterfaceHeaderScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInterfaceHeaderScrollView.swift; sourceTree = "<group>"; };
 		D67AE245239A6C5200BC0A38 /* SPInterfaceActionSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInterfaceActionSequenceView.swift; sourceTree = "<group>"; };
 		D67AE247239A729200BC0A38 /* SPAlertControllerActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertControllerActionView.swift; sourceTree = "<group>"; };
+		D6A5A3B827F8009E00967937 /* Swift_SPAlertController_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_SPAlertController_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B59CD223D15936003CA9A6 /* CGImage+Accelerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Accelerate.swift"; sourceTree = "<group>"; };
 		D6B59CD323D15936003CA9A6 /* CGContext+CGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+CGImage.swift"; sourceTree = "<group>"; };
 		D6B59CD423D15936003CA9A6 /* CaptureQuality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureQuality.swift; sourceTree = "<group>"; };
@@ -197,6 +198,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6A5A3B527F8009E00967937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6E1BB7023CEE8F200D8F1F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +229,7 @@
 			children = (
 				D6315173238E4FD30043D403 /* Swift_SPAlertController.app */,
 				D6E1BB7323CEE8F200D8F1F1 /* SPAlertController.framework */,
+				D6A5A3B827F8009E00967937 /* Swift_SPAlertController_Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +439,23 @@
 			productReference = D6315173238E4FD30043D403 /* Swift_SPAlertController.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D6A5A3B727F8009E00967937 /* Swift_SPAlertController_Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6A5A3CB27F800A000967937 /* Build configuration list for PBXNativeTarget "Swift_SPAlertController_Demo" */;
+			buildPhases = (
+				D6A5A3B427F8009E00967937 /* Sources */,
+				D6A5A3B527F8009E00967937 /* Frameworks */,
+				D6A5A3B627F8009E00967937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Swift_SPAlertController_Demo;
+			productName = Swift_SPAlertController_Demo;
+			productReference = D6A5A3B827F8009E00967937 /* Swift_SPAlertController_Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D6E1BB7223CEE8F200D8F1F1 /* SPAlertController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6E1BB7F23CEE8F200D8F1F1 /* Build configuration list for PBXNativeTarget "SPAlertController" */;
@@ -454,13 +480,16 @@
 		D631516B238E4FD30043D403 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = HeFahu;
 				TargetAttributes = {
 					D6315172238E4FD30043D403 = {
 						CreatedOnToolsVersion = 11.2.1;
 						LastSwiftMigration = 1120;
+					};
+					D6A5A3B727F8009E00967937 = {
+						CreatedOnToolsVersion = 13.3;
 					};
 					D6E1BB7223CEE8F200D8F1F1 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -482,6 +511,7 @@
 			targets = (
 				D6315172238E4FD30043D403 /* Swift_SPAlertController */,
 				D6E1BB7223CEE8F200D8F1F1 /* SPAlertController */,
+				D6A5A3B727F8009E00967937 /* Swift_SPAlertController_Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -512,6 +542,13 @@
 				D6B797F123C9594C007A7608 /* SendAlertView.xib in Resources */,
 				D6D1EF7B23C851D2002B16B3 /* send0.jpeg in Resources */,
 				D631517E238E4FD30043D403 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6A5A3B627F8009E00967937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +608,13 @@
 				D6315177238E4FD30043D403 /* AppDelegate.swift in Sources */,
 				D65B853B23CC43BC00840186 /* ShoppingCartView.swift in Sources */,
 				D65B854A23CC63A200840186 /* ScoreView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6A5A3B427F8009E00967937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +726,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -735,6 +780,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -779,6 +825,68 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ETrans.Swift-SPAlertController";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Swift_SPAlertController/CustomViews/CustomView2/Swift_SPAlertController-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D6A5A3C927F800A000967937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24848788N3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swift_SPAlertController_Demo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "test.Swift-SPAlertController-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D6A5A3CA27F800A000967937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24848788N3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swift_SPAlertController_Demo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "test.Swift-SPAlertController-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -861,6 +969,15 @@
 			buildConfigurations = (
 				D6315188238E4FD40043D403 /* Debug */,
 				D6315189238E4FD40043D403 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6A5A3CB27F800A000967937 /* Build configuration list for PBXNativeTarget "Swift_SPAlertController_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6A5A3C927F800A000967937 /* Debug */,
+				D6A5A3CA27F800A000967937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

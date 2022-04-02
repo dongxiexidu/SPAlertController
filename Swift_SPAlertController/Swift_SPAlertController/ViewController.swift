@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         customBlurBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         customBlurBtn.setTitleColor(.black, for: .normal)
         customBlurBtn.setTitleColor(.blue, for: .selected)
-        customBlurBtn.setTitle("自定义毛玻璃", for: .normal)
+        customBlurBtn.setTitle("自定义背景", for: .normal)
         customBlurBtn.addTarget(self, action: #selector(customBlurAction(btn:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItems = [UIBarButtonItem.init(customView: customBlurBtn), UIBarButtonItem.init(customView: blurBtn)]
     }
@@ -127,6 +127,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .clear
         } else {
             cell.backgroundColor = .white
+        }
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark {
+                cell.backgroundColor = .clear
+            }
         }
         return cell
     }
